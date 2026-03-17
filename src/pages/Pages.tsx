@@ -1,105 +1,94 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { 
-  Home, 
-  Library, 
-  User, 
-  Layout, 
-  ArrowRight, 
-  Layers, 
-  Terminal, 
-  Cpu, 
-  Zap, 
-  Globe 
-} from 'lucide-react';
+import { Home, Library, User, Layout, ArrowRight, Layers, Terminal, Cpu, Zap, Globe, Compass, Square } from 'lucide-react';
 
 const directory = [
   {
-    title: "Primary Nodes",
+    title: 'Primary Archives',
     links: [
-      { name: "Home Portal", path: "/", icon: Home, desc: "The main entry point and editorial archive." },
-      { name: "Game Library", path: "/library", icon: Library, desc: "Access the full collection of verified game binaries." },
-      { name: "Author Profile", path: "/author", icon: User, desc: "Detailed background on the architect and methodology." },
-    ]
+      { name: '01 Home Portal', path: '/', icon: Home, desc: 'Editorial headlines and atmospheric overview.' },
+      { name: '02 Our Portfolio', path: '/library', icon: Library, desc: 'Curated collection of residential and commercial commissions.' },
+      { name: '03 The Collective', path: '/author', icon: User, desc: 'Our philosophy, history, and lead visionary.' },
+    ],
   },
   {
-    title: "System Sections",
+    title: 'Spatial Disciplines',
     links: [
-      { name: "About Mission", path: "/#about", icon: Globe, desc: "The vision and philosophy behind the Vault." },
-      { name: "Curated Projects", path: "/#projects", icon: Layers, desc: "A showcase of high-performance digital experiments." },
-      { name: "Learning Lab", path: "/#learn", icon: Zap, desc: "Technical insights and continuous evolution logs." },
-      { name: "Community Hub", path: "/#community", icon: Cpu, desc: "Engagement channels and professional network nodes." },
-    ]
+      { name: 'Architecture', path: '/#services', icon: Globe, desc: 'Structural refinement and landscape integration.' },
+      { name: 'Interior Design', path: '/#services', icon: Layers, desc: 'Atmospheric curation and material narratives.' },
+      { name: 'Bespoke Objects', path: '/#services', icon: Compass, desc: 'Custom furniture and artisanal fixtures.' },
+    ],
   },
   {
-    title: "Internal Tools",
+    title: 'Connection',
     links: [
-      { name: "System Status", path: "#", icon: Terminal, desc: "Real-time diagnostics and portal health monitoring." },
-      { name: "UI Components", path: "#", icon: Layout, desc: "The design system powering the Atmospheric interface." },
-    ]
-  }
+      { name: 'Inquire', path: '/author#contact', icon: MessageCircle, desc: 'Commence a dialogue regarding your next commission.' },
+      { name: 'Social Narratives', path: '/author#social', icon: Instagram, desc: 'Follow our daily evolution on digital channels.' },
+    ],
+  },
 ];
+
+import { MessageCircle, Instagram } from 'lucide-react';
 
 export default function Pages() {
   return (
-    <div className="min-h-screen pt-40 pb-32 px-6">
-      <div className="max-w-7xl mx-auto">
-        <header className="mb-24">
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[10px] font-bold uppercase tracking-[0.4em] text-emerald-400 mb-6 block"
-          >
-            System Directory
-          </motion.span>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.8]"
-          >
-            PAGES <br /> <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">INDEX.</span>
-          </motion.h1>
-        </header>
+    <div className="min-h-screen pt-24 pb-32">
+      <section className="px-8 py-20 border-b border-border/20">
+        <div className="max-w-7xl mx-auto">
+          <p className="font-sans text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-6">Directory</p>
+          <h1 className="text-6xl md:text-8xl font-serif font-medium tracking-tight uppercase leading-[0.9]">
+            Keang <span className="text-muted-foreground/20">&</span> Co.
+            <br />
+            Index.
+          </h1>
+        </div>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          {directory.map((section, sIndex) => (
-            <motion.div 
-              key={section.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + sIndex * 0.1 }}
-            >
-              <h2 className="text-[10px] font-bold uppercase tracking-widest text-white/20 mb-8 border-b border-white/5 pb-4">
+      <div className="max-w-7xl mx-auto px-8 py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-24">
+          {directory.map((section) => (
+            <div key={section.title} className="space-y-12">
+              <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-muted-foreground/40 uppercase pb-6 border-b border-border/10">
                 {section.title}
-              </h2>
-              <div className="space-y-4">
-                {section.links.map((link, lIndex) => (
-                  <Link 
+              </p>
+              <div className="space-y-12">
+                {section.links.map(link => (
+                  <Link
                     key={link.name}
                     to={link.path}
-                    className="group block p-6 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-emerald-500/30 transition-all"
+                    className="group flex flex-col items-start gap-4 transition-all duration-500"
                   >
-                    <div className="flex items-start gap-6">
-                      <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/20 group-hover:text-emerald-400 transition-colors">
-                        <link.icon className="w-6 h-6" />
+                    <div className="flex items-center gap-4 w-full">
+                      <div className="w-8 h-8 border border-border/20 flex items-center justify-center shrink-0 text-muted-foreground group-hover:border-primary group-hover:text-primary transition-all duration-700">
+                        <link.icon className="w-3.5 h-3.5" />
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className="text-lg font-bold group-hover:text-emerald-400 transition-colors">{link.name}</h3>
-                          <ArrowRight className="w-4 h-4 text-white/10 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
-                        </div>
-                        <p className="text-sm text-white/30 leading-relaxed group-hover:text-white/50 transition-colors">
-                          {link.desc}
-                        </p>
-                      </div>
+                      <h3 className="font-serif text-2xl group-hover:text-primary transition-colors duration-500 flex-1">
+                        {link.name}
+                      </h3>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground/20 -translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-700" />
                     </div>
+                    <p className="text-sm text-muted-foreground font-serif italic leading-relaxed pl-12">
+                      {link.desc}
+                    </p>
                   </Link>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
+        </div>
+      </div>
+
+      {/* Visual Accent */}
+      <div className="max-w-7xl mx-auto px-8 mt-32">
+        <div className="aspect-[21/9] bg-muted/10 grayscale border border-border/10 overflow-hidden relative group">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000"
+            alt="Studio Atmosphere"
+            className="w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-opacity duration-1000 scale-105 group-hover:scale-100 transition-transform duration-1000"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="font-sans text-[10px] font-bold tracking-[0.5em] text-foreground uppercase border border-foreground/20 px-8 py-4 backdrop-blur-md">Atmosphere</span>
+          </div>
         </div>
       </div>
     </div>
