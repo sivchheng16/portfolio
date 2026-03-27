@@ -26,28 +26,28 @@ import Footer from "../components/Footer";
 
 const services = [
   {
-    name: "Interior Architecture",
+    name: "Frontend Development",
     icon: Layout,
     detail:
-      "We lay out every room so it flows well and feels right to live in.",
+      "Building clean, responsive, and intuitive user interfaces with modern frameworks.",
   },
   {
-    name: "Bespoke Furniture",
-    icon: Paintbrush,
+    name: "Backend Development",
+    icon: Code2,
     detail:
-      "Each piece is made to fit your space, your style, and the way you use it.",
+      "Creating robust server-side solutions and scalable API architectures.",
   },
   {
-    name: "Conceptual Design",
+    name: "Mobile & Cross-Platform",
     icon: Compass,
     detail:
-      "We choose the shapes, materials, and finishes that give a space its character.",
+      "Developing seamless experiences across iOS, Android, and web platforms.",
   },
   {
-    name: "Residential Luxury",
-    icon: HomeIcon,
+    name: "UI/UX Design",
+    icon: Paintbrush,
     detail:
-      "Comfortable homes that look beautiful and feel like they were made for you.",
+      "Crafting user-centered designs that balance aesthetics with functionality.",
   },
 ];
 
@@ -91,10 +91,10 @@ export default function Home() {
         </video>
 
         {/* Blur overlay in front of video */}
-        <div className="absolute inset-0 backdrop-blur-sm bg-black/30 z-5"></div>
+        <div className="absolute inset-0 backdrop-blur-sm bg-black/10 z-5"></div>
 
         {/* Color gradient overlay - bottom half with white transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-background via-background/20 via-30% to-transparent z-5"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-t from-background via-background/30 via-30% to-transparent z-5"></div>
 
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-[10%] right-[15%] w-[35vw] h-[35vw] bg-primary/5 blur-[120px] rounded-full" />
@@ -113,21 +113,24 @@ export default function Home() {
               <p
                 className={`font-sans text-[10px] font-bold tracking-[0.4em] uppercase mb-8 transition-colors duration-500 ${textColor === "text-white" ? "text-white" : "text-primary"}`}
               >
-                Interior Design Studio / Phnom Penh, Cambodia
+                Developer & Designer from Phnom Penh
               </p>
               <h1
                 className={`text-[10vw] lg:text-[7vw] font-serif font-medium leading-[0.9] tracking-tight mb-12 transition-colors duration-500 ${textColor}`}
               >
-                Spaces Built
+                BUILDING
                 <br />
-                for You.
+                <span className="text-[8vw] lg:text-[6vw] font-serif font-medium leading-[0.9] tracking-tight">
+                  DIGITAL EXPERIENCES
+                </span>
               </h1>
               <div className="flex flex-col sm:flex-row items-start gap-10 max-w-2xl">
                 <p
                   className={`text-lg font-serif leading-relaxed italic flex-1 transition-colors duration-500 ${textColor === "text-white" ? "text-white/80" : "text-muted-foreground/80"}`}
                 >
-                  "Every room we design starts with one question: how should
-                  this space make you feel?"
+                  Self-driven developer passionate about creating clean,
+                  functional, and thoughtful experiences. From concept to
+                  deployment.
                 </p>
                 <div className="shrink-0 flex flex-col gap-4">
                   <Button
@@ -167,12 +170,12 @@ export default function Home() {
             viewport={{ once: false, amount: 0.5 }}
           >
             <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-6">
-              Our Approach
+              My Approach
             </p>
             <h2 className="text-5xl font-serif font-medium tracking-tight leading-[1.1]">
-              A Space That
+              Clean Code,
               <br />
-              Feels Like Home.
+              Thoughtful Design.
             </h2>
           </motion.div>
           <motion.div
@@ -183,11 +186,11 @@ export default function Home() {
             viewport={{ once: false, amount: 0.5 }}
           >
             <p className="text-2xl text-muted-foreground font-serif leading-relaxed max-w-2xl hover:text-foreground transition-colors duration-500">
-              SIVCHHENG KHEANG is an interior design studio based in Phnom Penh,
-              Cambodia. Founded in 2018, we design homes and commercial spaces
-              that are thoughtfully planned, carefully detailed, and built to
-              last. Our work is quiet but deliberate — every choice has a
-              reason.
+              I'm a self-driven developer with hands-on experience across
+              frontend, backend, mobile, and UI/UX design. I bring ideas to life
+              from concept to deployment, with an obsession for quality and
+              commitment to continuous growth. Every project reflects thoughtful
+              planning and careful attention to detail.
             </p>
             <div className="pt-4 pb-8">
               <Button

@@ -9,7 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 import { useEffect, useRef } from 'react';
 
-const CATEGORIES = ['All', 'Residential', 'Commercial', 'Retail'];
+const CATEGORIES = ['All', 'Web Development', 'Mobile', 'UI/UX Design'];
 
 export default function Library({
   favorites,
@@ -64,20 +64,20 @@ export default function Library({
                 <Star className="w-3 h-3 fill-primary" /> Selected Work
               </p>
               <h1 className="text-6xl md:text-8xl font-serif font-medium tracking-tight uppercase leading-[0.9]">
-                Portfolio.
+                Projects.
               </h1>
               <p className="text-muted-foreground mt-8 max-w-lg text-lg font-serif italic leading-relaxed">
-                A look at our residential and commercial projects — each one planned from scratch for real clients with real needs.
+                A selection of digital projects showcasing my work in web development, mobile apps, and UI/UX design. Each project built with clean code and thoughtful design.
               </p>
             </motion.div>
             <div className="flex flex-col gap-6 text-muted-foreground shrink-0 border-l border-border/20 pl-8">
               <div className="flex items-center gap-4">
                 <Layout className="w-4 h-4 text-primary" />
-                <span className="font-sans text-[10px] font-bold uppercase tracking-widest">Interior Architecture</span>
+                <span className="font-sans text-[10px] font-bold uppercase tracking-widest">Frontend & Backend</span>
               </div>
               <div className="flex items-center gap-4">
                 <Compass className="w-4 h-4 text-primary" />
-                <span className="font-sans text-[10px] font-bold uppercase tracking-widest">Custom Furniture</span>
+                <span className="font-sans text-[10px] font-bold uppercase tracking-widest">Mobile & Cross-Platform</span>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function Library({
         <section>
           <div className="flex items-center justify-between mb-16">
             <h2 className="font-serif text-2xl font-medium tracking-tight">
-              {selectedCategory === 'All' ? 'All Commissions' : selectedCategory}{' '}
+              {selectedCategory === 'All' ? 'All Projects' : selectedCategory}{' '}
               <span className="text-muted-foreground/40 font-serif text-sm ml-2">({filteredProjects.length})</span>
             </h2>
           </div>

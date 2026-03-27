@@ -55,14 +55,14 @@ export default function GamePortal() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-32 pb-20 selection:bg-primary/30 overflow-x-hidden">
+    <div className="min-h-screen bg-background  text-foreground pt-32 pb-20 selection:bg-primary/30">
       {/* Background Ambience — Matching Home.tsx */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
+      {/* <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute top-[10%] right-[15%] w-[35vw] h-[35vw] bg-primary/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[45vw] h-[45vw] bg-primary/5 blur-[150px] rounded-full" />
-        {/* Subtle grid lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-[size:100px_100px]" />
-      </div>
+        <div className="absolute bottom-[-10%] left-[-5%] w-[45vw] h-[45vw] bg-primary/5 blur-[150px] rounded-full" /> */}
+      {/* Subtle grid lines */}
+      {/* <div className="absolute inset-0 bg-[linear-gradient(hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      </div> */}
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header Section */}

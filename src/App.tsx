@@ -6,11 +6,12 @@ import { AuthProvider } from './context/AuthContext';
 import { Toaster } from 'sonner';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Library from './pages/Library';
+import Library from './pages/Portfolio';
 import GamePortal from './pages/GamePortal';
 import About from './pages/About';
 import Services from './pages/Services';
 import { Project } from './constants';
+import ProjectModal from './components/ProjectModal';
 import ScrollToTop from './components/ScrollToTop';
 
 // Helper to handle smooth scroll on route change
@@ -49,7 +50,6 @@ function AnimatedRoutes({
         />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/author" element={<About />} />
         <Route path="/pages" element={<Services />} />
         <Route path="/vault" element={<GamePortal />} />
       </Routes>
@@ -108,6 +108,12 @@ export default function App() {
               toggleFavorite={toggleFavorite}
               setViewingProject={setViewingProject}
             />
+            {viewingProject && (
+              <ProjectModal
+                project={viewingProject}
+                onClose={() => setViewingProject(null)}
+              />
+            )}
           </main>
         </div>
       </Router>

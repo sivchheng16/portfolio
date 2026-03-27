@@ -39,8 +39,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Portfolio", path: "/library" },
     { name: "About", path: "/about" },
+    { name: "Portfolio", path: "/library" },
     { name: "Services", path: "/services" },
     { name: "Vault", path: "/vault" },
   ];
@@ -134,24 +134,68 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full bg-background border-none p-12 flex flex-col justify-center items-center gap-12"
+              className="w-full bg-background/95 backdrop-blur-2xl border-none p-12 flex flex-col justify-between"
             >
-              <div className="flex flex-col gap-8 text-center w-full">
+              <div className="flex flex-col gap-12 text-center w-full mt-20">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      "text-3xl font-serif font-medium tracking-wide transition-all duration-300",
+                      "text-4xl font-serif font-medium tracking-wide transition-all duration-300",
                       isActive(link.path)
-                        ? "text-primary"
+                        ? "text-primary scale-110"
                         : "text-muted-foreground hover:text-foreground",
                     )}
                   >
                     {link.name}
                   </Link>
                 ))}
+              </div>
+
+              {/* Mobile Auth Actions */}
+              <div className="w-full border-t border-border/10 pt-12 mt-auto">
+                {user ? (
+                  <div className="flex flex-col items-center gap-8">
+                    <div className="flex items-center gap-4">
+                      <Avatar className="h-16 w-16 border-2 border-primary/20 grayscale hover:grayscale-0 transition-all duration-500">
+                        <AvatarImage src={user.photoURL || ""} alt={user.displayName || ""} />
+                        <AvatarFallback className="bg-muted text-lg font-sans">
+                          {user.displayName?.charAt(0) || "U"}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="text-left">
+                        <p className="text-sm font-serif font-medium">{user.displayName || "Studio Guest"}</p>
+                        <p className="text-[9px] font-sans uppercase tracking-[0.2em] text-muted-foreground">Studio Member</p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      onClick={() => {
+                        logout();
+                        setMobileOpen(false);
+                      }}
+                      className="w-full h-16 rounded-none border-[1.5px] border-primary/20 font-sans text-xs font-bold tracking-[0.2em] uppercase hover:bg-primary hover:text-background transition-all duration-500"
+                    >
+                      Sign Out
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    <p className="text-center font-serif italic text-sm text-muted-foreground/60 mb-6">Access private commissions and archives.</p>
+                    <Button
+                      onClick={() => {
+                        onSignIn();
+                        setMobileOpen(false);
+                      }}
+                      className="w-full h-20 rounded-none bg-foreground text-background font-sans text-xs font-bold tracking-[0.3em] uppercase hover:bg-primary transition-all duration-700 shadow-2xl shadow-primary/20"
+                    >
+                      Authenticate
+                    </Button>
+                  </div>
+                )}
               </div>
             </SheetContent>
           </Sheet>
