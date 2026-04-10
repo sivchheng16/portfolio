@@ -163,16 +163,81 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
 
             <CardContent className="px-10 pb-4">
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={isLogin ? 'login' : 'register'}
-                  initial={{ opacity: 0, x: isLogin ? -10 : 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: isLogin ? 10 : -10 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <Form {...(isLogin ? loginForm : registerForm)}>
-                    <form onSubmit={(isLogin ? loginForm : registerForm).handleSubmit(isLogin ? onLogin : onRegister)} className="space-y-5">
-                      {!isLogin && (
+                {isLogin ? (
+                  <motion.div
+                    key="login"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Form {...loginForm}>
+                      <form onSubmit={loginForm.handleSubmit(onLogin)} className="space-y-5">
+                        <FormField
+                          control={loginForm.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem className="space-y-2">
+                              <FormLabel className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-bold ml-1">Email</FormLabel>
+                              <FormControl>
+                                <div className="group relative">
+                                  <Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black/[0.1] group-focus-within:text-primary/40 transition-colors" />
+                                  <Input 
+                                    placeholder="name@example.com" 
+                                    className="h-11 bg-black/[0.02] border-black/[0.04] focus:border-primary/20 focus:bg-white transition-all duration-300 rounded-xl font-sans text-xs px-4 pr-10" 
+                                    {...field} 
+                                  />
+                                </div>
+                              </FormControl>
+                              <FormMessage className="text-[9px] font-sans text-red-500 opacity-80" />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={loginForm.control}
+                          name="password"
+                          render={({ field }) => (
+                            <FormItem className="space-y-2">
+                              <FormLabel className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-bold ml-1">Password</FormLabel>
+                              <FormControl>
+                                <div className="group relative">
+                                  <Lock className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black/[0.1] group-focus-within:text-primary/40 transition-colors" />
+                                  <Input 
+                                    type="password" 
+                                    placeholder="••••••••" 
+                                    className="h-11 bg-black/[0.02] border-black/[0.04] focus:border-primary/20 focus:bg-white transition-all duration-300 rounded-xl font-sans text-xs px-4 pr-10" 
+                                    {...field} 
+                                  />
+                                </div>
+                              </FormControl>
+                              <FormMessage className="text-[9px] font-sans text-red-500 opacity-80" />
+                            </FormItem>
+                          )}
+                        />
+                        <div className="pt-4">
+                          <Button 
+                            type="submit" 
+                            disabled={isSubmitting}
+                            className="w-full h-12 rounded-xl font-sans text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 bg-primary text-primary-foreground hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-primary/10"
+                          >
+                            {isSubmitting ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : "Log In"}
+                          </Button>
+                        </div>
+                      </form>
+                    </Form>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="register"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Form {...registerForm}>
+                      <form onSubmit={registerForm.handleSubmit(onRegister)} className="space-y-5">
                         <div className="grid grid-cols-2 gap-4">
                           <FormField
                             control={registerForm.control}
@@ -207,66 +272,65 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                             )}
                           />
                         </div>
-                      )}
-                      <FormField
-                        control={(isLogin ? loginForm : registerForm).control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem className="space-y-2">
-                            <FormLabel className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-bold ml-1">Email</FormLabel>
-                            <FormControl>
-                              <div className="group relative">
-                                <Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black/[0.1] group-focus-within:text-primary/40 transition-colors" />
-                                <Input 
-                                  placeholder="name@example.com" 
-                                  className="h-11 bg-black/[0.02] border-black/[0.04] focus:border-primary/20 focus:bg-white transition-all duration-300 rounded-xl font-sans text-xs px-4 pr-10" 
-                                  {...field} 
-                                />
-                              </div>
-                            </FormControl>
-                            <FormMessage className="text-[9px] font-sans text-red-500 opacity-80" />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={(isLogin ? loginForm : registerForm).control}
-                        name="password"
-                        render={({ field }) => (
-                          <FormItem className="space-y-2">
-                            <FormLabel className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-bold ml-1">Password</FormLabel>
-                            <FormControl>
-                              <div className="group relative">
-                                <Lock className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black/[0.1] group-focus-within:text-primary/40 transition-colors" />
-                                <Input 
-                                  type="password" 
-                                  placeholder="••••••••" 
-                                  className="h-11 bg-black/[0.02] border-black/[0.04] focus:border-primary/20 focus:bg-white transition-all duration-300 rounded-xl font-sans text-xs px-4 pr-10" 
-                                  {...field} 
-                                />
-                              </div>
-                            </FormControl>
-                            <FormMessage className="text-[9px] font-sans text-red-500 opacity-80" />
-                          </FormItem>
-                        )}
-                      />
-                      <div className="pt-4">
-                        <Button 
-                          type="submit" 
-                          disabled={isSubmitting}
-                          className="w-full h-12 rounded-xl font-sans text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 bg-primary text-primary-foreground hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-primary/10"
-                        >
-                          {isSubmitting ? (
-                            <Loader2 className="h-4 w-4 animate-spin" />
-                          ) : (
-                            isLogin ? "Log In" : "Sign Up"
+                        <FormField
+                          control={registerForm.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem className="space-y-2">
+                              <FormLabel className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-bold ml-1">Email</FormLabel>
+                              <FormControl>
+                                <div className="group relative">
+                                  <Mail className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black/[0.1] group-focus-within:text-primary/40 transition-colors" />
+                                  <Input 
+                                    placeholder="name@example.com" 
+                                    className="h-11 bg-black/[0.02] border-black/[0.04] focus:border-primary/20 focus:bg-white transition-all duration-300 rounded-xl font-sans text-xs px-4 pr-10" 
+                                    {...field} 
+                                  />
+                                </div>
+                              </FormControl>
+                              <FormMessage className="text-[9px] font-sans text-red-500 opacity-80" />
+                            </FormItem>
                           )}
-                        </Button>
-                      </div>
-                    </form>
-                  </Form>
-                </motion.div>
+                        />
+                        <FormField
+                          control={registerForm.control}
+                          name="password"
+                          render={({ field }) => (
+                            <FormItem className="space-y-2">
+                              <FormLabel className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-bold ml-1">Password</FormLabel>
+                              <FormControl>
+                                <div className="group relative">
+                                  <Lock className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-black/[0.1] group-focus-within:text-primary/40 transition-colors" />
+                                  <Input 
+                                    type="password" 
+                                    placeholder="••••••••" 
+                                    className="h-11 bg-black/[0.02] border-black/[0.04] focus:border-primary/20 focus:bg-white transition-all duration-300 rounded-xl font-sans text-xs px-4 pr-10" 
+                                    {...field} 
+                                  />
+                                </div>
+                              </FormControl>
+                              <FormMessage className="text-[9px] font-sans text-red-500 opacity-80" />
+                            </FormItem>
+                          )}
+                        />
+                        <div className="pt-4">
+                          <Button 
+                            type="submit" 
+                            disabled={isSubmitting}
+                            className="w-full h-12 rounded-xl font-sans text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 bg-primary text-primary-foreground hover:scale-[1.01] active:scale-[0.99] shadow-md shadow-primary/10"
+                          >
+                            {isSubmitting ? (
+                              <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : "Sign Up"}
+                          </Button>
+                        </div>
+                      </form>
+                    </Form>
+                  </motion.div>
+                )}
               </AnimatePresence>
             </CardContent>
+
 
             <CardFooter className="px-10 pb-8 flex flex-col items-center pt-6">
               <button
