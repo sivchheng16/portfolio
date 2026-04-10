@@ -27,3 +27,6 @@ dist-ssr
 # Environment files
 .env*
 !.env.example
+
+# Custom exclusions
+antigravity-awesome-skills/
