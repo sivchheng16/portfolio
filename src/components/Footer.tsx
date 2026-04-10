@@ -9,6 +9,7 @@ import {
   Github,
   Target,
 } from "lucide-react";
+import logo from "../../public/favicon.png"
 
 export default function Footer() {
   return (
@@ -29,8 +30,10 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-8 h-8 border-2 border-primary flex items-center justify-center transition-transform duration-700 group-hover:rotate-45">
-                <Square className="w-4 h-4 fill-primary" />
+              <div className="w-10 h-10 flex items-center justify-center transition-transform duration-700 group-hover:rotate-45">
+                {/* <Square className="w-4 h-4 fill-primary" />
+                 */}
+                <img src={logo} alt="logo" className="w-full h-full object-cover" />
               </div>
               <span className="font-serif text-xl font-bold tracking-wider text-foreground">
                 SIVCHHENG

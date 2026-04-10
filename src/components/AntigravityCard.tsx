@@ -25,14 +25,14 @@ export function AntigravityCard({
       {
         y: 100,
         opacity: 0,
-        rotateX: 45,
-        rotateZ: -10,
+        rotateX: 0,
+        rotateZ: 0,
       },
       {
         y: 0,
         opacity: 1,
-        rotateX: 20, // Default isometric-ish tilt
-        rotateZ: -5,
+        rotateX: 0,
+        rotateZ: 0,
         duration: 1.2,
         delay: index * 0.15,
         ease: "power4.out",
@@ -55,8 +55,8 @@ export function AntigravityCard({
   const handleMouseLeave = () => {
     gsap.to(cardRef.current, {
       y: 0,
-      rotateX: 20,
-      rotateZ: -5,
+      rotateX: 0,
+      rotateZ: 0,
       scale: 1,
       duration: 0.8,
       ease: "elastic.out(1, 0.75)",
@@ -67,15 +67,14 @@ export function AntigravityCard({
   return (
     <div
       ref={containerRef}
-      className="relative perspective-1000 p-8 flex items-center justify-center h-[400px]"
+      className="relative p-4 flex items-center justify-center min-h-[450px]"
     >
       <div
         ref={cardRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={() => onPlay(game)}
-        className="relative w-full max-w-[320px] aspect-[3/4] bg-white/40 backdrop-blur-xl border border-border/20 rounded-2xl overflow-hidden shadow-xl transition-shadow cursor-pointer group"
-        style={{ transformStyle: "preserve-3d" }}
+        className="relative w-full max-w-[300px] aspect-[3/4] bg-white/40 backdrop-blur-xl border border-border/20 rounded-2xl overflow-hidden shadow-xl transition-shadow cursor-pointer group"
       >
         {/* Background Highlight */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -95,7 +94,7 @@ export function AntigravityCard({
           <img
             src={game.thumbnail}
             alt={game.title}
-            className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
+            className="w-full h-full object-cover transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-black/20" />
         </div>
@@ -112,8 +111,8 @@ export function AntigravityCard({
             {game.description}
           </p>
 
-          <div className="mt-6 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-            <div
+          <div className="mt-6 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
+            <div  
               onClick={(e) => {
                 e.stopPropagation();
                 onPlay(game);

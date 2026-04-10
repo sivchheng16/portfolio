@@ -16,6 +16,7 @@ import {
   AppWindow,
   Compass,
   Home as HomeIcon,
+  Clock,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
@@ -75,9 +76,9 @@ export default function Home() {
 
       // After scrolling past half the hero section, change text to current color
       if (scrollProgress > 0.5) {
-        setTextColor("text-foreground");
-      } else {
         setTextColor("text-white");
+      } else {
+        setTextColor("text-foreground");
       }
     };
 
@@ -120,12 +121,12 @@ export default function Home() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
               <p
-                className={`font-sans text-[10px] font-bold tracking-[0.4em] uppercase mb-8 transition-colors duration-500 ${textColor === "text-white" ? "text-white" : "text-primary"}`}
+                className={`font-sans text-[10px] font-bold tracking-[0.4em] uppercase mb-8 transition-colors duration-500 ${textColor === "text-primary" ? "text-white" : "text-primary"}`}
               >
                 Developer & Designer from Phnom Penh
               </p>
               <h1
-                className={`text-[10vw] lg:text-[7vw] font-serif font-medium leading-[0.9] tracking-tight mb-12 transition-colors duration-500 ${textColor}`}
+                className={`text-[10vw] lg:text-[7vw] font-serif font-medium leading-[0.9] tracking-tight mb-12 transition-colors duration-500 ${textColor === "text-primary" ? "text-white" : "text-primary"}`}
               >
                 BUILDING
                 <br />
@@ -135,7 +136,7 @@ export default function Home() {
               </h1>
               <div className="flex flex-col sm:flex-row items-start gap-10 max-w-2xl">
                 <p
-                  className={`text-lg font-serif leading-relaxed italic flex-1 transition-colors duration-500 ${textColor === "text-white" ? "text-white/80" : "text-muted-foreground/80"}`}
+                  className={`text-lg font-serif leading-relaxed italic flex-1 transition-colors duration-500 ${textColor === "text-primary" ? "text-white/80" : "text-muted-foreground/80"}`}
                 >
                   Self-driven developer passionate about creating clean,
                   functional, and thoughtful experiences. From concept to
@@ -147,7 +148,7 @@ export default function Home() {
                     size="lg"
                     className="rounded-none h-14 px-8 bg-white text-black hover:bg-gray-200 transition-colors duration-500 font-sans text-xs tracking-[0.2em] uppercase"
                   >
-                    <Link to="/portfolio">View Collection</Link>
+                    <Link to="#documents">Explore Documents</Link>
                   </Button>
                 </div>
               </div>
@@ -169,8 +170,21 @@ export default function Home() {
       </section>
 
       {/* Learning & Topics Section */}
-      <section className="py-32 px-8 border-t border-border/20 bg-muted/5 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-35 px-8 border-t border-border/20 bg-background relative overflow-hidden">
+        {/* Subtle Grid Background */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, var(--primary) 1px, transparent 0)`,
+            backgroundSize: `24px 24px`
+          }}
+        />
+
+        {/* Large Decorative Blooms */}
+        <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-primary/3 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className=" pt-10 max-w-7xl mx-auto relative z-10" id="documents">
           <motion.div
             className="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-8"
             initial={{ opacity: 0, y: 20 }}
@@ -178,22 +192,27 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div>
-              <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-6">
-                Learning
-              </p>
-              <h2 className="text-5xl font-serif font-medium tracking-tight">
-                Programming & Design.
+            <div className="relative group">
+              <div className="flex items-center gap-4 mb-8">
+                <p className="font-sans text-[10px] font-bold tracking-[0.4em] text-primary uppercase">
+                  Library & learning
+                </p>
+                <div className="h-[1px] w-12 bg-primary/20 group-hover:w-20 transition-all duration-700" />
+              </div>
+              <h2 className="text-6xl md:text-8xl font-serif font-medium tracking-tighter leading-[0.85]">
+                Programming <br className="hidden md:block" />
+                <span className="text-muted-foreground/20">&</span> <span className="italic font-light text-muted-foreground group-hover:text-primary transition-colors duration-700">Design.</span>
               </h2>
             </div>
-            <p className="text-muted-foreground font-serif italic max-w-sm">
+            <p className="text-primary text-lg font-serif max-w-sm">
               Explore documented lessons and materials on key technologies.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {TOPICS.map((topic, idx) => {
-              const Icon = topicIconMap[topic.iconName] || Code2;
+              const lessonCount = topic.lessons.length;
+
               return (
                 <motion.div
                   key={topic.id}
@@ -203,26 +222,48 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <Link to={`/document/${topic.id}`} className="block h-full cursor-pointer group">
-                    <div className="border border-border/20 bg-background h-full p-8 flex flex-col justify-between group-hover:border-primary/50 group-hover:-translate-y-2 transition-all duration-500 relative overflow-hidden">
-                      {/* Subtle hover gradient background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="border border-primary/10 bg-white/40 backdrop-blur-md h-full p-8 flex flex-col justify-between group-hover:border-primary/40 group-hover:-translate-y-2 transition-all duration-500 relative overflow-hidden shadow-sm group-hover:shadow-2xl group-hover:shadow-primary/5 space-y-6">
+                      {/* Dynamic unique gradient based on topic - enhanced hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-tr ${topic.gradient} opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none`} />
+                      <div className={`absolute -inset-20 bg-gradient-to-tr ${topic.gradient} opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-1000 p-20 pointer-events-none`} />
 
-                      <div className="z-10 bg-muted/50 w-12 h-12 flex items-center justify-center mb-12 border border-border/20 group-hover:bg-primary group-hover:text-background group-hover:border-primary transition-colors duration-500">
-                        <Icon className="w-5 h-5" />
+                      <div className="relative w-24 h-24 border border-border/40 flex items-center justify-center bg-white shrink-0 overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-105">
+                        <div className={`absolute inset-0 bg-gradient-to-tr ${topic.gradient} opacity-30`} />
+                        <img src={topic.logo} alt={topic.title} className="relative z-10 w-full h-full object-cover p-3 transition-all duration-700 shadow-inner" />
                       </div>
 
-                      <div className="z-10">
-                        <p className="font-sans text-[9px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-3">
-                          {topic.level}
-                        </p>
-                        <h3 className="text-2xl font-serif font-medium tracking-tight mb-2 group-hover:text-primary transition-colors duration-500">
+                      <div className="z-10 flex-1">
+                        <div className="flex items-center gap-3 mb-4">
+                          <span className={`${topic.level === "Beginner" ? "bg-green-500/10 text-green-600 border-green-500/20" :
+                            topic.level === "Intermediate" ? "bg-amber-500/10 text-amber-600 border-amber-500/20" :
+                              "bg-cyan-500/10 text-cyan-600 border-cyan-500/20"
+                            } px-2.5 py-1 rounded-full text-[8px] font-bold uppercase tracking-wider flex items-center gap-1.5 border`}>
+                            <span className={`${topic.level === "Beginner" ? "bg-green-500" :
+                              topic.level === "Intermediate" ? "bg-amber-500" :
+                                "bg-cyan-500"
+                              } w-1 h-1 rounded-full`} />
+                            {topic.level}
+                          </span>
+                          <span className="text-[9px] font-sans font-medium text-muted-foreground/60 uppercase tracking-widest whitespace-nowrap">
+                            {lessonCount} Lessons
+                          </span>
+                        </div>
+
+                        <h3 className="text-3xl font-serif font-medium tracking-tight mb-3 group-hover:text-primary transition-colors duration-500">
                           {topic.title}
                         </h3>
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                        <p className="text-sm text-muted-foreground/80 leading-relaxed line-clamp-2 italic">
                           {topic.description}
                         </p>
-                        <div className="mt-6 font-sans text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
-                          View details <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                      </div>
+
+                      <div className="z-10 pt-4 border-t border-border/10 flex items-center justify-between">
+                        <div className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-primary flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                          Explore <ArrowRight className="w-3 h-3 transition-transform" />
+                        </div>
+                        <div className="flex items-center gap-2 text-[9px] font-sans font-bold uppercase tracking-widest text-muted-foreground/40 italic">
+                          <Clock className="w-3 h-3 text-primary/40" />
+                          {lessonCount * 45} MINS EST.
                         </div>
                       </div>
                     </div>
@@ -230,6 +271,139 @@ export default function Home() {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Games Highlight — List style */}
+      <section
+        id="projects"
+        className="py-32 px-8 border-t border-border/20 bg-muted/5"
+      >
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false, amount: 0.5 }}
+          >
+            <div>
+              <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-6">
+                Digital Games Archive
+              </p>
+              <h2 className="text-6xl font-serif font-medium tracking-tight hover:text-primary transition-colors duration-500 cursor-pointer">
+                The Vault Game Portfolio.
+              </h2>
+            </div>
+            <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
+              <Button
+                variant="link"
+                asChild
+                className="font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-muted-foreground hover:text-primary p-0 h-auto"
+              >
+                <Link to="/vault">
+                  Explore All Games <ArrowRight className="ml-2 w-3 h-3" />
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          <div className="space-y-0">
+            {GAMES.map((game, index) => (
+              <motion.div
+                key={game.id}
+                layout
+                className="border-t border-border/20 group hover:border-primary/40 hover:bg-muted/5 transition-all duration-500"
+                whileHover={{ scale: 1.005 }}
+                transition={{ duration: 0.3 }}
+              >
+                <button
+                  onClick={() =>
+                    setExpandedProject(
+                      expandedProject === game.id ? null : game.id,
+                    )
+                  }
+                  className={`w-full text-left py-6 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_200px_auto] gap-8 items-center`}
+                >
+
+                  <div className="flex items-center gap-6">
+                    <div className="w-16 h-16 md:w-20 md:h-20 border border-border/20 overflow-hidden shrink-0 ">
+                      <img src={game.thumbnail} alt={game.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-serif font-medium tracking-tight group-hover:text-primary transition-colors duration-500">
+                        {game.title}
+                      </h3>
+                      <p className="text-xs font-sans tracking-[0.1em] text-muted-foreground uppercase mt-2">
+                        {game.category}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="hidden md:flex flex-wrap gap-2 justify-end">
+                    <motion.span
+                      className="text-[10px] font-sans font-bold uppercase tracking-widest text-muted-foreground/60 border border-border/40 px-3 py-1 group-hover:border-primary group-hover:text-primary transition-all duration-500 cursor-pointer"
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      {game.category}
+                    </motion.span>
+                  </div>
+                  <motion.div
+                    className="w-10 h-10 border border-border/40 flex items-center justify-center transition-all duration-500 group-hover:border-primary group-hover:bg-primary group-hover:text-background"
+                    animate={{
+                      rotate: expandedProject === game.id ? 180 : 0,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {expandedProject === game.id ? (
+                      <ChevronUp className="w-4 h-4" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4" />
+                    )}
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {expandedProject === game.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pb-16  grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-center">
+                        <div className="space-y-8">
+                          <p className="text-xl text-muted-foreground font-serif leading-relaxed italic">
+                            {game.description}
+                          </p>
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="rounded-none font-sans text-[10px] font-bold tracking-[0.2em] uppercase h-12 px-8"
+                          >
+                            <Link to="/vault">
+                              Play Game <ExternalLink className="ml-3 w-3 h-3" />
+                            </Link>
+                          </Button>
+                        </div>
+                        <motion.div
+                          className="aspect-[16/9] overflow-hidden border border-border/20"
+                          whileHover={{ scale: 1.02 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <img
+                            src={game.cover}
+                            alt={game.title}
+                            className="w-full h-full object-cover transition-all duration-1000 scale-105 hover:scale-0.005"
+                          />
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+            <div className="border-t border-border/20" />
           </div>
         </div>
       </section>
@@ -338,7 +512,7 @@ export default function Home() {
       </section>
 
       {/* Games Highlight — List style */}
-      <section
+      {/* <section
         id="projects"
         className="py-32 px-8 border-t border-border/20 bg-muted/5"
       >
@@ -389,13 +563,18 @@ export default function Home() {
                   <span className="font-serif text-muted-foreground/30 text-2xl">
                     0{index + 1}
                   </span>
-                  <div>
-                    <h3 className="text-3xl font-serif font-medium tracking-tight group-hover:text-primary transition-colors duration-500">
-                      {game.title}
-                    </h3>
-                    <p className="text-xs font-sans tracking-[0.1em] text-muted-foreground uppercase mt-2">
-                      {game.category}
-                    </p>
+                  <div className="flex items-center gap-6">
+                    <div className="w-16 h-16 md:w-20 md:h-20 border border-border/20 overflow-hidden shrink-0">
+                      <img src={game.thumbnail} alt={game.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-serif font-medium tracking-tight group-hover:text-primary transition-colors duration-500">
+                        {game.title}
+                      </h3>
+                      <p className="text-xs font-sans tracking-[0.1em] text-muted-foreground uppercase mt-2">
+                        {game.category}
+                      </p>
+                    </div>
                   </div>
                   <div className="hidden md:flex flex-wrap gap-2 justify-end">
                     <motion.span
@@ -463,7 +642,7 @@ export default function Home() {
             <div className="border-t border-border/20" />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Services — minimalist cards */}
       <section className="py-32 px-8 border-t border-border/20">
@@ -580,8 +759,10 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <Button className="rounded-none h-16 px-12 bg-foreground text-background hover:bg-primary transition-colors duration-500 font-sans text-[11px] font-bold tracking-[0.2em] uppercase">
-                Send a Project Brief
+              <Button asChild className="rounded-none h-16 px-12 bg-foreground text-background hover:bg-primary transition-colors duration-500 font-sans text-[11px] font-bold tracking-[0.2em] uppercase">
+                <Link to="/services#contact">
+                  Send a Project Brief
+                </Link>
               </Button>
             </motion.div>
             <motion.div
@@ -592,7 +773,9 @@ export default function Home() {
                 variant="outline"
                 className="rounded-none h-16 px-12 font-sans text-[11px] font-bold tracking-[0.2em] uppercase hover:border-foreground transition-all duration-500"
               >
-                Find Our Studio
+                <Link to="/services">
+                  Find Our Studio
+                </Link>
               </Button>
             </motion.div>
           </div>

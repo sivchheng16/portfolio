@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { ContactForm } from "@/components/ContactForm";
 
 const services = [
   {
@@ -465,7 +466,7 @@ export default function Services() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              // className="aspect-[4/5] bg-muted overflow-hidden border border-border/20"
+            // className="aspect-[4/5] bg-muted overflow-hidden border border-border/20"
             >
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200"
@@ -671,26 +672,137 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-40 px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <h2 className="text-6xl font-serif font-medium mb-12">
-            Ready to improve your skill?
-          </h2>
-          <Button
-            size="lg"
-            className="rounded-none h-16 px-12 font-sans text-xs tracking-[0.2em] uppercase bg-foreground text-background hover:bg-primary transition-colors"
+
+      <section id="contact" className="py-28 px-5 md:px-5 relative overflow-hidden bg-background">
+        {/* Subtle Background Ornaments */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1],
+              rotate: [0, 20, 0],
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-[10%] -right-[5%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]"
+          />
+          <motion.div
+            animate={{
+              scale: [1.1, 1, 1.1],
+              rotate: [20, 0, 20],
+            }}
+            transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-[10%] -left-[5%] w-[35%] h-[35%] rounded-full bg-primary/5 blur-[100px]"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Main Container Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-muted/10 backdrop-blur-3xl border border-border/30 p-5 md:py-10 md:px-5 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] relative overflow-hidden"
           >
-            Enter to start with us! <ArrowRight className="ml-4 w-4 h-4" />
-          </Button>
-        </motion.div>
+            {/* Visual Accent */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
+
+            <div className="relative z-10">
+              {/* SHARED HEADER */}
+              <div className="relative mb-10 max-w-full m-auto justify-center text-center">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="flex items-center gap-4 mb-8 text-start absolute top-0 left-0 justify-start"
+                >
+                  <div className="w-12 h-[1px] bg-primary" />
+                  <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-primary">
+                    Contact Us
+                  </span>
+                </motion.div>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-4xl md:text-7xl font-serif leading-[0.85] tracking-tight text-foreground"
+                >
+                  Have a project <br />
+                  <span className="italic font-light text-primary/60">in mind?</span>
+                </motion.h2>
+              </div>
+
+              {/* NESTED CARDS GRID */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                {/* Description Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="bg-background/40 backdrop-blur-md border border-border/40 p-8 md:p-14 flex flex-col justify-between space-y-12"
+                >
+                  <div className="space-y-12">
+                    <p className="text-xl text-muted-foreground leading-relaxed font-light max-w-md">
+                      Let's collaborate to create something exceptional. We're currently taking on select projects for the upcoming quarter.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                      {[
+                        { label: "Phone", value: "+855 969094960" },
+                        { label: "Email", value: "kheangsivechheng@gmail.com" },
+                        { label: "Office", value: "House 04 St. Veng Sreng, Phum Trapeang Thloeng 1, Khan, Phnom Penh", full: true },
+                      ].map((item) => (
+                        <div key={item.label} className={`${item.full ? 'sm:col-span-2' : ''} space-y-1`}>
+                          <span className="text-[9px] font-sans font-bold uppercase tracking-[0.3em] text-muted-foreground/40">
+                            {item.label}
+                          </span>
+                          <p className="text-md font-sans tracking-tight text-foreground/80">
+                            {item.value}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Social links at the bottom of the card */}
+                  <div className="pt-8 border-t border-border/10 space-y-4">
+                    <span className="text-[9px] font-sans font-bold uppercase tracking-[0.3em] text-muted-foreground/40">
+                      Social Presence
+                    </span>
+                    <div className="flex flex-wrap gap-6">
+                      {[{ name: 'Facebook', link: 'https://www.facebook.com/koompi' }, { name: 'LinkedIn', link: '#' }, { name: 'Instagram', link: 'https://www.instagram.com/koompi/' }, { name: 'Twitter', link: '#' }].map((social) => (
+                        <a
+                          target="_blank"
+                          key={social.name}
+                          href={social.link}
+                          className="text-[10px] font-sans font-bold uppercase tracking-widest text-foreground/60 hover:text-primary transition-all duration-300 underline underline-offset-8 decoration-border/20 hover:decoration-primary"
+                        >
+                          {social.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Form Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 }}
+                  className="bg-background/60 backdrop-blur-md border border-border/40 p-8 md:p-14 shadow-xl shadow-black/[0.02]"
+                >
+                  <ContactForm />
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
+
     </div>
   );
 }

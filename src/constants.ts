@@ -17,7 +17,10 @@ export interface Game {
   appImageUrl: string;
   thumbnail: string;
   category: string;
+  cover: string;
 }
+
+
 
 export const PROJECTS: Project[] = [
   {
@@ -72,36 +75,39 @@ export const PROJECTS: Project[] = [
 
 export const GAMES: Game[] = [
   {
-    id: "TypingCodeGame",
-    title: "Typing Code Game",
+    id: "TypingCode",
+    title: "Typing Code",
     description:
       "The classic typing code game. Type the code correctly to keep the game going!",
-    iframeUrl: "https://typing-math-game.vercel.app",
+    iframeUrl: "https://typing-code-game.vercel.app",
     appImageUrl:
       "https://drive.google.com/file/d/1l1rA29APscP38-PhAwd84miuwOQCI2-K/view?usp=sharing",
-    thumbnail: "/src/assets/game-cover/typing-code.png",
+    cover: "../public/game-cover/inside-game/inside-typing-code.png",
+    thumbnail: "../public/game-cover/typing-code.png",
     category: "typing",
   },
   {
-    id: "TypingMathGame",
-    title: "Typing Math Game",
+    id: "TypingMath",
+    title: "Typing Math",
     description:
       "The classic typing math game. Thinking fast and typing the number correctly to keep the game going!",
     iframeUrl: "https://typing-math-game.vercel.app/",
     appImageUrl:
       "https://drive.google.com/file/d/1crkVv9NvpqEmCwA10r-k2Bwr6ouEcj_-/view?usp=sharing",
-    thumbnail: "/src/assets/game-cover/typing-math.png",
+    cover: "../public/game-cover/inside-game/inside-typing-math.png",
+    thumbnail: "../public/game-cover/typing-math.png",
     category: "typing",
   },
   {
     id: "dragon-drop",
-    title: "dragon-drop",
+    title: "Dragon Drop",
     description:
       "A fun and addictive game where you control a dragon to catch falling objects. Test your reflexes and see how long you can survive!",
     iframeUrl: "https://dragon-drop-iota.vercel.app/",
     appImageUrl:
       "https://drive.google.com/file/d/1DHNe44e70h0XjSHZemLClLWw0A2l88uh/view?usp=sharing",
-    thumbnail: "src/assets/game-cover/dragon-drop.png",
+    cover: "../public/game-cover/inside-game/inside-dragon-drop.png",
+    thumbnail: "../public/game-cover/dragon-drop.png",
     category: "mouse",
   },
   {
@@ -112,7 +118,8 @@ export const GAMES: Game[] = [
     iframeUrl: "https://robot-brainiac.vercel.app/",
     appImageUrl:
       "https://drive.google.com/file/d/1fnc-RCf242B9dC5a516VlFERCZ_HVJzi/view?usp=sharing",
-    thumbnail: "src/assets/game-cover/robot-brainiac.png",
+    cover: "../public/game-cover/inside-game/inside-robot-brainiac.png",
+    thumbnail: "../public/game-cover/robot-brainiac.png",
     category: "Action",
   },
   {
@@ -123,7 +130,8 @@ export const GAMES: Game[] = [
     iframeUrl: "https://master-mouse-v1-1-0.vercel.app/",
     appImageUrl:
       "https://drive.google.com/file/d/1lwv8tyf_UsuwLATV6OxoJW1Tewy9GLEg/view?usp=drive_link",
-    thumbnail: "src/assets/game-cover/master-mouse.png",
+    cover: "../public/game-cover/inside-game/inside-master-mouse.png",
+    thumbnail: "../public/game-cover/master-mouse.png",
     category: "mouse",
   },
   {
@@ -133,7 +141,8 @@ export const GAMES: Game[] = [
     iframeUrl: "https://link-number.vercel.app/",
     appImageUrl:
       "https://drive.google.com/file/d/162FfIfjRK249uDLKwHkaBS-JfbwFXwZI/view?usp=sharing",
-    thumbnail: "src/assets/game-cover/link-number.png",
+    thumbnail: "../public/game-cover/link-number.png",
+    cover: "../public/game-cover/inside-game/inside-link-number.png",
     category: "puzzle",
   },
 ];
@@ -150,6 +159,8 @@ export interface Topic {
   title: string;
   description: string;
   iconName: string;
+  logo: string;
+  gradient: string;
   level: string;
   lessons: Lesson[];
 }
@@ -160,6 +171,8 @@ export const TOPICS: Topic[] = [
     title: "HTML",
     description: "The standard markup language for documents designed to be displayed in a web browser.",
     iconName: "LayoutTemplate",
+    logo: "../public/program-logo/html.png",
+    gradient: "from-orange-500/20 to-orange-200/5",
     level: "Beginner",
     lessons: [
       { id: "html-1", title: "Introduction to HTML", description: "Learn the basic structure of an HTML document.", duration: "30 mins" },
@@ -172,6 +185,8 @@ export const TOPICS: Topic[] = [
     title: "CSS",
     description: "Style sheet language used for describing the presentation of a document written in HTML.",
     iconName: "Paintbrush",
+    logo: "../public/program-logo/css.png",
+    gradient: "from-blue-500/20 to-blue-200/5",
     level: "Beginner",
     lessons: [
       { id: "css-1", title: "CSS Fundamentals", description: "Understanding selectors, properties, and values.", duration: "45 mins" },
@@ -184,6 +199,8 @@ export const TOPICS: Topic[] = [
     title: "JavaScript",
     description: "High-level, often just-in-time compiled language that conforms to the ECMAScript standard.",
     iconName: "Code2",
+    logo: "../public/program-logo/javascript.png",
+    gradient: "from-yellow-400/20 to-yellow-100/5",
     level: "Intermediate",
     lessons: [
       { id: "js-1", title: "Variables & Data Types", description: "Understanding let, const, strings, arrays, and objects.", duration: "1 hr" },
@@ -196,6 +213,8 @@ export const TOPICS: Topic[] = [
     title: "React",
     description: "A free and open-source front-end JavaScript library for building user interfaces based on components.",
     iconName: "AppWindow",
+    logo: "../public/program-logo/react.png",
+    gradient: "from-cyan-500/20 to-cyan-200/5",
     level: "Advanced",
     lessons: [
       { id: "react-1", title: "Components & Props", description: "Building reusable UI components.", duration: "1 hr" },

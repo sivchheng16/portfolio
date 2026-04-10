@@ -14,17 +14,8 @@ import TopicDetails from './pages/TopicDetails';
 import { Project } from './constants';
 import ProjectModal from './components/ProjectModal';
 import ScrollToTop from './components/ScrollToTop';
+import AuthGate from './components/AuthGate';
 
-// Helper to handle smooth scroll on route change
-function ScrollManager() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
 
 function AnimatedRoutes({
   favorites,
@@ -99,25 +90,26 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30">
-          <Toaster position="top-center" expand={false} richColors />
-          <ScrollToTop />
-          <ScrollManager />
-          <Navbar />
-          <main>
-            <AnimatedRoutes
-              favorites={favorites}
-              toggleFavorite={toggleFavorite}
-              setViewingProject={setViewingProject}
-            />
-            {viewingProject && (
-              <ProjectModal
-                project={viewingProject}
-                onClose={() => setViewingProject(null)}
+        <AuthGate>
+          <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30">
+            <Toaster position="top-center" expand={false} richColors />
+            <ScrollToTop />
+            <Navbar />
+            <main>
+              <AnimatedRoutes
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+                setViewingProject={setViewingProject}
               />
-            )}
-          </main>
-        </div>
+              {viewingProject && (
+                <ProjectModal
+                  project={viewingProject}
+                  onClose={() => setViewingProject(null)}
+                />
+              )}
+            </main>
+          </div>
+        </AuthGate>
       </Router>
     </AuthProvider>
   );

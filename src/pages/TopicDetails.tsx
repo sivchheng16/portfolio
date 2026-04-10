@@ -53,28 +53,44 @@ export default function TopicDetails() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row gap-8 items-start md:items-center justify-between"
+            className="flex flex-col md:flex-row gap-10 items-start md:items-center justify-between"
           >
-            <div className="flex items-center gap-6">
-              <div className="w-20 h-20 border border-border/40 flex items-center justify-center text-primary bg-primary/5 shrink-0">
-                <IconComponent className="w-8 h-8" />
+            <div className="flex items-center gap-8">
+              <div className="relative w-24 h-24 border border-border/40 flex items-center justify-center bg-white shrink-0 overflow-hidden shadow-2xl rounded-sm group">
+                <div className={`absolute inset-0 bg-gradient-to-tr ${topic.gradient} opacity-30`} />
+                <img src={topic.logo} alt={topic.title} className="relative z-10 w-full h-full object-cover p-3 shadow-inner" />
               </div>
               <div>
-                <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-2">
-                  Training Module
-                </p>
-                <h1 className="text-5xl md:text-7xl font-serif font-medium tracking-tight">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className={`${
+                    topic.level === "Beginner" ? "bg-green-500/10 text-green-600 border-green-500/20" :
+                    topic.level === "Intermediate" ? "bg-amber-500/10 text-amber-600 border-amber-500/20" :
+                    "bg-cyan-500/10 text-cyan-600 border-cyan-500/20"
+                  } px-2.5 py-1 rounded-full text-[8px] font-bold uppercase tracking-[0.2em] flex items-center gap-1.5 border`}>
+                    <span className={`${
+                      topic.level === "Beginner" ? "bg-green-500" :
+                      topic.level === "Intermediate" ? "bg-amber-500" :
+                      "bg-cyan-500"
+                    } w-1 h-1 rounded-full`} />
+                    {topic.level} Level
+                  </span>
+                  <span className="text-[9px] font-sans font-bold text-muted-foreground/30 uppercase tracking-[0.3em]">
+                    Documented Module
+                  </span>
+                </div>
+                <h1 className="text-6xl md:text-8xl font-serif font-medium tracking-tight leading-[0.8] mb-2 uppercase">
                   {topic.title}
                 </h1>
               </div>
             </div>
             
-            <div className="flex flex-col items-end gap-2 text-right">
-              <div className="bg-muted px-4 py-2 border border-border/20 font-sans text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                {topic.level} Level
+            <div className="flex flex-col items-end gap-3 text-right">
+              <div className="text-sm font-serif italic text-muted-foreground/60 border-b border-border/20 pb-2">
+                {topic.lessons.length} Lessons in this module
               </div>
-              <div className="text-sm font-serif italic text-muted-foreground">
-                {topic.lessons.length} Lessons Available
+              <div className="flex items-center gap-3 text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-primary/40">
+                <Clock className="w-3.5 h-3.5" />
+                {topic.lessons.length * 45} Minutes estimated
               </div>
             </div>
           </motion.div>

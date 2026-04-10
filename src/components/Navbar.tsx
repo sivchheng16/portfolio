@@ -6,25 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
-import { handleSignIn } from "@/firebase";
 import { toast } from "sonner";
+import logo from "../../public/favicon.png"
 
 export default function Navbar() {
   const location = useLocation();
-  const { user, logout } = useAuth();
+  const { user, signOut } = useAuth();
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const onSignIn = async () => {
-    try {
-      const signedInUser = await handleSignIn();
-      if (signedInUser) {
-        toast.success(`Welcome back, ${signedInUser.displayName || "User"}!`);
-      }
-    } catch (error) {
-      toast.error("An error occurred during sign in.");
-    }
-  };
+
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -48,24 +39,28 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 z-50 w-full transition-all duration-500",
+        "fixed top-0 z-50 w-full transition-all duration-500 ",
         scrolled
-          ? "border-b border-border/40 bg-background/30 backdrop-blur-lg py-4 bg-primary/50"
-          : "bg-transparent py-5",
+          ? "border-b border-border/50 bg-background/80 backdrop-blur-md py-4 shadow-sm"
+          : "bg-background/40 backdrop-blur-sm py-5 border-b border-border/20",
       )}
     >
-      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between gap-12 ">
+      <div className="max-w-7xl mx-auto flex items-center justify-betwen gap-12 ">
         {/* Logo */}
         <Link
           to="/"
           className="flex items-center gap-4 shrink-0 group hover:gap-6 transition-all duration-300 "
         >
-          <div className="w-6 h-6 border-[1.5px] border-white flex items-center justify-center transition-transform duration-700 group-hover:rotate-45 shadow-lg hover:text-primary/50">
-            <Square className="w-3 h-3 fill-white hover:text-primary/50" />
+          <div className="w-10 h-10 flex items-center justify-center transition-transform duration-700 group-hover:rotate-45 hover:border-primary/70">
+            {/* <Square className="w-3 h-3 fill-primary group-hover:fill-primary/70" /> */}
+            <img src={`${logo}`} alt="Logo" className="w-full h-full object-cover" />
           </div>
-          <span className="font-serif text-lg font-normal tracking-[0.2em] uppercase text-white drop-shadow-lg hover:text-primary/90 hover:font-bold hover:scale-105 hover:drop-shadow-xl transition-all duration-300">
-            SIVCHHENG
-          </span>
+          <div className="flex flex-col items-start">
+            <span className="font-serif text-lg font-bold tracking-[0.2em] uppercase text-primary drop-shadow-sm hover:text-primary/80 hover:scale-105 transition-all duration-300">
+              PORTFOLIO
+            </span>
+            <div className="h-[1px] w-12 bg-primary/20 group-hover:w-full transition-all duration-700 " />
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -75,13 +70,13 @@ export default function Navbar() {
               key={link.path}
               to={link.path}
               className={cn(
-                "relative text-[11px] font-sans font-semibold uppercase tracking-[0.25em] transition-all duration-300 drop-shadow-md hover:text-primary/90",
-                isActive(link.path) ? "text-white font-bold" : "text-blue-100",
+                "relative text-[11px] font-sans font-semibold uppercase tracking-[0.25em] transition-all duration-300 hover:text-primary",
+                isActive(link.path) ? "text-primary font-bold" : "text-muted-foreground",
               )}
             >
               {link.name}
               {isActive(link.path) && (
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-white shadow-lg" />
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary shadow-sm" />
               )}
             </Link>
           ))}
@@ -93,32 +88,25 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <Avatar className="h-8 w-8 border border-border/50 grayscale hover:grayscale-0 transition-all duration-500">
                 <AvatarImage
-                  src={user.photoURL || ""}
-                  alt={user.displayName || ""}
+                  src={""}
+                  alt={user.firstName || ""}
                 />
                 <AvatarFallback className="bg-muted text-[10px] font-sans">
-                  {user.displayName?.charAt(0) || "U"}
+                  {user.firstName?.charAt(0) || "U"}
                 </AvatarFallback>
               </Avatar>
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={logout}
-                className="h-8 w-8 text-white hover:text-blue-100 transition-colors drop-shadow-md"
+                onClick={signOut}
+                className="h-8 w-8 text-muted-foreground hover:text-primary transition-colors"
                 title="Sign Out"
               >
                 <LogOut className="h-4 w-4" />
               </Button>
             </div>
           ) : (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onSignIn}
-              className="h-10 px-6 font-sans text-[10px] font-bold tracking-[0.2em] uppercase border-2 border-white text-white hover:bg-white hover:text-blue-900 transition-all duration-500 drop-shadow-lg"
-            >
-              Sign In
-            </Button>
+            null
           )}
 
           {/* Mobile Menu */}
@@ -127,7 +115,7 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden h-10 w-10 text-white hover:text-blue-100"
+                className="md:hidden h-10 w-10 text-foreground hover:text-primary"
               >
                 <Menu className="h-5 w-5" />
               </Button>
@@ -160,13 +148,13 @@ export default function Navbar() {
                   <div className="flex flex-col items-center gap-8">
                     <div className="flex items-center gap-4">
                       <Avatar className="h-16 w-16 border-2 border-primary/20 grayscale hover:grayscale-0 transition-all duration-500">
-                        <AvatarImage src={user.photoURL || ""} alt={user.displayName || ""} />
+                        <AvatarImage src={""} alt={user.firstName || ""} />
                         <AvatarFallback className="bg-muted text-lg font-sans">
-                          {user.displayName?.charAt(0) || "U"}
+                          {user.firstName?.charAt(0) || "U"}
                         </AvatarFallback>
                       </Avatar>
                       <div className="text-left">
-                        <p className="text-sm font-serif font-medium">{user.displayName || "Studio Guest"}</p>
+                        <p className="text-sm font-serif font-medium">{user.firstName} {user.lastName}</p>
                         <p className="text-[9px] font-sans uppercase tracking-[0.2em] text-muted-foreground">Studio Member</p>
                       </div>
                     </div>
@@ -174,7 +162,7 @@ export default function Navbar() {
                       variant="outline"
                       size="lg"
                       onClick={() => {
-                        logout();
+                        signOut();
                         setMobileOpen(false);
                       }}
                       className="w-full h-16 rounded-none border-[1.5px] border-primary/20 font-sans text-xs font-bold tracking-[0.2em] uppercase hover:bg-primary hover:text-background transition-all duration-500"
@@ -183,18 +171,7 @@ export default function Navbar() {
                     </Button>
                   </div>
                 ) : (
-                  <div className="space-y-6">
-                    <p className="text-center font-serif italic text-sm text-muted-foreground/60 mb-6">Access private commissions and archives.</p>
-                    <Button
-                      onClick={() => {
-                        onSignIn();
-                        setMobileOpen(false);
-                      }}
-                      className="w-full h-20 rounded-none bg-foreground text-background font-sans text-xs font-bold tracking-[0.3em] uppercase hover:bg-primary transition-all duration-700 shadow-2xl shadow-primary/20"
-                    >
-                      Authenticate
-                    </Button>
-                  </div>
+                  null
                 )}
               </div>
             </SheetContent>

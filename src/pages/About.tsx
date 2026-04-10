@@ -78,10 +78,10 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-6">
-              Developer & Designer
+              Developer
             </p>
             <h1 className="text-7xl md:text-8xl font-serif font-medium tracking-tighter leading-[0.9] mb-12 uppercase">
-              Sivchheng Kheang:
+              Sivchheng Kheang
               <br />
               Building Digital Experiences.
             </h1>
@@ -107,7 +107,7 @@ export default function About() {
             <img
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1200"
               alt="Sivchheng Kheang"
-              className="w-full h-full object-cover grayscale transition-all duration-1000 scale-105 hover:scale-100"
+              className="w-full h-full object-cover transition-all duration-1000 scale-105 hover:scale-100"
             />
           </motion.div>
           <motion.div
@@ -125,14 +125,14 @@ export default function About() {
             </h2>
             <p className="text-lg text-muted-foreground font-serif leading-relaxed italic">
               I'm a self-driven developer with hands-on experience across
-              frontend, backend, mobile, and UI/UX design. With a strong
+              frontend, backend and UI/UX design. With a strong
               foundation in digital products and a commitment to continuous
               growth, I bring ideas to life through clean code and thoughtful
               design.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              I work directly with stakeholders from the initial concept through
-              final deployment. Every project is unique, and I approach each
+              Before I start to work with KOOMPI. I had to learn many things as a member apprentice from the team in KOOMPI. Then I can work directly with stakeholders from the initial concept through
+              final deployment.  Every project is unique, and I approach each
               with the same dedication to detail and quality. My goal is to
               understand the problem, create elegant solutions, and build
               products that people genuinely enjoy using.
@@ -184,188 +184,108 @@ export default function About() {
         </div>
       </section>
 
-      {/* Contact & Ethos Section */}
-      <section className="border-t border-black/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-[900px]">
-          {/* Left Side: Ethos & History */}
-          <div className="flex-1 px-8 py-32 space-y-40 bg-[#E9EEF5]">
-            {/* Ethos */}
-            <section className="space-y-12">
-              <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Our Ethos</p>
-              <div className="space-y-10 text-4xl text-foreground font-serif leading-relaxed max-w-2xl">
-                <p>
-                  We believe a well-designed space can change how you feel the moment you walk into it. Our job is to understand who you are and what you need — and then build it.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12 border-t border-black/5">
-                {ethos.map((item) => (
-                  <div key={item.title} className="space-y-4">
-                    <h3 className="font-sans text-[10px] font-bold uppercase tracking-widest text-foreground">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed italic font-serif">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
+      {/* Ethos & History Section */}
+      <section className="border-t border-border/10 overflow-hidden relative bg-muted/5 py-40">
+        {/* Subtle Background Ornaments */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: [0, 50, 0],
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 right-0 w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px] -mr-20 -mt-20" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              x: [0, -40, 0],
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0 left-0 w-[30%] h-[30%] rounded-full bg-blue-400/5 blur-[100px] -ml-20 -mb-20" 
+          />
+        </div>
 
-            {/* History */}
-            <section className="space-y-12">
-              <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase">History</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-muted-foreground font-serif leading-relaxed text-lg">
+        <div className="max-w-5xl mx-auto px-8 relative z-10 space-y-48">
+          {/* Ethos */}
+          <section className="space-y-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <p className="font-sans text-[10px] font-bold tracking-[0.4em] text-primary uppercase">Our Ethos</p>
+              <h2 className="text-5xl md:text-7xl lg:text-8xl text-foreground font-serif leading-[0.9] tracking-tighter">
+                We believe a <span className="italic font-light text-primary/60">well-designed</span> space can change how you feel the moment you walk into it.
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 pt-16 border-t border-border/20">
+              {ethos.map((item, idx) => (
+                <motion.div 
+                  key={item.title} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  className="space-y-6"
+                >
+                  <h3 className="font-sans text-[11px] font-bold uppercase tracking-widest text-foreground">{item.title}</h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed italic font-serif opacity-80">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* History */}
+          <section className="space-y-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <p className="font-sans text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-8">History</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 text-muted-foreground font-serif leading-relaxed text-xl italic font-light">
                 <p>
-                  Founded in 2018, SIVCHHENG KHEANG started as a small studio in Phnom Penh focused on getting the most out of modest spaces. Since then, we have grown into a full interior design practice working on homes, boutique commercial spaces, and bespoke residential commissions across Cambodia and Southeast Asia.
+                  Founded in 2018, SIVCHHENG KHEANG started as a small studio in Phnom Penh focused on getting the most out of modest spaces. Since then, we have grown into a full digital practice working on products, websites, and bespoke interfaces across Cambodia.
                 </p>
                 <p>
-                  We work directly with each client from the first conversation to the final fitting. No two projects are the same, and we keep our process close and personal to make sure every detail is right.
+                  We work directly with each partner from the first conversation to the final deployment. No two projects are the same, and we keep our process close and personal to make sure every detail is right.
                 </p>
               </div>
-            </section>
+            </motion.div>
+          </section>
 
-            {/* Presence */}
-            <section className="space-y-12 pt-12 border-t border-black/5">
-              <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Presence</p>
+          {/* Presence */}
+          <section className="space-y-12 pt-16 border-t border-border/20">
+            <motion.div
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               transition={{ duration: 1 }}
+               viewport={{ once: true }}
+               className="flex flex-col md:flex-row md:items-center justify-between gap-12"
+            >
+              <div className="space-y-4">
+                <p className="font-sans text-[10px] font-bold tracking-[0.4em] text-primary uppercase">Presence</p>
+                <p className="text-sm font-serif italic text-muted-foreground">Connecting ideas across the digital landscape.</p>
+              </div>
               <div className="flex flex-wrap gap-12">
                 {[
-                  { name: 'Instagram', icon: Instagram },
-                  { name: 'LinkedIn', icon: Linkedin },
-                  { name: 'Pinterest', icon: MessageCircle },
+                  { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/koompi/' },
+                  { name: 'LinkedIn', icon: Linkedin, url: '#' },
+                  { name: 'Facebook', icon: MessageCircle, url: 'https://www.facebook.com/koompi' },
                 ].map(link => (
-                  <a key={link.name} href="#" className="group flex items-center gap-4 text-muted-foreground hover:text-foreground transition-all">
+                  <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 text-muted-foreground hover:text-foreground transition-all">
                     <link.icon className="w-5 h-5 text-muted-foreground/30 group-hover:text-primary transition-colors" />
-                    <span className="font-sans text-[10px] font-bold uppercase tracking-widest group-hover:tracking-[0.2em] transition-all">{link.name}</span>
+                    <span className="font-sans text-[11px] font-bold thin uppercase tracking-widest group-hover:tracking-[0.2em] transition-all">{link.name}</span>
                   </a>
                 ))}
               </div>
-            </section>
-          </div>
-
-          {/* Right Side: Contact Sidebar */}
-          <aside className="w-full lg:w-[500px] bg-[#D8E1EC]/80 backdrop-blur-md px-12 py-32 border-l border-black/5 relative overflow-hidden">
-            {/* Ambient decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-400/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-            <div className="sticky top-40 space-y-20 relative z-10">
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-8">Start Here</p>
-                <h2 className="text-5xl font-serif font-medium tracking-tight leading-tight text-foreground/90">
-                  Send Us a<br />Message.
-                </h2>
-              </motion.div>
-
-              <form onSubmit={handleSubmit} className="space-y-12">
-                {[
-                  { id: 'name', label: 'Full Name', type: 'text', placeholder: 'ANONYMOUS', value: formData.name },
-                  { id: 'email', label: 'Email Address', type: 'email', placeholder: 'STUDIO@CLIENT.COM', value: formData.email },
-                ].map((field, index) => (
-                  <motion.div
-                    key={field.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="group relative space-y-4"
-                  >
-                    <Label
-                      htmlFor={field.id}
-                      className="block font-sans text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60 group-focus-within:text-primary transition-colors"
-                    >
-                      {field.label}
-                    </Label>
-                    <div className="relative">
-                      <input
-                        id={field.id}
-                        required
-                        type={field.type}
-                        value={field.value}
-                        onChange={e => setFormData({ ...formData, [field.id]: e.target.value })}
-                        placeholder={field.placeholder}
-                        className="w-full bg-transparent border-b border-black/10 py-4 text-sm font-serif outline-none focus:border-primary transition-all duration-500 placeholder:text-muted-foreground/20"
-                      />
-                      <div className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary transition-all duration-700 group-focus-within:w-full" />
-                    </div>
-                  </motion.div>
-                ))}
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="group relative space-y-4"
-                >
-                  <Label className="block font-sans text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60 group-focus-within:text-primary transition-colors">
-                    Brief / Narrative
-                  </Label>
-                  <div className="relative">
-                    <textarea
-                      required
-                      rows={4}
-                      value={formData.message}
-                      onChange={e => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="TELL US ABOUT YOUR PROJECT OR IDEA..."
-                      className="w-full bg-transparent border-b border-black/10 py-4 text-sm font-serif outline-none focus:border-primary transition-all duration-500 resize-none placeholder:text-muted-foreground/20"
-                    />
-                    <div className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary transition-all duration-700 group-focus-within:w-full" />
-                  </div>
-                </motion.div>
-
-                <AnimatePresence mode="wait">
-                  {status === 'success' ? (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="flex items-center justify-center gap-3 py-6 bg-primary/10 border border-primary/20 text-primary"
-                    >
-                      <CheckCircle2 className="w-4 h-4" />
-                      <span className="text-[10px] font-sans font-bold uppercase tracking-widest">Enquiry Received</span>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Button
-                        type="submit"
-                        disabled={status === 'submitting'}
-                        className="w-full rounded-none h-20 bg-[#2D2D35] text-white hover:bg-[#1A1A20] shadow-2xl shadow-black/20 hover:shadow-primary/20 transition-all duration-700 font-sans text-[11px] font-bold tracking-[0.3em] uppercase group"
-                      >
-                        {status === 'submitting' ? (
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                        ) : (
-                          <span className="flex items-center gap-2">
-                            Send Message
-                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                          </span>
-                        )}
-                      </Button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </form>
-
-              <Separator className="bg-black/5" />
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="space-y-6"
-              >
-                <p className="font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60">Studio Location</p>
-                <div className="space-y-2">
-                  <p className="text-sm font-serif italic text-muted-foreground/80 leading-relaxed">
-                    Phnom Penh, Cambodia<br />
-                    Singapore City, SG
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </aside>
+            </motion.div>
+          </section>
         </div>
       </section>
 

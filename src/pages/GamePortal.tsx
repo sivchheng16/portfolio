@@ -234,7 +234,10 @@ export default function GamePortal() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span>Running in browser</span>
+                  {/* <span>Running in browser</span> */}
+                  <a href={`${activeGame.iframeUrl}`} target="_blank" rel="noopener noreferrer">
+                    Play in browser
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-[9px] font-sans font-bold uppercase tracking-widest text-white/60">

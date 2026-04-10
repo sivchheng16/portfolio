@@ -28,23 +28,25 @@ export default function ScrollToTop() {
       return;
     }
 
+    // Always reset to top on route change to ensure we scroll FROM the top
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant"
+    });
+
     if (hash) {
-      const element = document.getElementById(hash.replace("#", ""));
-      if (element) {
-        const timer = setTimeout(() => {
+      // Small delay to ensure the page has reset to top and rendered
+      const timer = setTimeout(() => {
+        const element = document.getElementById(hash.replace("#", ""));
+        if (element) {
           element.scrollIntoView({
             behavior: "smooth",
             block: "start",
           });
-        }, 10);
-        return () => clearTimeout(timer);
-      }
-    } else {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant"
-      });
+        }
+      }, 800); // 800ms is the sweet spot for a premium "start from top" feel
+      return () => clearTimeout(timer);
     }
   }, [pathname, hash]);
 
