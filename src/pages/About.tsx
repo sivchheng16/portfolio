@@ -68,7 +68,7 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-32 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground pt-32 relative overflow-hidden">
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-[10%] right-[5%] w-[40vw] h-[40vw] bg-primary/5 blur-[120px] rounded-full" />

@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ContactForm } from "@/components/ContactForm";
+import { categories } from "@/constants";
 
 const services = [
   {
@@ -25,6 +26,7 @@ const services = [
       "Database Scalability",
       "Cloud Integration",
     ],
+    techStack: ["Node.js", "Docker", "Kubernetes", "AWS"],
   },
   {
     name: "Custom Modules",
@@ -38,6 +40,7 @@ const services = [
       "Secure Edge Computing",
       "Legacy Code Refactoring",
     ],
+    techStack: ["Typescript", "Go", "Rust", "WebAssembly"],
   },
   {
     name: "UI/UX Strategy",
@@ -51,6 +54,7 @@ const services = [
       "Design Systems (Tech)",
       "High-Fidelity Visuals",
     ],
+    techStack: ["Figma", "Tailwind", "Framer", "React"],
   },
   {
     name: "Enterprise Solutions",
@@ -64,33 +68,34 @@ const services = [
       "Scalable Dashboards",
       "Sovereign Tech Stacks",
     ],
+    techStack: ["MongoDB", "Redis", "Security", "Cloudflare"],
   },
 ];
 
-const categories = [
-  {
-    name: "All Team",
-    moments: [
-      { title: "Sivchheng Kheang", role: "Technical Lead", description: "Architecting the technical core and high-performance visions.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" },
-      { title: "Long Sei", role: "DevOps Engineer", description: "Optimizing cloud orchestration and system deployment cycles.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" },
-      { title: "Dara Som", role: "UI/UX Engineer", description: "Refining visual optics and interactive design protocols.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400" },
-      { title: "Leakhena Tep", role: "Fullstack Developer", description: "Bridging complex logic with intuitive system interfaces.", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400" },
-    ]
-  },
-  {
-    name: "Developers",
-    moments: [
-      { title: "Sivchheng Kheang", role: "Technical Lead", description: "Architecting the technical core and high-performance visions.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" },
-      { title: "Long Sei", role: "DevOps Engineer", description: "Optimizing cloud orchestration and system deployment cycles.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" },
-    ]
-  },
-  {
-    name: "Designers",
-    moments: [
-      { title: "Dara Som", role: "UI/UX Engineer", description: "Refining visual optics and interactive design protocols.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400" },
-    ]
-  }
-];
+// const categories = [
+//   {
+//     name: "All Team",
+//     moments: [
+//       { title: "Sivchheng Kheang", role: "Technical Lead", description: "Architecting the technical core and high-performance visions.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" },
+//       { title: "Long Sei", role: "DevOps Engineer", description: "Optimizing cloud orchestration and system deployment cycles.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" },
+//       { title: "Dara Som", role: "UI/UX Engineer", description: "Refining visual optics and interactive design protocols.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400" },
+//       { title: "Leakhena Tep", role: "Fullstack Developer", description: "Bridging complex logic with intuitive system interfaces.", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400" },
+//     ]
+//   },
+//   {
+//     name: "Developers",
+//     moments: [
+//       { title: "Sivchheng Kheang", role: "Technical Lead", description: "Architecting the technical core and high-performance visions.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" },
+//       { title: "Long Sei", role: "DevOps Engineer", description: "Optimizing cloud orchestration and system deployment cycles.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" },
+//     ]
+//   },
+//   {
+//     name: "Designers",
+//     moments: [
+//       { title: "Dara Som", role: "UI/UX Engineer", description: "Refining visual optics and interactive design protocols.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400" },
+//     ]
+//   }
+// ];
 
 const processSteps = [
   {
@@ -119,82 +124,206 @@ export default function Services() {
   const [activeCategory, setActiveCategory] = useState("All Team");
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-32 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground pt-32 relative overflow-hidden">
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-[5%] right-[10%] w-[50vw] h-[50vw] bg-primary/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[10%] left-[5%] w-[40vw] h-[40vw] bg-secondary/5 blur-[150px] rounded-full" />
+        <div className="absolute top-[5%] right-[10%] w-[50vw] h-[50vw] bg-primary/5 blur-[120px] rounded-full opacity-40" />
+        <div className="absolute bottom-[10%] left-[5%] w-[40vw] h-[40vw] bg-secondary/5 blur-[150px] rounded-full opacity-40" />
       </div>
 
       {/* Hero Section */}
-      <section className="px-8 mb-40 relative z-10 text-center section-connector">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+      <section className="px-8 relative z-10 text-center">
+        <div className="max-w-7xl h-[calc(100vh-8rem)] mx-auto flex flex-col items-center justify-center relative">
+          
+          {/* Technical Keyword Tokens */}
+          <motion.div 
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[20%] -left-10 md:-left-20 glass-panel px-4 py-2 md:px-6 md:py-4 rounded-2xl opacity-[0.05] md:opacity-10 flex items-center gap-3 border-white/5"
           >
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <span className="w-12 h-[1px] bg-primary" />
-              <p className="font-mono text-[10px] font-bold tracking-[0.4em] text-primary uppercase">
+            <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary" />
+            <span className="font-mono text-[7px] md:text-[9px] font-bold tracking-[0.3em] uppercase text-foreground">Scalable</span>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, 30, 0], rotate: [0, -15, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-[30%] -right-10 md:-right-20 glass-panel px-4 py-2 md:px-6 md:py-4 rounded-2xl opacity-[0.05] md:opacity-10 flex items-center gap-3 border-white/5"
+          >
+            <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-secondary" />
+            <span className="font-mono text-[7px] md:text-[9px] font-bold tracking-[0.3em] uppercase text-foreground">Modular</span>
+          </motion.div>
+
+          <motion.div 
+            animate={{ x: [0, 15, 0], y: [0, -15, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute top-[15%] right-5 md:right-20 glass-panel px-3 py-2 md:px-5 md:py-3 rounded-xl opacity-[0.03] md:opacity-5 flex items-center gap-2 border-white/5"
+          >
+            <span className="font-mono text-[6px] md:text-[8px] font-bold tracking-[0.2em] uppercase text-primary">REST v2.4</span>
+          </motion.div>
+
+          <motion.div 
+            animate={{ x: [0, -20, 0], y: [0, 10, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="absolute bottom-[20%] left-5 md:left-10 glass-panel px-3 py-2 md:px-5 md:py-3 rounded-xl opacity-[0.03] md:opacity-5 flex items-center gap-2 border-white/5"
+          >
+            <span className="font-mono text-[6px] md:text-[8px] font-bold tracking-[0.2em] uppercase text-secondary">99.9% Uptime</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10"
+          >
+            <div className="flex items-center justify-center gap-6 mb-12">
+              <div className="w-12 h-px bg-primary/30" />
+              <p className="font-mono text-[10px] font-bold tracking-[0.5em] text-primary uppercase">
                 Expertise & Systems
               </p>
-              <span className="w-12 h-[1px] bg-primary" />
+              <div className="w-12 h-px bg-primary/30" />
             </div>
-            <h1 className="text-6xl md:text-8xl font-sans font-medium tracking-tighter leading-[0.85] mb-12 uppercase text-gradient">
-              Services that <br />
-              <span className="italic font-light lowercase font-sans opacity-80">define performance.</span>
+
+            <h1 className="text-4xl xs:text-5xl md:text-9xl font-sans font-medium tracking-tighter leading-[0.8] mb-14 uppercase flex flex-wrap justify-center overflow-hidden">
+              {"Services".split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.5 + index * 0.05,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="inline-block text-gradient"
+                >
+                  {char}
+                </motion.span>
+              ))}
+              <br className="w-full" />
+              <div className="flex flex-wrap justify-center w-full">
+                <span className="italic font-light lowercase opacity-40 mr-4">that define</span>
+                {"Performance.".split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      duration: 0.8,
+                      delay: 1.2 + index * 0.05,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="inline-block text-gradient"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </div>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-sans leading-relaxed max-w-3xl mx-auto italic">
-              "From our studios in Phnom Penh, we build high-performance digital architectures that balance technical mastery with intuitive user design."
+
+            <p className="text-xl md:text-2xl text-muted-foreground font-sans leading-relaxed max-w-2xl mx-auto italic opacity-70">
+              "We architect high-performance digital systems that balance technical precision with visceral user experiences."
             </p>
           </motion.div>
+
+          {/* Scroll Discovery Indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+          >
+            <span className="font-mono text-[8px] font-bold tracking-[0.4em] text-primary/40 uppercase">Discover Expertise</span>
+            <div className="w-px h-16 bg-gradient-to-b from-primary/40 to-transparent relative overflow-hidden">
+              <motion.div
+                animate={{ y: ["-100%", "100%"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 left-0 w-full h-[30%] bg-primary"
+              />
+            </div>
+          </motion.div>
         </div>
-        {/* Bottom Connective Bloom (Transition to Grid) */}
-        <div className="absolute -bottom-48 right-[10%] w-[50vw] h-[50vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
+
+        {/* Transitional Bloom */}
+        <div className="absolute -bottom-64 left-1/2 -translate-x-1/2 w-[80vw] h-[80vw] bg-primary/5 blur-[180px] rounded-full pointer-events-none -z-10" />
       </section>
 
       {/* Services Grid */}
-      <section className="px-8 mb-48 relative z-10 section-connector">
+      <section className="px-8 py-24 md:py-48 relative z-10 section-connector">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 right-[10%] w-[50vw] h-[50vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
           {services.map((service: any, index: number) => (
             <motion.div
               key={service.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="glass-panel p-10 md:p-14 rounded-[48px] border-white/5 hover:border-primary/40 transition-all duration-700 group flex flex-col justify-between overflow-hidden relative shadow-2xl"
+              viewport={{ once: true, amount: 0.1 }}
+              className="glass-panel group relative rounded-[48px] border-white/5 hover:border-primary/40 transition-all duration-700 overflow-hidden min-h-[480px] flex flex-col"
             >
-              <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
-                <service.icon size={120} className="text-primary" />
-              </div>
+              {/* Background Accent */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] -mr-32 -mt-32 group-hover:bg-primary/10 transition-colors duration-700" />
               
-              <div className="relative z-10">
-                <div className="w-16 h-16 glass-panel rounded-2xl flex items-center justify-center text-primary mb-12 group-hover:scale-110 shadow-[0_0_30px_rgba(var(--primary),0.15)] transition-all duration-700">
-                  <service.icon size={32} strokeWidth={1.2} />
-                </div>
-                <h2 className="text-3xl font-sans font-medium mb-4 italic">{service.name}</h2>
-                <div className="flex items-center gap-4 mb-8">
-                   <div className="h-px w-6 bg-primary/40" />
-                   <p className="font-mono text-[9px] font-bold uppercase tracking-[0.4em] text-primary">{service.description}</p>
-                </div>
-                <p className="text-muted-foreground font-sans leading-relaxed italic mb-12 opacity-70 group-hover:opacity-100 transition-opacity duration-700">
-                  {service.detail}
-                </p>
-              </div>
-              
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6 mt-auto pt-10 border-t border-white/5">
-                {service.features.map((feature: string) => (
-                  <div key={feature} className="flex items-center gap-3">
-                    <div className="w-1 h-1 rounded-full bg-primary/60 shadow-[0_0_8px_rgba(var(--primary),0.8)]" />
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-muted-foreground/40 group-hover:text-foreground transition-all">
-                      {feature}
-                    </span>
+              <div className="p-12 flex flex-col h-full relative z-10">
+                {/* Header Area */}
+                <div className="flex items-start justify-between mb-12">
+                  <div className="w-16 h-16 glass-panel rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 shadow-[0_0_30px_rgba(var(--primary),0.1)] transition-all duration-700">
+                    <service.icon size={32} strokeWidth={1} />
                   </div>
-                ))}
+                  <div className="flex flex-col items-end text-right">
+                    <span className="font-mono text-[8px] font-bold uppercase tracking-[0.4em] text-primary/40 mb-2">Service Node</span>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-foreground/20 group-hover:text-primary/40 transition-colors">0{index + 1}</span>
+                  </div>
+                </div>
+
+                {/* Content Area */}
+                <div className="space-y-6">
+                  <h2 className="text-4xl font-sans font-medium tracking-tight italic">{service.name}</h2>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">{service.description}</p>
+                  
+                  <p className="text-muted-foreground font-sans leading-relaxed italic opacity-80 max-w-sm">
+                    {service.detail}
+                  </p>
+                </div>
+
+                {/* Reveal Area (Features & Tech Stack) */}
+                <div className="mt-auto pt-12">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="space-y-8"
+                  >
+                    {/* Tech Stack Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {service.techStack.map((tech: string) => (
+                        <span 
+                          key={tech}
+                          className="px-3 py-1.5 rounded-lg glass-panel text-[8px] font-mono font-bold uppercase tracking-widest text-primary/40 group-hover:text-primary group-hover:border-primary/20 transition-all border border-transparent"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-2 gap-y-4 gap-x-6 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-700 transform translate-y-0 sm:translate-y-4 sm:group-hover:translate-y-0">
+                      {service.features.map((feature: string) => (
+                        <div key={feature} className="flex items-center gap-3">
+                          <div className="w-1 h-1 rounded-full bg-primary/40" />
+                          <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-muted-foreground/60">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
               </div>
+
+              {/* Bottom Decorative Bar */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-center" />
             </motion.div>
           ))}
         </div>
@@ -207,31 +336,44 @@ export default function Services() {
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] bg-secondary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute -inset-20 bg-primary/5 blur-[150px] rounded-full opacity-50" />
+        <div className="absolute top-1/2 left-0 w-full h-px bg-primary/10 -translate-y-1/2 pointer-events-none hidden lg:block" />
+        
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-32">
-            <p className="font-mono text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-6">Execution Lifecycle</p>
-            <h2 className="text-5xl md:text-6xl font-sans font-medium">The Journey.</h2>
+          <div className="text-center mb-40">
+            <p className="font-mono text-[10px] font-bold tracking-[0.5em] text-primary uppercase mb-8">Execution Lifecycle</p>
+            <h2 className="text-6xl md:text-8xl font-sans font-medium tracking-tighter">The <span className="italic font-light opacity-40">Journey.</span></h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8 relative">
+            {/* Connecting line for mobile */}
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-primary/10 lg:hidden" />
+
             {processSteps.map((step, idx) => (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="glass-panel p-12 rounded-[48px] border-white/5 hover:bg-white/5 transition-all duration-700 text-center group flex flex-col items-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className="relative flex flex-col items-center lg:items-center text-center lg:text-center group"
               >
-                <span className="font-mono text-primary/20 text-[56px] mb-8 block font-bold leading-none tracking-tighter">
-                  0{idx + 1}
-                </span>
-                <h3 className="font-sans text-2xl mb-6 text-foreground italic">{step.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed italic font-sans opacity-60 group-hover:opacity-100 transition-opacity duration-700">
-                  {step.description}
-                </p>
-                <div className="mt-10 h-1 w-8 bg-primary/10 group-hover:w-16 transition-all duration-700 overflow-hidden rounded-full">
-                   <div className="h-full w-full bg-primary translate-x-[-100%] group-hover:translate-x-[0%] transition-transform duration-700" />
+                {/* Technical Node */}
+                <div className="relative mb-12">
+                   <div className="w-16 h-16 rounded-full glass-panel border-white/10 flex items-center justify-center relative z-10 group-hover:border-primary/40 transition-colors duration-700 bg-background">
+                     <span className="font-mono text-xs font-bold text-primary/40 group-hover:text-primary transition-colors">0{idx + 1}</span>
+                   </div>
+                   {/* Node Pulse Effect */}
+                   <div className="absolute inset-0 rounded-full bg-primary/20 blur-md scale-0 group-hover:scale-150 transition-transform duration-700 opacity-0 group-hover:opacity-100" />
                 </div>
+
+                <div className="space-y-4 px-4">
+                  <h3 className="font-sans text-xl font-medium text-foreground tracking-tight italic">{step.title}</h3>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed italic font-sans opacity-60 group-hover:opacity-100 transition-opacity duration-700 max-w-[200px] mx-auto">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Vertical Segment for mobile */}
+                <div className="absolute left-8 top-16 bottom-0 w-px bg-primary/10 lg:hidden" />
               </motion.div>
             ))}
           </div>
@@ -341,7 +483,7 @@ export default function Services() {
                       <img
                         src={moment.image}
                         alt={moment.title}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        className="w-full h-full object-cover transition-all duration-700"
                       />
                       <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>

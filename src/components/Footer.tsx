@@ -28,7 +28,7 @@ export default function Footer() {
       >
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-24">
           {/* Brand Column */}
-          <div className="md:col-span-2 space-y-10">
+          <div className="md:col-span-2 space-y-10 flex flex-col items-center md:items-start text-center md:text-left">
             <Link to="/" className="flex items-center gap-4 group">
               <div className="w-12 h-12 flex items-center justify-center text-primary group-hover:rotate-12 transition-transform duration-500">
                 {/* <Command size={24} /> */}
@@ -42,7 +42,7 @@ export default function Footer() {
             <p className="text-xl text-muted-foreground font-sans leading-relaxed italic opacity-80 max-w-sm">
               "Building high-performance digital systems that balance technical mastery with intuitive user design."
             </p>
-            <div className="flex gap-4">
+            <div className="flex justify-center md:justify-start gap-4">
               {[
                 { icon: Github, href: "https://github.com/sivchheng16" },
                 { icon: MessageCircle, href: "https://t.me/sivchhengkheang" },
@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div className="space-y-8">
+          <div className="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
             <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Systems Map</h3>
             <div className="space-y-4">
               {[
@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
 
           {/* Studio Info */}
-          <div className="space-y-8">
+          <div className="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
             <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Studio Location</h3>
             <div className="space-y-6">
               <div className="glass-panel p-6 rounded-2xl border-white/5">

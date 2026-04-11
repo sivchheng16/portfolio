@@ -25,6 +25,21 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Scroll Lock when Mobile Menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -34,17 +49,19 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-[100] transition-all duration-700 h-24 flex items-center border-b",
-        isScrolled
-          ? "bg-background/20 backdrop-blur-3xl border-white/5 py-4"
-          : "bg-transparent border-transparent py-8"
-      )}
-    >
-      <div className="max-w-7xl mx-auto w-full px-8 flex items-center justify-between">
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-[100] transition-all duration-700 h-24 flex items-center border-b",
+          isScrolled
+            ? "bg-background/20 backdrop-blur-3xl border-white/5 py-4"
+            : "bg-transparent border-transparent py-8"
+        )}
+      >
+      {/* <div className="max-w-[1440px] mx-auto w-full px-8 md:px-12 flex items-center justify-between"> */}
+      <div className="max-w-full mx-auto w-full px-8 md:px-12 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="relative z-[110] group">
+        <Link to="/" className="relative z-[110] group shrink-0">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -52,29 +69,23 @@ export default function Navbar() {
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 flex items-center justify-center bg-transparent hover:text-primary group-hover:rotate-12 transition-transform duration-500">
-                {/* <Command size={18} /> */}
                 <img src={logo} alt="logo" className="w-full h-full object-contain" />
-
               </div>
-              <span className="font-sans text-1xl md:text-3xl font-medium  group-hover:text-primary transition-colors tracking-[0.2em]">
+              <span className="font-sans text-xl md:text-3xl font-medium tracking-[0.2em] group-hover:text-primary transition-colors">
                 Portfolio
-                {/* <span className="italic font-light opacity-60 group-hover:opacity-100 italic transition-all">Studio.</span> */}
               </span>
             </div>
-            {/* <span className="font-mono text-[8px] font-bold tracking-[0.5em] text-primary mt-1 opacity-0 group-hover:opacity-100 transition-all pl-11">
-              EST. 2018 // PHNOM PENH
-            </span> */}
           </motion.div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-12">
+        {/* Desktop Nav - Centered */}
+        <div className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               className={cn(
-                "relative font-mono text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300 hover:text-primary py-2",
+                "relative font-mono text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-300 hover:text-primary py-2",
                 location.pathname === link.path
                   ? "text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary"
                   : "text-foreground/60"
@@ -83,9 +94,10 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+        </div>
 
-          <div className="h-6 w-px bg-white/10 mx-4" />
-
+        {/* Call to Action - Right */}
+        <div className="hidden lg:flex items-center">
           <Button
             asChild
             className="h-11 px-8 rounded-full bg-primary text-background font-mono text-[10px] font-bold tracking-widest uppercase hover:scale-105 transition-all shadow-lg shadow-primary/20"
@@ -102,29 +114,41 @@ export default function Navbar() {
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-
+    </nav>
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[105] glass-panel bg-background/90 backdrop-blur-3xl lg:hidden flex flex-col items-center justify-center p-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center p-8 text-center overscroll-none touch-none"
+            data-lenis-prevent
           >
-            <div className="space-y-8 md:space-y-12">
+            <motion.div 
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 200 }}
+              className="space-y-6 md:space-y-10"
+            >
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.path}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * idx }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    delay: 0.2 + 0.1 * idx,
+                    duration: 0.6,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
                 >
                   <Link
+                    onClick={() => setIsMobileMenuOpen(false)}
                     to={link.path}
                     className={cn(
-                      "text-3xl md:text-4xl font-sans font-medium uppercase tracking-tighter block transition-all",
+                      "text-2xl sm:text-3xl font-sans font-medium uppercase tracking-widest block transition-all hover:text-primary",
                       location.pathname === link.path ? "text-primary" : "text-foreground"
                     )}
                   >
@@ -134,29 +158,35 @@ export default function Navbar() {
               ))}
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 }}
-                className="pt-12"
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.6 + 0.1 * navLinks.length }}
+                className="pt-8"
               >
                 <Button
+                  onClick={() => setIsMobileMenuOpen(false)}
                   asChild
                   size="lg"
-                  className="h-16 px-12 rounded-full bg-primary text-background font-mono text-xs font-bold tracking-widest uppercase"
+                  className="h-14 sm:h-16 px-10 sm:px-12 rounded-full bg-primary text-background font-mono text-xs font-bold tracking-widest uppercase shadow-xl shadow-primary/20"
                 >
                   <Link to="/services#contact">Get in Touch</Link>
                 </Button>
               </motion.div>
-            </div>
+            </motion.div>
 
-            <div className="absolute bottom-12 left-0 w-full text-center">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="absolute bottom-12 left-0 w-full text-center"
+            >
               <p className="font-mono text-[9px] font-bold tracking-[0.4em] text-primary uppercase opacity-40">
                 Sivchheng Kheang Studio // 2026
               </p>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   );
 }

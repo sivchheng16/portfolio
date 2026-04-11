@@ -20,8 +20,6 @@ export interface Game {
   cover: string;
 }
 
-
-
 export const PROJECTS: Project[] = [
   {
     id: "elysian-residence",
@@ -220,6 +218,52 @@ export const TOPICS: Topic[] = [
       { id: "react-1", title: "Components & Props", description: "Building reusable UI components.", duration: "1 hr" },
       { id: "react-2", title: "State & Hooks", description: "Managing state with useState and useEffect.", duration: "2 hrs" },
       { id: "react-3", title: "Routing", description: "Client-side routing with React Router.", duration: "1.5 hrs" }
+    ]
+  }
+];
+
+export const categories = [
+  {
+    name: "All Team",
+    moments: [
+      { title: "Rithy THOUL", role: "Promoter && Connection", description: "CEO of KOOMPI", image: "../public/team/rithy-thul.png" },
+      { title: "Brilliant PHAL", role: "OS Lead", description: "OS Lead", image: "../public/team/brilliant.jpg" },
+      { title: "Vuthy SAN", role: "Developer", description: "Web Apps Dev Lead", image: "../public/team/vuthy.jpg" },
+      { title: "Raksme VEN", role: "Bussiness ", description: "Finance & Vendor Relation", image: "../public/team/raksme.jpg" },
+      { title: "Sukunthy CHAN", role: "Bussiness ", description: "Finance & Vendor Relation", image: "../public/team/sukunthy.png" },
+      { title: "Sela THOL", role: "Bussiness", description: "Media and Communicaiton Manager", image: "../public/team/sela.jpg" },
+      { title: "Theara THEN", role: "Developer & Bussiness", description: "Developer & Social Marketing & Sales", image: "../public/team/theara.jpg" },
+      { title: "Thith THIN", role: "Developer", description: "Fulll Stack Developer", image: "../public/team/thith.jpg" },
+      { title: "Hangsea HONG", role: "DevOps", description: "OS Developer", image: "../public/team/hangsea.jpg" },
+      { title: "Sokunsamnang SAM AN", role: "Developer", description: "Network Devs & Mobile Application ", image: "../public/team/samnang.jpg" },
+      // { title: "", role: "", description: "", image: "../public/team/raksme.jpg" },
+      // { title: "", role: "", description: "", image: "../public/team/raksme.jpg" },
+      // { title: "", role: "", description: "", image: "../public/team/raksme.jpg" },
+      // { title: "", role: "", description: "", image: "../public/team/raksme.jpg" },
+      // { title: "", role: "", description: "", image: "../public/team/raksme.jpg" },
+      // { title: "", role: "", description: "", image: "../public/team/raksme.jpg" },
+    ]
+  },
+  {
+    name: "Developers",
+    moments: [
+      { title: "Sivchheng Kheang", role: "Technical Lead", description: "Architecting the technical core and high-performance visions.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" },
+      { title: "Long Sei", role: "DevOps Engineer", description: "Optimizing cloud orchestration and system deployment cycles.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" },
+    ]
+  },
+  {
+    name: "Designers",
+    moments: [
+      { title: "Dara Som", role: "UI/UX Engineer", description: "Refining visual optics and interactive design protocols.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400" },
+    ]
+  },
+  {
+    name: "Apprentice",
+    moments: [
+      { title: "Sivchheng Kheang", role: "Apprentice", description: "Developer & Learning Full Stack Developer", image: "../public/team/sivchheng.jpg" },
+      { title: "Keochheang THON", role: "Apprentice", description: "Designer", image: "../public/team/keochheang.jpg" },
+      { title: "Narith CHOM", role: "Apprentice", description: "Developer", image: "../public/team/narith.jpg" },
+      { title: "Sisuykong Sao ", role: "Apprentice", description: "Developer", image: "../public/team/sisuykong.jpg" },
     ]
   }
 ];

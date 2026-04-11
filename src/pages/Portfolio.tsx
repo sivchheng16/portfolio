@@ -49,7 +49,7 @@ export default function Portfolio({
   });
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-32 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground pt-32 relative overflow-hidden mb-48">
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-[10%] left-[5%] w-[45vw] h-[45vw] bg-primary/5 blur-[120px] rounded-full" />
@@ -79,7 +79,7 @@ export default function Portfolio({
                 "A curated archive of high-performance digital systems, ranging from scalable web architectures to intuitive mobile interfaces."
               </p>
             </motion.div>
-            
+
             <div className="flex flex-col gap-8 text-muted-foreground shrink-0 glass-panel p-10 rounded-3xl">
               <div className="flex items-center gap-6">
                 <div className="w-10 h-10 glass-panel rounded-xl flex items-center justify-center text-primary">
@@ -115,17 +115,16 @@ export default function Portfolio({
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`font-mono text-[8px] md:text-[9px] font-bold uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-full transition-all duration-300 flex-1 sm:flex-none ${
-                    selectedCategory === cat
+                  className={`font-mono text-[8px] md:text-[9px] font-bold uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-full transition-all duration-300 flex-1 sm:flex-none ${selectedCategory === cat
                     ? 'bg-primary text-background shadow-lg shadow-primary/20'
                     : 'text-muted-foreground hover:text-foreground'
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
               ))}
             </div>
-            
+
             <div className="relative w-full sm:w-80 group">
               <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
               <Input
@@ -154,7 +153,7 @@ export default function Portfolio({
           </div>
 
           {filteredProjects.length === 0 ? (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="py-40 flex flex-col items-center justify-center text-center glass-panel rounded-[40px]"
@@ -190,14 +189,14 @@ export default function Portfolio({
       </div>
 
       {/* Page End Branding */}
-      <div className="container mx-auto px-6 mt-48 pt-20 border-t border-white/5 flex flex-col items-center">
+      {/* <div className="container mx-auto px-6 mt-48 pt-20 border-t border-white/5 flex flex-col items-center">
         <div className="w-12 h-12 glass-panel rounded-2xl flex items-center justify-center text-primary mb-8">
            <Layout size={20} />
         </div>
         <div className="font-mono text-primary text-[10px] font-bold tracking-[1em] uppercase opacity-40">
           SIVCHHENG KHEANG // 2026
-        </div>
-      </div>
+        </div> 
+      </div> */}
     </div>
   );
 }

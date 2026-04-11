@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,7 +8,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './ui/form';
-import { AlertCircle, Loader2, Mail, Lock, ShieldCheck, ArrowRight } from 'lucide-react';
+import { AlertCircle, Loader2, Mail, Lock, ShieldCheck, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { Alert, AlertDescription } from './ui/alert';
 import { cn } from '@/lib/utils';
 
@@ -26,9 +26,21 @@ const registerSchema = z.object({
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const { user, loading, signIn, signUp } = useAuth();
-   const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<{ message: string; id: number } | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+  
+  // Auto-hide error after 2 seconds
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError(null);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   const loginForm = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -44,9 +56,9 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-background z-[100]">
         <motion.div
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           className="flex flex-col items-center gap-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex flex-col items-center gap-6"
         >
           <div className="relative">
             <motion.div
@@ -56,7 +68,7 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
             />
             <ShieldCheck className="absolute inset-0 m-auto w-6 h-6 text-primary animate-pulse" />
           </div>
-          <span className="font-mono text-[10px] font-bold tracking-[0.5em] text-primary uppercase animate-pulse">
+          <span className="font-mono text-[10px] font-bold tracking-[0.5em] text-primary animate-pulse">
             Verifying session...
           </span>
         </motion.div>
@@ -68,26 +80,26 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
-   const onLogin = async (data: z.infer<typeof loginSchema>) => {
+  const onLogin = async (data: z.infer<typeof loginSchema>) => {
     setIsSubmitting(true);
     setError(null);
     try {
       await signIn(data);
     } catch (err: any) {
-      setError(err.message || "Failed to sign in. Please check your credentials.");
+      setError({ message: err.message || "Failed to sign in. Please check your credentials.", id: Date.now() });
       console.error(err);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-   const onRegister = async (data: z.infer<typeof registerSchema>) => {
+  const onRegister = async (data: z.infer<typeof registerSchema>) => {
     setIsSubmitting(true);
     setError(null);
     try {
       await signUp(data);
     } catch (err: any) {
-      setError(err.message || "Failed to create account. Please try again.");
+      setError({ message: err.message || "Failed to create account. Please try again.", id: Date.now() });
       console.error(err);
     } finally {
       setIsSubmitting(false);
@@ -101,24 +113,24 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
         Matches Home.tsx atmospheric blobs
       */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <motion.div 
-          animate={{ 
-            x: [0, 80, 0], 
+        <motion.div
+          animate={{
+            x: [0, 80, 0],
             y: [0, -40, 0],
             scale: [1, 1.1, 1],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-primary/20 blur-[130px] rounded-full opacity-40"
         />
-        <motion.div 
-          animate={{ 
-            x: [0, -60, 0], 
+        <motion.div
+          animate={{
+            x: [0, -60, 0],
             y: [0, 80, 0],
           }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-secondary/10 blur-[150px] rounded-full opacity-30"
         />
-        
+
         {/* Subtle Grid Overlay matching Home.tsx */}
         <div
           className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -129,16 +141,38 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
         />
       </div>
 
+      {/* Error Feedback - Fixed at the top */}
+      <AnimatePresence>
+        {error && (
+          <motion.div
+            key={error.id}
+            initial={{ opacity: 0, y: -40, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: -40, x: "-50%" }}
+            className="fixed top-12 left-1/2 z-[200] w-full max-w-[460px] px-6 pointer-events-none"
+          >
+            <div className="pointer-events-auto">
+              <Alert variant="destructive" className="glass-panel border-red-500/90 bg-red-500/5 text-red-500 rounded-2xl py-4 shadow-[0_20px_40px_rgba(255,0,0,0.1)] backdrop-blur-md">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription className="text-[10px] font-mono font-bold tracking-wider">
+                  {error.message}
+                </AlertDescription>
+              </Alert>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="relative z-10 w-full max-w-[460px] px-6">
         {/* Header Section */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 text-center"
+          className="mb-10 text-center justify-center"
         >
-          <div className="inline-block relative mb-8">
-            <motion.div 
+          {/* <div className="inline-block relative mb-8">
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -147,19 +181,12 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
               <ShieldCheck className="w-8 h-8" />
             </motion.div>
             <div className="absolute inset-0 bg-primary/20 blur-3xl opacity-50" />
-          </div>
-          
+          </div> */}
+
           <div className="space-y-4">
             <h1 className="text-5xl font-sans font-medium tracking-tighter leading-tight text-gradient">
               {isLogin ? "Welcome back" : "Create account"}
             </h1>
-            <div className="flex items-center justify-center gap-4">
-              <span className="h-px w-6 bg-primary/20" />
-              <p className="text-[10px] font-mono font-bold uppercase tracking-[0.5em] text-primary/60">
-                {isLogin ? "Sec_Layer_Initialized" : "New_Identity_Request"}
-              </p>
-              <span className="h-px w-6 bg-primary/20" />
-            </div>
           </div>
         </motion.div>
 
@@ -172,34 +199,15 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
         >
           <Card className="relative glass-panel p-2 rounded-[40px] border-white/5 shadow-[0_32px_128px_-16px_rgba(0,0,0,0.5)] overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-50" />
-            
+
             <CardHeader className="pt-10 pb-6 px-10">
-              <CardTitle className="text-2xl font-sans font-medium tracking-tight text-white/90">
-                {isLogin ? "Access Portal" : "Registry Entry"}
+              <CardTitle className="text-3xl font-sans font-medium tracking-tight text-white/90">
+                {isLogin ? "Login" : "Register"}
               </CardTitle>
-              <CardDescription className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-muted-foreground/40 mt-1">
-                {isLogin 
-                  ? "Initialize authentication sequence" 
-                  : "Architect your studio credentials"}
-              </CardDescription>
             </CardHeader>
 
             <CardContent className="px-10 pb-6">
-              {/* Error Feedback */}
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  className="mb-8"
-                >
-                  <Alert variant="destructive" className="bg-red-500/5 border-red-500/20 text-red-500 rounded-2xl py-3 backdrop-blur-sm">
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertDescription className="text-[10px] font-mono font-bold uppercase tracking-wider">
-                      {error}
-                    </AlertDescription>
-                  </Alert>
-                </motion.div>
-              )}
+             
 
               <AnimatePresence mode="wait">
                 {isLogin ? (
@@ -217,18 +225,18 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                           name="email"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
-                              <FormLabel className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Email Identifier</FormLabel>
+                              <FormLabel className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Email</FormLabel>
                               <FormControl>
                                 <div className="group relative">
                                   <Mail className="absolute right-5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/10 group-focus-within:text-primary transition-colors" />
-                                  <Input 
-                                    placeholder="USER@SYSTEM.AI" 
-                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 pr-14" 
-                                    {...field} 
+                                  <Input
+                                    placeholder="user@gmail.com"
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 pr-14 lowercase"
+                                    {...field}
                                   />
                                 </div>
                               </FormControl>
-                              <FormMessage className="text-[9px] font-mono text-primary/60 uppercase tracking-widest" />
+                              <FormMessage className="text-[9px] font-mono text-red-500 tracking-widest" />
                             </FormItem>
                           )}
                         />
@@ -237,31 +245,41 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                           name="password"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
-                              <FormLabel className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Access Phrase</FormLabel>
+                              <FormLabel className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Password</FormLabel>
                               <FormControl>
                                 <div className="group relative">
-                                  <Lock className="absolute right-5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/10 group-focus-within:text-primary transition-colors" />
-                                  <Input 
-                                    type="password" 
-                                    placeholder="••••••••" 
-                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 pr-14" 
-                                    {...field} 
+                                  <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-5 top-1/2 -translate-y-1/2 z-20 text-white/20 hover:text-primary transition-colors focus:outline-none"
+                                  >
+                                    {showPassword ? (
+                                      <EyeOff className="h-4 w-4" />
+                                    ) : (
+                                      <Eye className="h-4 w-4" />
+                                    )}
+                                  </button>
+                                  <Input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="••••••••"
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 pr-14 lowercase"
+                                    {...field}
                                   />
                                 </div>
                               </FormControl>
-                              <FormMessage className="text-[9px] font-mono text-primary/60 uppercase tracking-widest" />
+                              <FormMessage className="text-[9px] font-mono text-red-500 tracking-widest" />
                             </FormItem>
                           )}
                         />
                         <div className="pt-6">
-                          <Button 
-                            type="submit" 
+                          <Button
+                            type="submit"
                             disabled={isSubmitting}
-                            className="w-full h-16 rounded-full font-mono text-[11px] font-bold tracking-[0.4em] uppercase transition-all duration-500 bg-primary text-background hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
+                            className="w-full h-16 rounded-full font-mono text-[11px] font-bold tracking-[0.4em] transition-all duration-500 bg-primary text-background hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
                           >
                             {isSubmitting ? (
                               <Loader2 className="h-5 w-5 animate-spin" />
-                            ) : "Initialize Access"}
+                            ) : "Login"}
                           </Button>
                         </div>
                       </form>
@@ -283,14 +301,15 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                             name="firstName"
                             render={({ field }) => (
                               <FormItem className="space-y-3">
-                                <FormLabel className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Given Name</FormLabel>
+                                <FormLabel className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">First name</FormLabel>
                                 <FormControl>
-                                  <Input 
-                                    placeholder="GIVEN" 
-                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest uppercase px-6" 
-                                    {...field} 
+                                  <Input
+                                    placeholder="First name"
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 lowercase"
+                                    {...field}
                                   />
                                 </FormControl>
+                                <FormMessage className="text-[9px] font-mono text-red-500 tracking-widest" />
                               </FormItem>
                             )}
                           />
@@ -299,14 +318,15 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                             name="lastName"
                             render={({ field }) => (
                               <FormItem className="space-y-3">
-                                <FormLabel className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Family Name</FormLabel>
+                                <FormLabel className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Last name</FormLabel>
                                 <FormControl>
-                                  <Input 
-                                    placeholder="FAMILY" 
-                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest uppercase px-6" 
-                                    {...field} 
+                                  <Input
+                                    placeholder="Last name"
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 lowercase"
+                                    {...field}
                                   />
                                 </FormControl>
+                                <FormMessage className="text-[9px] font-mono text-red-500 tracking-widest" />
                               </FormItem>
                             )}
                           />
@@ -316,17 +336,18 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                           name="email"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
-                              <FormLabel className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Email Identifier</FormLabel>
+                              <FormLabel className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Email</FormLabel>
                               <FormControl>
                                 <div className="group relative">
                                   <Mail className="absolute right-5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/10 group-focus-within:text-primary transition-colors" />
-                                  <Input 
-                                    placeholder="USER@SYSTEM.AI" 
-                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest uppercase px-6 pr-14" 
-                                    {...field} 
+                                  <Input
+                                    placeholder="example@gmail.com"
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 pr-14 lowercase"
+                                    {...field}
                                   />
                                 </div>
                               </FormControl>
+                              <FormMessage className="text-[9px] font-mono text-red-500 tracking-widest" />
                             </FormItem>
                           )}
                         />
@@ -335,30 +356,41 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                           name="password"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
-                              <FormLabel className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Access Phrase</FormLabel>
+                              <FormLabel className="text-[9px] font-mono tracking-[0.3em] text-muted-foreground/60 font-bold ml-1">Password</FormLabel>
                               <FormControl>
                                 <div className="group relative">
-                                  <Lock className="absolute right-5 top-1/2 -translate-y-1/2 h-4 w-4 text-white/10 group-focus-within:text-primary transition-colors" />
-                                  <Input 
-                                    type="password" 
-                                    placeholder="••••••••" 
-                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest uppercase px-6 pr-14" 
-                                    {...field} 
+                                  <button
+                                    type="button"
+                                    onClick={() => setShowRegisterPassword(!showRegisterPassword)}
+                                    className="absolute right-5 top-1/2 -translate-y-1/2 z-20 text-white/20 hover:text-primary transition-colors focus:outline-none"
+                                  >
+                                    {showRegisterPassword ? (
+                                      <EyeOff className="h-4 w-4" />
+                                    ) : (
+                                      <Eye className="h-4 w-4" />
+                                    )}
+                                  </button>
+                                  <Input
+                                    type={showRegisterPassword ? "text" : "password"}
+                                    placeholder="••••••••"
+                                    className="h-14 bg-white/[0.03] border-white/5 focus:border-primary/40 focus:bg-white/[0.05] transition-all duration-500 rounded-2xl font-mono text-[11px] font-bold tracking-widest px-6 pr-14 lowercase"
+                                    {...field}
                                   />
                                 </div>
                               </FormControl>
+                              <FormMessage className="text-[9px] font-mono text-red-500 tracking-widest" />
                             </FormItem>
                           )}
                         />
                         <div className="pt-6">
-                          <Button 
-                            type="submit" 
+                          <Button
+                            type="submit"
                             disabled={isSubmitting}
-                            className="w-full h-16 rounded-full font-mono text-[11px] font-bold tracking-[0.4em] uppercase transition-all duration-500 bg-primary text-background hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
+                            className="w-full h-16 rounded-full font-mono text-[11px] font-bold tracking-[0.4em] transition-all duration-500 bg-primary text-background hover:scale-105 active:scale-95 shadow-xl shadow-primary/20"
                           >
                             {isSubmitting ? (
                               <Loader2 className="h-5 w-5 animate-spin" />
-                            ) : "Create Identity"}
+                            ) : "Register"}
                           </Button>
                         </div>
                       </form>
@@ -374,24 +406,15 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
                   setIsLogin(!isLogin);
                   setError(null);
                 }}
-                className="group flex items-center gap-3 text-[9px] font-mono font-bold uppercase tracking-[0.4em] text-muted-foreground/30 hover:text-primary transition-all duration-500"
+                className="group flex items-center gap-3 text-[9px] font-mono font-bold tracking-[0.4em] text-foreground/60 hover:text-primary transition-all duration-500"
               >
-                <span>{isLogin ? "Propose New Identity" : "Return to Access Log"}</span>
+                <span>{isLogin ? "Create account" : "Back to login"}</span>
                 <ArrowRight className="h-3 w-3 translate-x-0 group-hover:translate-x-2 transition-transform" />
               </button>
             </CardFooter>
           </Card>
         </motion.div>
 
-        {/* Footer Branding */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="mt-16 text-center opacity-10"
-        >
-          <p className="text-[8px] font-mono font-bold uppercase tracking-[1em] text-foreground">SIVCHHENG KHEANG STUDIO // REGISTRY 2026</p>
-        </motion.div>
       </div>
     </div>
   );

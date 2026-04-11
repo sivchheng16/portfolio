@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Premium Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center p-6 overflow-hidden section-connector">
+      <section className="relative min-h-screen flex items-center justify-center p-4 md:p-6 overflow-hidden section-connector">
         {/* Background Mesh Gradients */}
         <div className="absolute inset-0 z-0">
           <motion.div
@@ -91,7 +91,7 @@ export default function Home() {
         </div>
 
         {/* Floating 3D Icons (Animated backgrounds) */}
-        <div className="absolute inset-0 z-10 pointer-events-none perspective-1000">
+        <div className="absolute inset-0 z-[1] pointer-events-none perspective-1000">
           {/* Coding Icon */}
           <motion.div
             animate={{
@@ -159,9 +159,23 @@ export default function Home() {
             <span className="w-8 h-[1px] bg-primary/50" />
           </motion.div>
 
-          <h1 className="text-[12vw] md:text-[8vw] lg:text-[6vw] font-sans font-medium leading-[0.85] tracking-tight mb-12 text-gradient">
-            APPRENTICE <br />
-            {/* & <span className="italic font-light opacity-10">EXPERT.</span>  */}
+          <h1 className="text-[11vw] md:text-[8vw] lg:text-[6vw] font-sans font-medium leading-[0.85] tracking-tighter mb-12 text-gradient flex flex-wrap justify-center overflow-hidden whitespace-nowrap">
+            {"APPRENTICE".split("").map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.5 + index * 0.05,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="inline-block"
+              >
+                {char}
+              </motion.span>
+            ))}
+            <br />
           </h1>
 
           <p className="text-lg md:text-xl font-sans max-w-2xl leading-relaxed text-foreground/70 mb-16 italic">
@@ -171,14 +185,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-8">
             <Button
               asChild
-              className="h-16 px-12 rounded-full bg-primary text-background font-mono text-[11px] font-bold tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/20"
+              className="h-14 md:h-16 px-10 md:px-12 rounded-full bg-primary text-background font-mono text-[11px] font-bold tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/20"
             >
               <Link to="/portfolio">Explore Systems</Link>
             </Button>
             <Button
               asChild
               variant="outline"
-              className="h-16 px-12 rounded-full border-white/10 hover:bg-white/5 font-mono text-[11px] font-bold tracking-widest uppercase backdrop-blur-sm transition-all duration-300"
+              className="h-14 md:h-16 px-10 md:px-12 rounded-full border-white/10 hover:bg-white/5 font-mono text-[11px] font-bold tracking-widest uppercase backdrop-blur-sm transition-all duration-300"
             >
               <Link to="/about">Our Philosophy</Link>
             </Button>
@@ -233,7 +247,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {TOPICS.map((topic, idx) => {
               const lessonCount = topic.lessons.length;
 
@@ -242,11 +256,12 @@ export default function Home() {
                   key={topic.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ once: true, amount: 0.1 }}
                 >
                   <Link to={`/document/${topic.id}`} className="block h-full cursor-pointer group">
-                    <div className="glass-panel h-full p-8 flex flex-col justify-between group-hover:border-primary/40 group-hover:-translate-y-2 transition-all duration-500 relative overflow-hidden shadow-2xl space-y-6 rounded-[32px]">
+                    <div className="glass-panel h-full p-8 flex flex-col justify-between group-hover:border-primary/40 group-hover:-translate-y-2 lg:group-hover:-translate-y-2 transition-all duration-500 relative overflow-hidden shadow-2xl space-y-6 rounded-[32px]">
                       {/* Dynamic unique gradient based on topic - enhanced hover */}
                       <div className={`absolute inset-0 bg-gradient-to-tr ${topic.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none`} />
 
@@ -342,13 +357,14 @@ export default function Home() {
 
           <div className="space-y-0">
             {GAMES.map((game, index) => (
-              <motion.div
-                key={game.id}
-                layout
-                className="border-t border-border/20 group hover:border-primary/40 hover:bg-muted/5 transition-all duration-500"
-                whileHover={{ scale: 1.005 }}
-                transition={{ duration: 0.3 }}
-              >
+                <motion.div
+                  key={game.id}
+                  layout
+                  className="border-t border-border/20 group hover:border-primary/40 hover:bg-muted/5 transition-all duration-500"
+                  whileHover={{ scale: 1.005 }}
+                  whileTap={{ scale: 0.995 }}
+                  transition={{ duration: 0.3 }}
+                >
                 <button
                   onClick={() =>
                     setExpandedProject(
