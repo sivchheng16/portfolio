@@ -29,7 +29,8 @@ dist-ssr
 !.env.example
 
 # Custom exclusions
-antigravity-awesome-skills/
-.agent/
-.antigravity/
+antigravity-awesome-skills
+agent/**
+agent
+.antigravity
 
