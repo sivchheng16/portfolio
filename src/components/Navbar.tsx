@@ -87,10 +87,10 @@ export default function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative font-mono text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-300 hover:text-primary py-2",
+                  "relative font-mono text-[11px] font-bold uppercase tracking-[0.3em] transition-all duration-300 hover:text-primary py-2",
                   location.pathname === link.path
                     ? "text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary"
-                    : "text-foreground/60"
+                    : "text-foreground/80"
                 )}
               >
                 {link.name}
@@ -155,15 +155,16 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center p-8 text-center overscroll-none touch-none"
+            className="fixed right-0 top-24 h-full w-full z-[9999] bg-background flex flex-col  p-8 overscroll-none touch-none"
             data-lenis-prevent
           >
+
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 200 }}
-              className="space-y-6 md:space-y-10"
+              className="space-y-3 md:space-y-5 items-center text-center justify-center "
             >
               {navLinks.map((link, idx) => (
                 <motion.div
@@ -175,12 +176,15 @@ export default function Navbar() {
                     duration: 0.6,
                     ease: [0.22, 1, 0.36, 1]
                   }}
+                  className="ph-14 sm:h-16 p-3  sm:px-12 rounded-full hover:bg-white/10 font-mono text-xs font-bold tracking-widest uppercase transition-all duration-3000 "
+
+
                 >
                   <Link
                     onClick={() => setIsMobileMenuOpen(false)}
                     to={link.path}
                     className={cn(
-                      "text-2xl sm:text-3xl font-sans font-medium uppercase tracking-widest block transition-all hover:text-primary",
+                      " text-2xl sm:text-3xl font-sans font-medium uppercase tracking-widest block transition-all hover:text-primary  ",
                       location.pathname === link.path ? "text-primary" : "text-foreground"
                     )}
                   >

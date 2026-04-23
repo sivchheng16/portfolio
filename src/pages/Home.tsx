@@ -224,7 +224,7 @@ export default function Home() {
         <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-primary/3 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className=" pt-10 max-w-7xl mx-auto relative z-10" id="documents">
+        <div className=" py-10 max-w-7xl mx-auto relative z-10" id="documents">
           <motion.div
             className="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-8"
             initial={{ opacity: 0, y: 20 }}

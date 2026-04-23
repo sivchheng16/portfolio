@@ -1,0 +1,310 @@
+[
+  {
+    "level": "Computer-foundation",
+    "title": "00 Foundation",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/computer-foundation/readme"
+      },
+      {
+        "id": "Module03LinuxTerminal",
+        "title": "02. Linux Terminal",
+        "path": "/computer-foundation/module03linuxterminal"
+      },
+      {
+        "id": "Module04FileManagement",
+        "title": "03. File Management",
+        "path": "/computer-foundation/module04filemanagement"
+      }
+    ]
+  },
+  {
+    "level": "Level_01_HTML",
+    "title": "01 HTML",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/level_01_html/readme"
+      },
+      {
+        "id": "Module01GettingStarted",
+        "title": "02. Getting Started",
+        "path": "/level_01_html/module01gettingstarted"
+      },
+      {
+        "id": "Module02DocumentStructure",
+        "title": "03. Document Structure",
+        "path": "/level_01_html/module02documentstructure"
+      },
+      {
+        "id": "Module03TextandLists",
+        "title": "04. Text and Lists",
+        "path": "/level_01_html/module03textandlists"
+      },
+      {
+        "id": "Module04LinksNavigation",
+        "title": "05. Links Navigation",
+        "path": "/level_01_html/module04linksnavigation"
+      },
+      {
+        "id": "Module05ImagesMedia",
+        "title": "06. Images Media",
+        "path": "/level_01_html/module05imagesmedia"
+      },
+      {
+        "id": "Module06TablesForms",
+        "title": "07. Tables Forms",
+        "path": "/level_01_html/module06tablesforms"
+      },
+      {
+        "id": "Module07ProjectBioPage",
+        "title": "08. Project Bio Page",
+        "path": "/level_01_html/module07projectbiopage"
+      }
+    ]
+  },
+  {
+    "level": "Level_02_CSS",
+    "title": "02 CSS",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/level_02_css/readme"
+      },
+      {
+        "id": "Module01IntroductionCSS",
+        "title": "02. Introduction CSS",
+        "path": "/level_02_css/module01introductioncss"
+      },
+      {
+        "id": "Module02SelectorsSpecificity",
+        "title": "03. Selectors Specificity",
+        "path": "/level_02_css/module02selectorsspecificity"
+      },
+      {
+        "id": "Module03ColorsTypography",
+        "title": "04. Colors Typography",
+        "path": "/level_02_css/module03colorstypography"
+      },
+      {
+        "id": "Module04BoxModel",
+        "title": "05. Box Model",
+        "path": "/level_02_css/module04boxmodel"
+      },
+      {
+        "id": "Module05LayoutPositioning",
+        "title": "06. Layout Positioning",
+        "path": "/level_02_css/module05layoutpositioning"
+      },
+      {
+        "id": "Module06FlexboxResponsive",
+        "title": "07. Flexbox Responsive",
+        "path": "/level_02_css/module06flexboxresponsive"
+      },
+      {
+        "id": "Module07ProjectPortfolio",
+        "title": "08. Project Portfolio",
+        "path": "/level_02_css/module07projectportfolio"
+      }
+    ]
+  },
+  {
+    "level": "Level_03_JavaScript_Basics",
+    "title": "03 JavaScript Basics",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/level_03_javascript_basics/readme"
+      },
+      {
+        "id": "Module01Introduction",
+        "title": "02. Introduction",
+        "path": "/level_03_javascript_basics/module01introduction"
+      },
+      {
+        "id": "Module02VariablesDataTypes",
+        "title": "03. Variables DataTypes",
+        "path": "/level_03_javascript_basics/module02variablesdatatypes"
+      },
+      {
+        "id": "Module03OperatorsConditions",
+        "title": "04. Operators Conditions",
+        "path": "/level_03_javascript_basics/module03operatorsconditions"
+      },
+      {
+        "id": "Module04Functions",
+        "title": "05. Functions",
+        "path": "/level_03_javascript_basics/module04functions"
+      },
+      {
+        "id": "Module05ArraysLoops",
+        "title": "06. Arrays Loops",
+        "path": "/level_03_javascript_basics/module05arraysloops"
+      },
+      {
+        "id": "Module06DOMManipulation",
+        "title": "07. DOM Manipulation",
+        "path": "/level_03_javascript_basics/module06dommanipulation"
+      },
+      {
+        "id": "Module07ProjectQuiz",
+        "title": "08. Project Quiz",
+        "path": "/level_03_javascript_basics/module07projectquiz"
+      }
+    ]
+  },
+  {
+    "level": "Level_04_JavaScript_Advanced",
+    "title": "04 JavaScript Advanced",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/level_04_javascript_advanced/readme"
+      },
+      {
+        "id": "Module01ES6Features",
+        "title": "02. ES6 Features",
+        "path": "/level_04_javascript_advanced/module01es6features"
+      },
+      {
+        "id": "Module02AsyncJavaScript",
+        "title": "03. Async JavaScript",
+        "path": "/level_04_javascript_advanced/module02asyncjavascript"
+      },
+      {
+        "id": "Module03WorkingAPIs",
+        "title": "04. Working APIs",
+        "path": "/level_04_javascript_advanced/module03workingapis"
+      },
+      {
+        "id": "Module04ErrorHandling",
+        "title": "05. Error Handling",
+        "path": "/level_04_javascript_advanced/module04errorhandling"
+      },
+      {
+        "id": "Module05ProjectWeather",
+        "title": "06. Project Weather",
+        "path": "/level_04_javascript_advanced/module05projectweather"
+      }
+    ]
+  },
+  {
+    "level": "Level_05_Git_GitHub",
+    "title": "05 Git GitHub",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/level_05_git_github/readme"
+      },
+      {
+        "id": "Module01IntroductionGit",
+        "title": "02. Introduction Git",
+        "path": "/level_05_git_github/module01introductiongit"
+      },
+      {
+        "id": "Module02BasicCommands",
+        "title": "03. Basic Commands",
+        "path": "/level_05_git_github/module02basiccommands"
+      },
+      {
+        "id": "Module03GitHubRemotes",
+        "title": "04. GitHub Remotes",
+        "path": "/level_05_git_github/module03githubremotes"
+      },
+      {
+        "id": "Module04Collaboration",
+        "title": "05. Collaboration",
+        "path": "/level_05_git_github/module04collaboration"
+      }
+    ]
+  },
+  {
+    "level": "Level_06_React",
+    "title": "06 React",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/level_06_react/readme"
+      },
+      {
+        "id": "Module01Introduction",
+        "title": "02. Introduction",
+        "path": "/level_06_react/module01introduction"
+      },
+      {
+        "id": "Module02ComponentsProps",
+        "title": "03. Components Props",
+        "path": "/level_06_react/module02componentsprops"
+      },
+      {
+        "id": "Module03StateEvents",
+        "title": "04. State Events",
+        "path": "/level_06_react/module03stateevents"
+      },
+      {
+        "id": "Module04Hooks",
+        "title": "05. Hooks",
+        "path": "/level_06_react/module04hooks"
+      },
+      {
+        "id": "Module05ReactRouter",
+        "title": "06. React Router",
+        "path": "/level_06_react/module05reactrouter"
+      },
+      {
+        "id": "Module06ProjectTaskManager",
+        "title": "07. Project TaskManager",
+        "path": "/level_06_react/module06projecttaskmanager"
+      }
+    ]
+  },
+  {
+    "level": "Level_07_NextJS_Tailwind",
+    "title": "07 NextJS Tailwind",
+    "modules": [
+      {
+        "id": "README",
+        "title": "Introduction",
+        "path": "/level_07_nextjs_tailwind/readme"
+      },
+      {
+        "id": "Module01IntroductionNextJS",
+        "title": "02. Introduction NextJS",
+        "path": "/level_07_nextjs_tailwind/module01introductionnextjs"
+      },
+      {
+        "id": "Module02TailwindCSS",
+        "title": "03. Tailwind CSS",
+        "path": "/level_07_nextjs_tailwind/module02tailwindcss"
+      },
+      {
+        "id": "Module03DataFetching",
+        "title": "04. Data Fetching",
+        "path": "/level_07_nextjs_tailwind/module03datafetching"
+      },
+      {
+        "id": "Module04APIRoutes",
+        "title": "05. API Routes",
+        "path": "/level_07_nextjs_tailwind/module04apiroutes"
+      },
+      {
+        "id": "Module05Deployment",
+        "title": "06. Deployment",
+        "path": "/level_07_nextjs_tailwind/module05deployment"
+      },
+      {
+        "id": "Module06ProjectEcommerce",
+        "title": "07. Project Ecommerce",
+        "path": "/level_07_nextjs_tailwind/module06projectecommerce"
+      }
+    ]
+  }
+]

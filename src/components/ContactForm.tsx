@@ -47,7 +47,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="glass-panel p-10 md:p-16 rounded-[48px] border-white/5 relative overflow-hidden">
+    <div id="contact" className="glass-panel p-10 md:p-16 rounded-[48px] border-white/5 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 p-10 opacity-10">
         <Cpu size={40} className="text-primary" />

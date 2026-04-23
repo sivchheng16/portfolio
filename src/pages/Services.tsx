@@ -134,9 +134,9 @@ export default function Services() {
       {/* Hero Section */}
       <section className="px-8 relative z-10 text-center">
         <div className="max-w-7xl h-[calc(100vh-8rem)] mx-auto flex flex-col items-center justify-center relative">
-          
+
           {/* Technical Keyword Tokens */}
-          <motion.div 
+          <motion.div
             animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-[20%] -left-10 md:-left-20 glass-panel px-4 py-2 md:px-6 md:py-4 rounded-2xl opacity-[0.05] md:opacity-10 flex items-center gap-3 border-white/5"
@@ -145,7 +145,7 @@ export default function Services() {
             <span className="font-mono text-[7px] md:text-[9px] font-bold tracking-[0.3em] uppercase text-foreground">Scalable</span>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             animate={{ y: [0, 30, 0], rotate: [0, -15, 0] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute bottom-[30%] -right-10 md:-right-20 glass-panel px-4 py-2 md:px-6 md:py-4 rounded-2xl opacity-[0.05] md:opacity-10 flex items-center gap-3 border-white/5"
@@ -154,7 +154,7 @@ export default function Services() {
             <span className="font-mono text-[7px] md:text-[9px] font-bold tracking-[0.3em] uppercase text-foreground">Modular</span>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             animate={{ x: [0, 15, 0], y: [0, -15, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             className="absolute top-[15%] right-5 md:right-20 glass-panel px-3 py-2 md:px-5 md:py-3 rounded-xl opacity-[0.03] md:opacity-5 flex items-center gap-2 border-white/5"
@@ -162,7 +162,7 @@ export default function Services() {
             <span className="font-mono text-[6px] md:text-[8px] font-bold tracking-[0.2em] uppercase text-primary">REST v2.4</span>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             animate={{ x: [0, -20, 0], y: [0, 10, 0] }}
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
             className="absolute bottom-[20%] left-5 md:left-10 glass-panel px-3 py-2 md:px-5 md:py-3 rounded-xl opacity-[0.03] md:opacity-5 flex items-center gap-2 border-white/5"
@@ -265,7 +265,7 @@ export default function Services() {
             >
               {/* Background Accent */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[80px] -mr-32 -mt-32 group-hover:bg-primary/10 transition-colors duration-700" />
-              
+
               <div className="p-12 flex flex-col h-full relative z-10">
                 {/* Header Area */}
                 <div className="flex items-start justify-between mb-12">
@@ -282,7 +282,7 @@ export default function Services() {
                 <div className="space-y-6">
                   <h2 className="text-4xl font-sans font-medium tracking-tight italic">{service.name}</h2>
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">{service.description}</p>
-                  
+
                   <p className="text-muted-foreground font-sans leading-relaxed italic opacity-80 max-w-sm">
                     {service.detail}
                   </p>
@@ -290,7 +290,7 @@ export default function Services() {
 
                 {/* Reveal Area (Features & Tech Stack) */}
                 <div className="mt-auto pt-12">
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     className="space-y-8"
@@ -298,7 +298,7 @@ export default function Services() {
                     {/* Tech Stack Tags */}
                     <div className="flex flex-wrap gap-2">
                       {service.techStack.map((tech: string) => (
-                        <span 
+                        <span
                           key={tech}
                           className="px-3 py-1.5 rounded-lg glass-panel text-[8px] font-mono font-bold uppercase tracking-widest text-primary/40 group-hover:text-primary group-hover:border-primary/20 transition-all border border-transparent"
                         >
@@ -337,13 +337,13 @@ export default function Services() {
         <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] bg-secondary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute -inset-20 bg-primary/5 blur-[150px] rounded-full opacity-50" />
         <div className="absolute top-1/2 left-0 w-full h-px bg-primary/10 -translate-y-1/2 pointer-events-none hidden lg:block" />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-40">
             <p className="font-mono text-[10px] font-bold tracking-[0.5em] text-primary uppercase mb-8">Execution Lifecycle</p>
             <h2 className="text-6xl md:text-8xl font-sans font-medium tracking-tighter">The <span className="italic font-light opacity-40">Journey.</span></h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8 relative">
             {/* Connecting line for mobile */}
             <div className="absolute left-8 top-0 bottom-0 w-px bg-primary/10 lg:hidden" />
@@ -358,11 +358,11 @@ export default function Services() {
               >
                 {/* Technical Node */}
                 <div className="relative mb-12">
-                   <div className="w-16 h-16 rounded-full glass-panel border-white/10 flex items-center justify-center relative z-10 group-hover:border-primary/40 transition-colors duration-700 bg-background">
-                     <span className="font-mono text-xs font-bold text-primary/40 group-hover:text-primary transition-colors">0{idx + 1}</span>
-                   </div>
-                   {/* Node Pulse Effect */}
-                   <div className="absolute inset-0 rounded-full bg-primary/20 blur-md scale-0 group-hover:scale-150 transition-transform duration-700 opacity-0 group-hover:opacity-100" />
+                  <div className="w-16 h-16 rounded-full glass-panel border-white/10 flex items-center justify-center relative z-10 group-hover:border-primary/40 transition-colors duration-700 bg-background">
+                    <span className="font-mono text-xs font-bold text-primary/40 group-hover:text-primary transition-colors">0{idx + 1}</span>
+                  </div>
+                  {/* Node Pulse Effect */}
+                  <div className="absolute inset-0 rounded-full bg-primary/20 blur-md scale-0 group-hover:scale-150 transition-transform duration-700 opacity-0 group-hover:opacity-100" />
                 </div>
 
                 <div className="space-y-4 px-4">
@@ -404,7 +404,7 @@ export default function Services() {
             <p className="text-xl text-muted-foreground font-sans leading-relaxed mb-12 italic opacity-80">
               As a core member of the KOOMPI development team, we leverage sovereign technology and modular architectures to build products that redefine regional standards.
             </p>
-            
+
             <div className="space-y-6">
               {[
                 "Sovereign Tech Integration",
@@ -454,11 +454,10 @@ export default function Services() {
                 <button
                   key={category.name}
                   onClick={() => setActiveCategory(category.name)}
-                  className={`px-8 py-3 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-500 ${
-                    activeCategory === category.name
-                      ? "bg-primary text-background shadow-lg shadow-primary/20"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
+                  className={`px-8 py-3 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-500 ${activeCategory === category.name
+                    ? "bg-primary text-background shadow-lg shadow-primary/20"
+                    : "text-muted-foreground hover:text-foreground"
+                    }`}
                 >
                   {category.name}
                 </button>
@@ -502,7 +501,7 @@ export default function Services() {
       </section>
 
 
-      <section id="contact" className="py-28 px-5 md:px-5 relative overflow-hidden bg-background section-connector">
+      <section className="pt-28 sm:px-5 md:px-5 relative overflow-hidden bg-background section-connector">
         {/* Subtle Background Ornaments */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
           <motion.div

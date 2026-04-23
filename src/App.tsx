@@ -1,21 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import Lenis from 'lenis';
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from 'sonner';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Portfolio from './pages/Portfolio';
-import GamePortal from './pages/GamePortal';
-import About from './pages/About';
-import Services from './pages/Services';
-import TopicDetails from './pages/TopicDetails';
 import { Project } from './constants';
 import ProjectModal from './components/ProjectModal';
 import ScrollToTop from './components/ScrollToTop';
 import AuthModal from './components/AuthModal';
 
+// Lazy load pages
+const Home = lazy(() => import('./pages/Home'));
+const Portfolio = lazy(() => import('./pages/Portfolio'));
+const GamePortal = lazy(() => import('./pages/GamePortal'));
+const About = lazy(() => import('./pages/About'));
+const Services = lazy(() => import('./pages/Services'));
+const TopicDetails = lazy(() => import('./pages/TopicDetails'));
+
+// Loading Fallback Component
+const PageLoader = () => (
+  <div className="h-screen w-full flex flex-col items-center justify-center bg-background">
+    <div className="relative w-24 h-24">
+      <div className="absolute inset-0 border-4 border-primary/10 rounded-full" />
+      <div className="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+    </div>
+    <div className="mt-8 font-mono text-[10px] font-bold tracking-[0.5em] text-primary uppercase animate-pulse">
+      Loading System...
+    </div>
+  </div>
+);
 
 function AnimatedRoutes({
   favorites,
@@ -26,26 +40,29 @@ function AnimatedRoutes({
 
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/portfolio"
-          element={
-            <Portfolio
-              favorites={favorites}
-              recentlyPlayed={[]} // Keeping for compatibility, not used in Portfolio
-              toggleFavorite={toggleFavorite}
-              setViewingProject={setViewingProject}
-              handleDownload={() => { }} // Not used in Portfolio
-            />
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/pages" element={<Services />} />
-        <Route path="/vault" element={<GamePortal />} />
-        <Route path="/document/:topicId" element={<TopicDetails />} />
-      </Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/portfolio"
+            element={
+              <Portfolio
+                favorites={favorites}
+                recentlyPlayed={[]}
+                toggleFavorite={toggleFavorite}
+                setViewingProject={setViewingProject}
+                handleDownload={() => { }}
+              />
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/pages" element={<Services />} />
+          <Route path="/vault" element={<GamePortal />} />
+          <Route path="/document/:topicId" element={<TopicDetails />} />
+          <Route path="/document/:topicId/:moduleId" element={<TopicDetails />} />
+        </Routes>
+      </Suspense>
     </AnimatePresence>
   );
 }

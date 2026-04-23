@@ -16,7 +16,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-24 px-8 border-t border-white/5 bg-background relative overflow-hidden">
+    <footer className="pt-24 px-8 border-t border-white/5 bg-background relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -106,18 +106,18 @@ export default function Footer() {
         </div>
 
         {/* Legal & Credits */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="py-5 border-t border-b border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60">
-              © {currentYear} SIVCHHENG KHEANG // ARCHITECTED IN PHNOM PENH
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60">
+              © {currentYear} SIVCHHENG KHEANG
             </p>
             <div className="h-4 w-px bg-white/10 hidden md:block" />
-            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-primary">
-              MEMBER OF KOOMPI COLLECTIVE
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/70">
+              APPRENTICE SHIP MEMBER OF KOOMPI
             </p>
           </div>
           <p className="font-sans italic text-sm text-muted-foreground/40">
-            Powered by sovereign code and creative intuition.
+            Powered by KOOMPI
           </p>
         </div>
       </motion.div>

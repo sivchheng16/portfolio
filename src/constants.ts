@@ -159,78 +159,165 @@ export interface Topic {
   iconName: string;
   logo: string;
   gradient: string;
+  textgradient: string;
   level: string;
   lessons: Lesson[];
 }
 
 export const TOPICS: Topic[] = [
   {
+    id: "computer-foundation",
+    title: "Foundation",
+    description: "Master the essential digital skills: from Linux terminal navigation to professional file management and typing proficiency.",
+    iconName: "Monitor",
+    logo: "/program-logo/linux.png", // Assuming this exists or using a fallback
+    gradient: "from-slate-500/20 to-slate-200/5",
+    textgradient: "bg-gradient-to-br from-slate-400 to-slate-700 bg-clip-text text-transparent inline-block",
+    level: "Recomend ",
+    lessons: [
+      { id: "computer-foundation-readme", title: "Introduction", description: "Track 00 overview and certification requirements.", duration: "10 mins" },
+      { id: "computer-foundation-module03linuxterminal", title: "Linux Terminal", description: "Learn to navigate and control your system using the command line.", duration: "45 mins" },
+      { id: "computer-foundation-module04filemanagement", title: "File Management", description: "Organize your projects and files like a professional developer.", duration: "45 mins" },
+    ],
+  },
+  {
     id: "html",
     title: "HTML",
-    description: "The standard markup language for documents designed to be displayed in a web browser.",
+    description: "The standard markup language for creating web pages. Learn how to structure content, build forms, add media, and create the skeleton of every website.",
     iconName: "LayoutTemplate",
-    logo: "../public/program-logo/html.png",
+    logo: "/program-logo/html.png",
     gradient: "from-orange-500/20 to-orange-200/5",
+    textgradient: "bg-gradient-to-br from-orange-500 to-red-500 bg-clip-text text-transparent inline-block",
     level: "Beginner",
     lessons: [
-      { id: "html-1", title: "Introduction to HTML", description: "Learn the basic structure of an HTML document.", duration: "30 mins" },
-      { id: "html-2", title: "HTML Elements and Tags", description: "Deep dive into paragraphs, headings, and formatting.", duration: "45 mins" },
-      { id: "html-3", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-4", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-5", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-6", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-7", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-8", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-9", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-10", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-11", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-12", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-13", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" },
-      { id: "html-14", title: "Forms and Input", description: "Learn how to build interactive forms for users.", duration: "1 hr" }
-    ]
+      { id: "html-readme", title: "Introduction", description: "Course overview, learning objectives, and resources.", duration: "10 mins" },
+      { id: "html-module01gettingstarted", title: "Getting Started", description: "Set up your environment and write your first HTML document.", duration: "30 mins" },
+      { id: "html-module02documentstructure", title: "Document Structure", description: "Understand DOCTYPE, head, body, and semantic layout elements.", duration: "40 mins" },
+      { id: "html-module03textandlists", title: "Text and Lists", description: "Work with headings, paragraphs, ordered and unordered lists.", duration: "35 mins" },
+      { id: "html-module04linksnavigation", title: "Links & Navigation", description: "Create hyperlinks, anchor navigation, and multi-page sites.", duration: "40 mins" },
+      { id: "html-module05imagesmedia", title: "Images & Media", description: "Embed images, video, audio, and responsive media elements.", duration: "45 mins" },
+      { id: "html-module06tablesforms", title: "Tables & Forms", description: "Build data tables and interactive input forms with validation.", duration: "1 hr" },
+      { id: "html-module07projectbiopage", title: "Project — Bio Page", description: "Build a complete personal bio page using all HTML skills.", duration: "1.5 hrs" },
+    ],
   },
   {
     id: "css",
     title: "CSS",
-    description: "Style sheet language used for describing the presentation of a document written in HTML.",
+    description: "Style sheet language for describing the presentation of HTML documents. Master selectors, the box model, Flexbox, and responsive design principles.",
     iconName: "Paintbrush",
-    logo: "../public/program-logo/css.png",
+    logo: "/program-logo/css.png",
     gradient: "from-blue-500/20 to-blue-200/5",
+    textgradient: "bg-gradient-to-br from-blue-400 to-blue-700 bg-clip-text text-transparent inline-block",
     level: "Beginner",
     lessons: [
-      { id: "css-1", title: "CSS Fundamentals", description: "Understanding selectors, properties, and values.", duration: "45 mins" },
-      { id: "css-2", title: "Flexbox & Grid", description: "Mastering modern layout techniques.", duration: "1.5 hrs" },
-      { id: "css-3", title: "Animations", description: "Creating smooth transitions and keyframe animations.", duration: "1 hr" }
-    ]
+      { id: "css-readme", title: "Introduction", description: "Course overview, objectives, and supplemental resources.", duration: "10 mins" },
+      { id: "css-module01introductioncss", title: "Introduction to CSS", description: "Selectors, properties, values, and how to link stylesheets.", duration: "35 mins" },
+      { id: "css-module02selectorsspecificity", title: "Selectors & Specificity", description: "Class, ID, pseudo-class selectors and the cascade.", duration: "45 mins" },
+      { id: "css-module03colorstypography", title: "Colors & Typography", description: "Color systems, Google Fonts, line-height, and font stacks.", duration: "40 mins" },
+      { id: "css-module04boxmodel", title: "The Box Model", description: "Margin, padding, border, and how browsers compute layout.", duration: "40 mins" },
+      { id: "css-module05layoutpositioning", title: "Layout & Positioning", description: "Static, relative, absolute, fixed, and sticky positioning.", duration: "50 mins" },
+      { id: "css-module06flexboxresponsive", title: "Flexbox & Responsive", description: "Flex containers, media queries, and mobile-first design.", duration: "1 hr" },
+      { id: "css-module07projectportfolio", title: "Project — Portfolio", description: "Style a complete portfolio page using real-world CSS.", duration: "1.5 hrs" },
+    ],
   },
   {
     id: "javascript",
     title: "JavaScript",
-    description: "High-level, often just-in-time compiled language that conforms to the ECMAScript standard.",
+    description: "The language of the web. Learn variables, functions, arrays, loops, and DOM manipulation to make websites interactive and dynamic.",
     iconName: "Code2",
-    logo: "../public/program-logo/javascript.png",
+    logo: "/program-logo/javascript.png",
     gradient: "from-yellow-400/20 to-yellow-100/5",
+    textgradient: "bg-gradient-to-br from-yellow-300 to-amber-300 bg-clip-text text-transparent inline-block",
+
     level: "Intermediate",
     lessons: [
-      { id: "js-1", title: "Variables & Data Types", description: "Understanding let, const, strings, arrays, and objects.", duration: "1 hr" },
-      { id: "js-2", title: "Functions & Scope", description: "Learn about arrow functions, closures, and lexical scope.", duration: "1.5 hrs" },
-      { id: "js-3", title: "DOM Manipulation", description: "Interacting with the browser and handling events.", duration: "2 hrs" }
-    ]
+      { id: "javascript-readme", title: "Introduction", description: "Course overview, objectives, and supplemental resources.", duration: "10 mins" },
+      { id: "javascript-module01introduction", title: "Introduction to JS", description: "What JavaScript is, how browsers run it, and your first script.", duration: "30 mins" },
+      { id: "javascript-module02variablesdatatypes", title: "Variables & Data Types", description: "let, const, strings, numbers, booleans, arrays, and objects.", duration: "50 mins" },
+      { id: "javascript-module03operatorsconditions", title: "Operators & Conditions", description: "Arithmetic, comparison, logical operators, and if/else chains.", duration: "45 mins" },
+      { id: "javascript-module04functions", title: "Functions", description: "Declarations, expressions, arrow functions, and scope.", duration: "1 hr" },
+      { id: "javascript-module05arraysloops", title: "Arrays & Loops", description: "for, while, forEach, map, filter, and array methods.", duration: "1 hr" },
+      { id: "javascript-module06dommanipulation", title: "DOM Manipulation", description: "Query elements, handle events, and update the page dynamically.", duration: "1.5 hrs" },
+      { id: "javascript-module07projectquiz", title: "Project — Quiz App", description: "Build a fully interactive quiz using all JS fundamentals.", duration: "2 hrs" },
+    ],
+  },
+  {
+    id: "javascript-advanced",
+    title: "JS Advanced",
+    description: "Go deeper into JavaScript with ES6+ features, asynchronous programming, REST APIs, and professional error handling patterns.",
+    iconName: "Zap",
+    logo: "/program-logo/javascript.png",
+    gradient: "from-amber-400/20 to-amber-100/5",
+    textgradient: "bg-gradient-to-br from-yellow-400 to-amber-500 bg-clip-text text-transparent inline-block",
+
+    level: "Intermediate",
+    lessons: [
+      { id: "javascript-advanced-readme", title: "Introduction", description: "Course overview, objectives, and supplemental resources.", duration: "10 mins" },
+      { id: "javascript-advanced-module01es6features", title: "ES6+ Features", description: "Destructuring, spread, template literals, and modern syntax.", duration: "1 hr" },
+      { id: "javascript-advanced-module02asyncjavascript", title: "Async JavaScript", description: "Callbacks, Promises, async/await, and the event loop.", duration: "1.5 hrs" },
+      { id: "javascript-advanced-module03workingapis", title: "Working with APIs", description: "Fetch API, REST principles, JSON, and real-world data.", duration: "1 hr" },
+      { id: "javascript-advanced-module04errorhandling", title: "Error Handling", description: "try/catch, custom errors, and defensive programming.", duration: "45 mins" },
+      { id: "javascript-advanced-module05projectweather", title: "Project — Weather App", description: "Build a live weather app using a public API.", duration: "2 hrs" },
+    ],
+  },
+  {
+    id: "git",
+    title: "Git & GitHub",
+    description: "Version control is a superpower. Learn Git fundamentals, branching, merging, and how to collaborate with teams using GitHub.",
+    iconName: "GitBranch",
+    logo: "/program-logo/git.png",
+    gradient: "from-red-500/20 to-red-200/5",
+    textgradient: "bg-gradient-to-br from-gray-400 to-gray-800 bg-clip-text text-transparent inline-block",
+
+    level: "Beginner",
+    lessons: [
+      { id: "git-readme", title: "Introduction", description: "Course overview, objectives, and supplemental resources.", duration: "10 mins" },
+      { id: "git-module01introductiongit", title: "Introduction to Git", description: "What version control is, installing Git, and basic concepts.", duration: "30 mins" },
+      { id: "git-module02basiccommands", title: "Basic Commands", description: "init, add, commit, status, log — the daily Git workflow.", duration: "45 mins" },
+      { id: "git-module03githubremotes", title: "GitHub & Remotes", description: "Push, pull, clone, and manage remote repositories on GitHub.", duration: "50 mins" },
+      { id: "git-module04collaboration", title: "Collaboration", description: "Branching, merging, pull requests, and resolving conflicts.", duration: "1 hr" },
+    ],
   },
   {
     id: "react",
     title: "React",
-    description: "A free and open-source front-end JavaScript library for building user interfaces based on components.",
+    description: "A powerful UI library for building component-based interfaces. Learn props, state, hooks, routing, and build real applications.",
     iconName: "AppWindow",
-    logo: "../public/program-logo/react.png",
+    logo: "/program-logo/react.png",
     gradient: "from-cyan-500/20 to-cyan-200/5",
+    textgradient: "bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent inline-block",
+
     level: "Advanced",
     lessons: [
-      { id: "react-1", title: "Components & Props", description: "Building reusable UI components.", duration: "1 hr" },
-      { id: "react-2", title: "State & Hooks", description: "Managing state with useState and useEffect.", duration: "2 hrs" },
-      { id: "react-3", title: "Routing", description: "Client-side routing with React Router.", duration: "1.5 hrs" }
-    ]
-  }
+      { id: "react-readme", title: "Introduction", description: "Course overview, objectives, and supplemental resources.", duration: "10 mins" },
+      { id: "react-module01introduction", title: "Introduction to React", description: "What React is, JSX syntax, and how components work.", duration: "40 mins" },
+      { id: "react-module02componentsprops", title: "Components & Props", description: "Reusable components, prop passing, and component trees.", duration: "50 mins" },
+      { id: "react-module03stateevents", title: "State & Events", description: "useState, event handling, and controlled components.", duration: "1 hr" },
+      { id: "react-module04hooks", title: "React Hooks", description: "useEffect, useRef, useContext, and custom hooks.", duration: "1.5 hrs" },
+      { id: "react-module05reactrouter", title: "React Router", description: "Client-side routing, nested routes, and dynamic params.", duration: "1 hr" },
+      { id: "react-module06projecttaskmanager", title: "Project — Task Manager", description: "Build a full CRUD task manager with state management.", duration: "2 hrs" },
+    ],
+  },
+  {
+    id: "nextjs",
+    title: "Next.js",
+    description: "The React framework for production. Learn server-side rendering, file-based routing, API routes, Tailwind CSS, and deployment.",
+    iconName: "Server",
+    logo: "/program-logo/nextjs.png",
+    gradient: "from-slate-400/20 to-slate-200/5",
+    textgradient: "bg-gradient-to-br from-gray-900 to-gray-300 bg-clip-text text-transparent inline-block",
+
+    level: "Advanced",
+    lessons: [
+      { id: "nextjs-readme", title: "Introduction", description: "Course overview, objectives, and supplemental resources.", duration: "10 mins" },
+      { id: "nextjs-module01introductionnextjs", title: "Introduction to Next.js", description: "Pages router, SSR vs SSG, and the Next.js project structure.", duration: "45 mins" },
+      { id: "nextjs-module02tailwindcss", title: "Tailwind CSS", description: "Utility-first CSS, configurations, and responsive design.", duration: "1 hr" },
+      { id: "nextjs-module03datafetching", title: "Data Fetching", description: "getStaticProps, getServerSideProps, SWR, and data patterns.", duration: "1 hr" },
+      { id: "nextjs-module04apiroutes", title: "API Routes", description: "Building serverless API endpoints inside Next.js.", duration: "50 mins" },
+      { id: "nextjs-module05deployment", title: "Deployment", description: "Deploy to Vercel, environment variables, and CI/CD basics.", duration: "45 mins" },
+      { id: "nextjs-module06projectecommerce", title: "Project — E-commerce", description: "Build a full-stack e-commerce store with Next.js.", duration: "3 hrs" },
+    ],
+  },
 ];
 
 export const categories = [
