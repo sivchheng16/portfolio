@@ -70,7 +70,7 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-32 relative overflow-hidden ">
+    <div className="bg-background text-foreground relative overflow-hidden ">
       <NavbarMobile />
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 -z-10">
@@ -79,8 +79,8 @@ export default function About() {
       </div>
 
       {/* Hero Section */}
-      <section className="px-6 md:px-8 mb-20 md:mb-32 relative z-10 section-connector">
-        <div className="max-w-7xl mx-auto">
+      <section className="min-h-screen h-full px-6 md:px-8 relative z-10 section-connector flex items-center justify-center">
+        <div className="max-w-7xl h-full mx-auto flex items-center justify-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,8 +116,8 @@ export default function About() {
       </section>
 
       {/* Founder Story */}
-      <section className="px-6 md:px-8 mb-20 md:mb-32 relative section-connector">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1.8fr] gap-20 items-center">
+      <section className="min-h-screen h-full px-6 md:px-8 relative section-connector flex items-center justify-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1.8fr] gap-20 items-center w-full">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -186,12 +186,12 @@ export default function About() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-20 md:py-32 px-6 md:px-8 section-connector relative overflow-hidden">
+      <section className="min-h-screen h-full py-20 md:py-28 px-6 md:px-8 section-connector relative overflow-hidden flex items-center justify-center">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 right-[10%] w-[60vw] h-[60vw] bg-secondary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="text-center mb-24">
             <p className="font-mono text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-6">Execution Strategy</p>
             <h2 className="text-4xl md:text-6xl font-sans font-medium">Core Axioms.</h2>
@@ -228,8 +228,8 @@ export default function About() {
       </section>
 
       {/* Final Statement */}
-      <section className="py-28 px-8 section-connector text-center relative overflow-hidden">
-        <div className="flex items-center justify-center max-w-5xl mx-auto" >
+      <section className="min-h-screen h-full px-8 section-connector text-center relative overflow-hidden flex items-center justify-center">
+        <div className="flex items-center justify-center max-w-5xl mx-auto w-full" >
 
           {/* Top Connective Bloom */}
           <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[70vw] h-[70vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
@@ -237,7 +237,7 @@ export default function About() {
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="glass-panel py-20 px-8 md:py-32 md:px-20 rounded-[48px] md:rounded-[80px] border-white/5 relative overflow-hidden shadow-[0_64px_128px_-16px_rgba(0,0,0,0.5)]"
+            className="glass-panel py-20 px-8 md:py-28 md:px-20 rounded-[48px] md:rounded-[80px] border-white/5 relative overflow-hidden shadow-[0_64px_128px_-16px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
             <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-primary/5 blur-[150px] rounded-full" />

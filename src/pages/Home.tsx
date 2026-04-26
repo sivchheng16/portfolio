@@ -73,7 +73,7 @@ export default function Home() {
       <NavbarMobile />
 
       {/* Premium Hero Section */}
-      <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center p-6 lg:p-8 overflow-hidden section-connector">
+      <section className="relative min-h-[100vh] md:min-h-screen flex items-center justify-center p-6 lg:p-8 overflow-hidden section-connector">
         {/* Background Mesh Gradients */}
         <div className="absolute inset-0 z-0">
           <motion.div
@@ -189,21 +189,22 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6 md:gap-8">
-              <Button
-                onClick={requireAuth(() => {
-                  const el = document.getElementById("documents");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                })}
-                className="h-14 md:h-16 px-10 md:px-12 rounded-full bg-primary text-background font-mono text-[11px] font-bold tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/20"
-              >
-                System Modules
-              </Button>
+            <Button
+              onClick={requireAuth(() => {
+                const el = document.getElementById("documents");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              })}
+              className="h-14 md:h-16 px-10 md:px-12 rounded-full bg-primary text-background font-mono text-[11px] font-bold tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/20"
+            >
+              Explorer Now
+            </Button>
             <Button
               onClick={requireAuth(() => navigate("/about"))}
               variant="outline"
               className="h-14 md:h-16 px-10 md:px-12 rounded-full border-white/10 hover:bg-white/5 font-mono text-[11px] font-bold tracking-widest uppercase backdrop-blur-sm transition-all duration-300"
             >
-              Start Learning
+              Learn More
+
             </Button>
           </div>
         </motion.div>
@@ -213,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* Learning & Topics Section */}
-      <section id="documents" className="py-20 md:py-32 px-8 section-connector bg-background relative overflow-hidden">
+      <section id="documents" className="py-20 md:py-28 px-8 section-connector bg-background relative overflow-hidden">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
 
@@ -245,7 +246,7 @@ export default function Home() {
                 </p>
                 <div className="h-[1px] w-12 bg-primary/20 group-hover:w-20 transition-all duration-700" />
               </div>
-              <h2 
+              <h2
                 className="text-5xl md:text-8xl font-sans font-medium tracking-tighter leading-[0.9] md:leading-[0.85] cursor-pointer group/title"
                 onClick={requireAuth(() => {
                   const el = document.getElementById("documents");
@@ -257,9 +258,9 @@ export default function Home() {
                 <span className="italic font-light text-muted-foreground group-hover/title:text-primary transition-colors duration-700">Languages</span>
               </h2>
             </div>
-            <p className="text-primary text-lg font-sans max-w-sm">
+            {/* <p className="text-primary text-lg font-sans max-w-sm">
               Explore the core foundations of modern computing and software development.
-            </p>
+            </p> */}
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -271,9 +272,9 @@ export default function Home() {
                   key={topic.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true, amount: 0.1 }}
+                  whileTap={{ scale: 0.5 }}
+                  transition={{ duration: 0.1, delay: idx * 0.1 }}
+                // viewport={{ once: true, amount: 0.1 }}
                 >
                   <button
                     onClick={requireAuth(() => navigate(`/document/${topic.id}`))}
@@ -322,9 +323,9 @@ export default function Home() {
                           {lessonCount * 45}M_EST
                         </div>
                       </div>
-                      </div>
-                    </button>
-                  </motion.div>
+                    </div>
+                  </button>
+                </motion.div>
               );
             })}
           </div>
@@ -337,7 +338,7 @@ export default function Home() {
       {/* Games Highlight — List style */}
       < section
         id="projects"
-        className="py-20 md:py-32 px-8 section-connector bg-muted/5 relative overflow-hidden"
+        className="py-20 md:py-28 px-8 section-connector bg-muted/5 relative overflow-hidden"
       >
         {/* Top Connective Bloom */}
         < div className="absolute -top-48 right-0 w-[50vw] h-[50vw] bg-secondary/5 blur-[150px] rounded-full pointer-events-none" />
@@ -350,13 +351,13 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.1 }}
           >
             <div>
               <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-6">
                 Additional Games Archive
               </p>
-              <h2 
+              <h2
                 onClick={() => navigate("/vault")}
                 className="text-6xl font-sans font-medium tracking-tight hover:text-primary transition-colors duration-500 cursor-pointer"
               >
@@ -477,7 +478,7 @@ export default function Home() {
       </section >
 
       {/* Vision — asymmetric layout */}
-      <section id="about" className="py-20 md:py-32 px-8 section-connector relative overflow-hidden" >
+      <section id="about" className="py-20 md:py-28 px-8 section-connector relative overflow-hidden" >
         {/* Top Connective Bloom */}
         < div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[60vw] h-[40vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
 
@@ -489,7 +490,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.1 }}
           >
             <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-6">
               Approach
@@ -505,7 +506,7 @@ export default function Home() {
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: false, amount: 0.5 }}
+            viewport={{ once: false, amount: 0.1 }}
           >
             <p className="text-2xl text-muted-foreground font-sans leading-relaxed max-w-2xl hover:text-foreground transition-colors duration-500">
               KOOMPI OS is built on the principles of open-source freedom and
@@ -715,7 +716,7 @@ export default function Home() {
       </section> */}
 
       {/* Services — minimalist cards */}
-      <section className="py-20 md:py-32 px-8 section-connector bg-background relative overflow-hidden">
+      <section className="py-20 md:py-28 px-8 section-connector bg-background relative overflow-hidden">
         {/* Top Connective Bloom */}
         <div className="absolute -top-32 -right-24 w-[40vw] h-[40vw] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -728,7 +729,7 @@ export default function Home() {
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: false, amount: 0.5 }}
+            // viewport={{ once: false, amount: 0.1 }}
             >
               <p className="font-sans text-[10px] font-bold tracking-[0.3em] text-primary uppercase mb-6">
                 What We Do
@@ -772,8 +773,8 @@ export default function Home() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5 border border-white/5"
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: false, amount: 0.5 }}
+            // transition={{ duration: 0.8 }}
+            // viewport={{ once: false, amount: 0.5 }}
             >
               {services.map((service, idx) => (
                 <motion.div
@@ -781,15 +782,15 @@ export default function Home() {
                   className="bg-background/40 backdrop-blur-xl p-12 flex flex-col justify-between hover:bg-white/5 transition-all duration-500 group relative overflow-hidden"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                // transition={{ duration: 0.6, delay: idx * 0.1 }}
+                // viewport={{ once: false, amount: 0.5 }}
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                   <motion.div
                     className="w-14 h-14 glass-panel rounded-2xl flex items-center justify-center text-muted-foreground group-hover:border-primary group-hover:text-primary transition-all duration-700 mb-16 shadow-lg shadow-black/20"
                     whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.8 }}
+                  // transition={{ duration: 0.8 }}
                   >
                     <service.icon className="w-6 h-6" />
                   </motion.div>
@@ -819,26 +820,27 @@ export default function Home() {
           className="max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: false, amount: 0.1 }}
         >
           <p className="font-sans text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-10">
             Get in Touch
           </p>
-          <h2 className="text-6xl md:text-8xl font-sans font-medium tracking-tighter mb-16 px-4 hover:text-primary transition-colors duration-500 cursor-pointer">
+          <h2 className="text-5xl md:text-6xl font-sans font-medium tracking-tighter mb-16 px-4 hover:text-primary transition-colors duration-500 cursor-pointer">
             Have a project
             <br />
             in mind?
           </h2>
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex flex-col lg:flex-row md:flex-no-wrap  justify-center gap-3 md:gap-8 m-auto max-w-[250px]">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
+              className=""
             >
-              <Button asChild className="h-20 px-16 rounded-full bg-primary text-background hover:bg-primary shadow-2xl shadow-primary/20 transition-all duration-500 font-mono text-[11px] font-bold tracking-[0.4em] uppercase">
+              <Button asChild className="h-14 md:h-20 w-full px-16 rounded-full bg-primary text-background hover:bg-primary shadow-2xl shadow-primary/20 transition-all duration-500 font-mono text-[11px] font-bold tracking-[0.4em] uppercase">
                 <Link to="/services#contact">
-                  Initialize Project Brief
+                  Contact Us
                 </Link>
               </Button>
             </motion.div>
@@ -850,10 +852,10 @@ export default function Home() {
               <Button
                 variant="outline"
                 asChild
-                className="h-20 px-16 rounded-full glass-panel border-white/10 text-foreground font-mono text-[11px] font-bold tracking-[0.4em] uppercase hover:bg-white/5 transition-all duration-500"
+                className="h-14 md:h-20 w-full px-16 rounded-full glass-panel border-white/10 text-foreground font-mono text-[11px] font-bold tracking-[0.4em] uppercase hover:bg-white/5 transition-all duration-500"
               >
                 <Link to="/services">
-                  System Studio Locale
+                  All Services
                 </Link>
               </Button>
             </motion.div>

@@ -29,7 +29,7 @@ export default function Portfolio({
   const [isStickyBottom, setIsStickyBottom] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const { requireAuth } = useRequireAuth();
-  
+
   const protectedToggleFavorite = requireAuth(toggleFavorite);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function Portfolio({
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-32 relative overflow-hidden mb-48">
-           <NavbarMobile />
+      <NavbarMobile />
       {/* Background Mesh Gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-[10%] left-[5%] w-[45vw] h-[45vw] bg-primary/5 blur-[120px] rounded-full" />
@@ -144,7 +144,7 @@ export default function Portfolio({
         </section>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-32 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-28 relative z-10">
         {/* All Projects */}
         <section className="mt-12 md:mt-0">
           <div className="flex flex-col sm:flex-row items-center justify-between mb-16 md:mb-24 gap-6">

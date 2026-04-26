@@ -253,7 +253,7 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section className="px-6 md:px-8 py-20 md:py-32 relative z-10 section-connector">
+      <section className="px-6 md:px-8 py-20 md:py-28 relative z-10 section-connector">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 right-[10%] w-[50vw] h-[50vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-10">
@@ -336,7 +336,7 @@ export default function Services() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 md:py-32 px-6 md:px-8 relative overflow-hidden section-connector">
+      <section className="py-20 md:py-28 px-6 md:px-8 relative overflow-hidden section-connector">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[60vw] h-[60vw] bg-secondary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute -inset-20 bg-primary/5 blur-[150px] rounded-full opacity-50" />
@@ -387,7 +387,7 @@ export default function Services() {
       </section>
 
       {/* KOOMPI Partnership */}
-      <section className="py-20 md:py-32 px-6 md:px-8 relative bg-white/[0.02] section-connector">
+      <section className="py-20 md:py-28 px-6 md:px-8 relative bg-white/[0.02] section-connector">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 right-0 w-[50vw] h-[50vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -443,22 +443,22 @@ export default function Services() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 md:py-32 px-6 md:px-8 relative z-10 section-connector">
+      <section className="py-20 md:py-28 px-6 md:px-8 relative z-10 section-connector">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 left-[10%] w-[40vw] h-[40vw] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-32">
+          <div className="text-center mb-10 md:mb-32">
             <p className="font-mono text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-6">The Collective</p>
             <h2 className="text-5xl md:text-6xl font-sans font-medium">KOOMPI Team.</h2>
           </div>
 
-          <div className="flex justify-center mb-20">
+          <div className="flex w-full justify-center mb-10 md:mb-20">
             <div className="glass-panel p-1.5 rounded-full inline-flex">
               {categories.map((category: any) => (
                 <button
                   key={category.name}
                   onClick={() => setActiveCategory(category.name)}
-                  className={`px-8 py-3 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-500 ${activeCategory === category.name
+                  className={`px-4 py-2 md:px-8 md:py-3 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-500 ${activeCategory === category.name
                     ? "bg-primary text-background shadow-lg shadow-primary/20"
                     : "text-muted-foreground hover:text-foreground"
                     }`}
@@ -505,7 +505,8 @@ export default function Services() {
       </section>
 
 
-      <section className="py-20 md:py-28 px-4 md:px-5 relative overflow-hidden bg-background section-connector">
+      <section className="py-20 md:py-24  flex items-center px-4 md:px-5 relative overflow-hidden bg-background section-connector">
+
         {/* Subtle Background Ornaments */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
           <motion.div
@@ -526,7 +527,7 @@ export default function Services() {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="w-full max-w-7xl mx-auto z-10 h-full">
           {/* Main Container Card */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -538,98 +539,94 @@ export default function Services() {
             {/* Visual Accent */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.05] rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
 
-            <div className="relative z-10">
+            <div className=" z-10">
               {/* SHARED HEADER */}
-              <div className="relative mb-20 flex flex-col items-center text-center">
-                <motion.div
+
+              {/* <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="flex items-center gap-6 mb-10"
+                  className="flex items-center gap-6 mb-6 md:mb-10"
                 >
                   <div className="w-12 h-px bg-primary/40" />
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.5em] text-primary">
+                  <span className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.5em] text-primary">
                     Transmission Node
                   </span>
                   <div className="w-12 h-px bg-primary/40" />
-                </motion.div>
+                </motion.div> */}
 
-                <motion.h2
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 1.2 }}
-                  className="text-4xl md:text-8xl font-sans leading-[0.95] md:leading-[0.85] tracking-tight italic"
-                >
-                  Have a system <br />
-                  <span className="opacity-40 font-light">requirement?</span>
-                </motion.h2>
-              </div>
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 1.2 }}
+                className="text-2xl md:text-4xl lg:text-7xl font-sans leading-[0.95] md:leading-[0.85] tracking-tight italic relative mb-4 flex flex-col items-center text-center"
+              >
+                Contact Us <br />
+                {/* <span className="opacity-40 font-light">requirement?</span> */}
+              </motion.h2>
 
-              {/* NESTED CARDS GRID */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                {/* Description Card */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="glass-panel border-white/5 p-8 md:p-16 flex flex-col justify-between space-y-12 md:space-y-16 rounded-[32px] md:rounded-[48px]"
-                >
-                  <div className="space-y-12">
-                    <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-sans italic opacity-70">
-                      Collaborate with the KOOMPI technical department to architect exceptional digital experiences. KOOMPI OS continues to evolve for the future of regional development.
-                    </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-                      {[
-                        { label: "Direct Line", value: "+855 969094960" },
-                        { label: "Secure Mail", value: "kheangsivechheng@gmail.com" },
-                        { label: "Studio HQ", value: "KOOMPI Hub, Phnom Penh, KH", full: true },
-                      ].map((item) => (
-                        <div key={item.label} className={`${item.full ? 'sm:col-span-2' : ''} space-y-3`}>
-                          <span className="text-[9px] font-mono font-bold uppercase tracking-[0.4em] text-primary/40">
-                            {item.label}
-                          </span>
-                          <p className="text-md font-sans italic tracking-tight text-foreground/80">
-                            {item.value}
-                          </p>
-                        </div>
-                      ))}
+              {/* UNIFIED CONTACT CARD */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className=" min-h-[calc(100vh-400px)] md:min-h-fit overflow-y-auto md:overflow-y-visible"
+              >
+                <div className="flex flex-col lg:flex-row ">
+                  {/* Left Section - Contact Info */}
+                  <div className="hidden  w-full lg:w-1/2 p-8 md:p-16 md:flex flex-col justify-between space-y-12 md:space-y-16 border-b lg:border-b-0 lg:border-r border-white/5">
+                    <div className="space-y-12">
+                      <p className=" md:text-lg text-muted-foreground leading-relaxed font-sans italic opacity-70">
+                        Collaborate with the KOOMPI technical department to architect exceptional digital experiences. KOOMPI OS continues to evolve for the future of regional development.
+                      </p>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+                        {[
+                          { label: "Direct Line", value: "+855 969094960" },
+                          { label: "Secure Mail", value: "kheangsivechheng@gmail.com" },
+                          { label: "Studio HQ", value: "KOOMPI Hub, Phnom Penh, KH", full: true },
+                        ].map((item) => (
+                          <div key={item.label} className={`${item.full ? 'sm:col-span-2' : ''} space-y-3`}>
+                            <span className="text-[8px] font-mono font-bold uppercase tracking-[0.4em] text-primary/40">
+                              {item.label}
+                            </span>
+                            <p className="text-sm font-sans italic tracking-tight text-foreground/80">
+                              {item.value}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-10 border-t border-white/5 space-y-6">
+                      <span className="text-[9px] font-mono font-bold uppercase tracking-[0.4em] text-primary/40">
+                        Network Identity
+                      </span>
+                      <div className="flex flex-wrap gap-10">
+                        {[{ name: 'LinkedIn', link: '#' }, { name: 'GitHub', link: '#' }, { name: 'Instagram', link: 'https://www.instagram.com/koompi/' }].map((social) => (
+                          <a
+                            target="_blank"
+                            key={social.name}
+                            href={social.link}
+                            className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground/40 hover:text-primary transition-all duration-500 hover:scale-105"
+                          >
+                            {social.name}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="pt-10 border-t border-white/5 space-y-6">
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-[0.4em] text-primary/40">
-                      Network Identity
-                    </span>
-                    <div className="flex flex-wrap gap-10">
-                      {[{ name: 'LinkedIn', link: '#' }, { name: 'GitHub', link: '#' }, { name: 'Instagram', link: 'https://www.instagram.com/koompi/' }].map((social) => (
-                        <a
-                          target="_blank"
-                          key={social.name}
-                          href={social.link}
-                          className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground/40 hover:text-primary transition-all duration-500 hover:scale-105"
-                        >
-                          {social.name}
-                        </a>
-                      ))}
-                    </div>
+                  {/* Right Section - Form */}
+                  <div className="w-full lg:w-1/2 md:p-8 flex flex-col">
+                    <ContactForm />
                   </div>
-                </motion.div>
-
-                {/* Form Card */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6 }}
-                  className="glass-panel border-white/5 p-1 shadow-2xl rounded-[32px] md:rounded-[48px]"
-                >
-                  <ContactForm />
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
