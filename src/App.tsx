@@ -44,7 +44,7 @@ function AnimatedRoutes({
 
   return (
     <AnimatePresence mode="wait">
-      {/* <Suspense fallback={<PageLoader />}> */}
+      <Suspense fallback={<PageLoader />}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -67,7 +67,7 @@ function AnimatedRoutes({
         <Route path="/document/:topicId/:moduleId" element={<TopicDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* </Suspense> */}
+      </Suspense>
     </AnimatePresence>
   );
 }
