@@ -44,30 +44,30 @@ function AnimatedRoutes({
 
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<PageLoader />}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/portfolio"
-            element={
-              <Portfolio
-                favorites={favorites}
-                recentlyPlayed={[]}
-                toggleFavorite={toggleFavorite}
-                setViewingProject={setViewingProject}
-                handleDownload={() => { }}
-              />
-            }
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/pages" element={<Services />} />
-          <Route path="/vault" element={<GamePortal />} />
-          <Route path="/document/:topicId" element={<TopicDetails />} />
-          <Route path="/document/:topicId/:moduleId" element={<TopicDetails />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
+      {/* <Suspense fallback={<PageLoader />}> */}
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/portfolio"
+          element={
+            <Portfolio
+              favorites={favorites}
+              recentlyPlayed={[]}
+              toggleFavorite={toggleFavorite}
+              setViewingProject={setViewingProject}
+              handleDownload={() => { }}
+            />
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/pages" element={<Services />} />
+        <Route path="/vault" element={<GamePortal />} />
+        <Route path="/document/:topicId" element={<TopicDetails />} />
+        <Route path="/document/:topicId/:moduleId" element={<TopicDetails />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {/* </Suspense> */}
     </AnimatePresence>
   );
 }
@@ -112,14 +112,14 @@ export default function App() {
   return (
     <AuthProvider>
       <LayoutProvider>
-          <Router>
-            <AppContent
-              favorites={favorites}
-              toggleFavorite={toggleFavorite}
-              setViewingProject={setViewingProject}
-              viewingProject={viewingProject}
-            />
-          </Router>
+        <Router>
+          <AppContent
+            favorites={favorites}
+            toggleFavorite={toggleFavorite}
+            setViewingProject={setViewingProject}
+            viewingProject={viewingProject}
+          />
+        </Router>
       </LayoutProvider>
     </AuthProvider >
   );
