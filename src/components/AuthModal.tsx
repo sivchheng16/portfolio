@@ -15,6 +15,26 @@ import {
   DialogContent,
 } from "@/components/ui/dialog";
 
+function TelegramLoginWidget() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!containerRef.current) return;
+    containerRef.current.innerHTML = '';
+    const script = document.createElement('script');
+    script.src = 'https://telegram.org/js/telegram-widget.js?22';
+    script.setAttribute('data-telegram-login', 'sdfadadfa_bot');
+    script.setAttribute('data-size', 'large');
+    script.setAttribute('data-auth-url', 'http://localhost:5000/api/auth/telegram/callback');
+    script.setAttribute('data-request-access', 'write');
+    script.async = true;
+    containerRef.current.appendChild(script);
+  }, []);
+
+  return <div ref={containerRef} className="flex justify-center w-full mt-2" />;
+}
+
+
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password requires 6+ characters"),
@@ -213,6 +233,8 @@ export default function AuthModal() {
                               </svg>
                               Continue with Google
                             </Button>
+                            
+                            <TelegramLoginWidget />
                           </div>
                         </form>
                       </Form>
@@ -338,6 +360,8 @@ export default function AuthModal() {
                               </svg>
                               Continue with Google
                             </Button>
+                            
+                            <TelegramLoginWidget />
                           </div>
                         </form>
                       </Form>
