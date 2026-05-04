@@ -160,13 +160,13 @@ export default function Home() {
           >
             <span className="w-8 h-[1px] bg-primary/50" />
             <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary font-bold">
-              KOOMPI learing roadmap
+              SIVCHHENG KHEANG
             </p>
             <span className="w-8 h-[1px] bg-primary/50" />
           </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-[8vw] lg:text-[6vw] font-sans font-medium leading-[0.95] md:leading-[0.85] tracking-tighter mb-10 md:mb-12 text-gradient flex flex-wrap justify-center overflow-hidden">
-            {"KOOMPI".split("").map((char, index) => (
+          <h1 className="text-5xl sm:text-6xl md:text-[8vw] lg:text-[6vw] font-display font-medium leading-[0.95] md:leading-[0.85] tracking-tighter mb-10 md:mb-12 text-gradient flex flex-wrap justify-center overflow-hidden uppercase">
+            {"KHEANG".split("").map((char, index) => (
               <motion.span
                 key={index}
                 initial={{ y: "100%" }}
@@ -185,18 +185,18 @@ export default function Home() {
           </h1>
 
           <p className="text-lg md:text-xl font-sans max-w-2xl leading-relaxed text-foreground/70 mb-16 italic">
-            "Empowering the next generation of Linux users and developers. KOOMPI OS provides a seamless gateway to mastering technology through interactive modules and core system insights."
+            "Full-Stack Developer & UI/UX Designer crafting high-performance digital ecosystems and immersive web experiences with modern architecture."
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-6 md:gap-8">
             <Button
               onClick={requireAuth(() => {
-                const el = document.getElementById("documents");
+                const el = document.getElementById("projects");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               })}
               className="h-14 md:h-16 px-10 md:px-12 rounded-full bg-primary text-background font-mono text-[11px] font-bold tracking-widest uppercase hover:scale-105 transition-all duration-300 shadow-xl shadow-primary/20"
             >
-              Explorer Now
+              View Projects
             </Button>
             <Button
               onClick={requireAuth(() => navigate("/about"))}
@@ -247,7 +247,7 @@ export default function Home() {
                 <div className="h-[1px] w-12 bg-primary/20 group-hover:w-20 transition-all duration-700" />
               </div>
               <h2
-                className="text-5xl md:text-8xl font-sans font-medium tracking-tighter leading-[0.9] md:leading-[0.85] cursor-pointer group/title"
+                className="text-5xl md:text-8xl font-display font-medium tracking-tighter leading-[0.9] md:leading-[0.85] cursor-pointer group/title"
                 onClick={requireAuth(() => {
                   const el = document.getElementById("documents");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -509,10 +509,9 @@ export default function Home() {
             viewport={{ once: false, amount: 0.1 }}
           >
             <p className="text-2xl text-muted-foreground font-sans leading-relaxed max-w-2xl hover:text-foreground transition-colors duration-500">
-              KOOMPI OS is built on the principles of open-source freedom and
-              educational empowerment. Our platform is designed to provide users
-              with the tools they need to explore, build, and innovate within
-              the Linux ecosystem.
+              My development process is built on the principles of clean architecture,
+              scalable performance, and user-centric design. I focus on bridging the
+              gap between complex technical requirements and intuitive digital experiences.
             </p>
             <div className="pt-4 pb-8">
               <Button
@@ -533,10 +532,10 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-primary group-hover:text-primary transition-colors duration-500">
-                  System Materials
+                  Clean Architecture
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed italic font-sans opacity-70 group-hover:opacity-100 transition-colors duration-500">
-                  We use quality code, robust architectures, and refined aesthetics that feel premium and look better over time.
+                  We use quality code, robust architectures, and refined aesthetics that ensure long-term scalability and maintainability.
                 </p>
               </motion.div>
               <motion.div
@@ -545,10 +544,10 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-primary group-hover:text-primary transition-colors duration-500">
-                  Light & Optics
+                  Performance First
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed italic font-sans opacity-70 group-hover:opacity-100 transition-colors duration-500">
-                  We design interfaces around light and depth — how it reflects, refracts, and moves through digital layers.
+                  I optimize every digital layer for speed and responsiveness, ensuring a seamless experience across all devices and network conditions.
                 </p>
               </motion.div>
             </div>
@@ -571,10 +570,10 @@ export default function Home() {
               </motion.div>
               <div>
                 <h4 className="font-sans text-xl italic group-hover:text-primary transition-colors duration-500">
-                  KOOMPI Core Team
+                  Sivchheng Kheang
                 </h4>
                 <p className="text-[9px] font-mono uppercase tracking-[0.4em] text-primary font-bold mt-2">
-                  System Architecture • Open Source
+                  Full Stack Developer • UI/UX Designer
                 </p>
               </div>
             </motion.div>
@@ -826,7 +825,7 @@ export default function Home() {
           <p className="font-sans text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-10">
             Get in Touch
           </p>
-          <h2 className="text-5xl md:text-6xl font-sans font-medium tracking-tighter mb-16 px-4 hover:text-primary transition-colors duration-500 cursor-pointer">
+          <h2 className="text-5xl md:text-6xl font-display font-medium tracking-tighter mb-16 px-4 hover:text-primary transition-colors duration-500 cursor-pointer">
             Have a project
             <br />
             in mind?

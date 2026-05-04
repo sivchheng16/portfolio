@@ -70,7 +70,7 @@ export default function NotFound() {
 
         <div className="pt-12">
            <p className="font-mono text-[9px] text-white/20 uppercase tracking-[0.6em]">
-              ERR_CODE: MO_0404 // KOOMPI_ORCHESTRATOR_V2.1
+              ERR_CODE: MO_0404 // SYSTEM_ORCHESTRATOR_V1.0
            </p>
         </div>
       </motion.div>

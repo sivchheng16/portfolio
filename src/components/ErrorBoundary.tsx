@@ -153,7 +153,7 @@ class ErrorBoundary extends Component<Props, State> {
 
           <div className="mt-12 text-center">
             <p className="font-mono text-[9px] text-white/20 uppercase tracking-[0.8em]">
-              KOOMPI_OS_RECOVERY_PROTOCOL // NO_DATA_LOST
+              SYSTEM_RECOVERY_PROTOCOL // SECURE_HANDOFF
             </p>
           </div>
         </motion.div>

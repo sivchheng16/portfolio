@@ -92,9 +92,9 @@ export default function About() {
                 System Overview
               </p>
             </div>
-            <h1 className="text-5xl md:text-8xl font-sans font-medium tracking-tighter leading-[0.95] md:leading-[0.85] mb-8 md:mb-12 uppercase text-gradient">
-              KOOMPI OS <br />
-              <span className="opacity-50 italic font-light lowercase font-sans text-3xl md:text-5xl lg:text-7xl">designing the future of education.</span>
+            <h1 className="text-5xl md:text-8xl font-display font-medium tracking-tighter leading-[0.95] md:leading-[0.85] mb-8 md:mb-12 uppercase text-gradient">
+              DEVELOPER <br />
+              <span className="opacity-50 italic font-light lowercase font-sans text-3xl md:text-5xl lg:text-7xl">crafting the future of web ecosystems.</span>
             </h1>
 
             <div className="glass-panel p-8 md:p-16 rounded-[32px] md:rounded-[48px] max-w-4xl border-white/5 relative overflow-hidden group">
@@ -102,11 +102,11 @@ export default function About() {
                 <Quote size={80} className="text-primary" />
               </div>
               <p className="text-xl md:text-4xl text-foreground font-sans leading-relaxed italic relative z-10">
-                "Merging technical precision with creative instinct to build digital environments that define the future."
+                "Merging technical precision with creative instinct to build digital environments that define the next generation of software."
               </p>
               <div className="mt-8 md:mt-12 flex items-center gap-6">
                 <div className="h-px w-12 bg-primary/30" />
-                <span className="font-mono text-[9px] font-bold uppercase tracking-[0.4em] text-primary">System Philosophy_v2.0</span>
+                <span className="font-mono text-[9px] font-bold uppercase tracking-[0.4em] text-primary">Technical Philosophy_v1.0</span>
               </div>
             </div>
           </motion.div>
@@ -128,7 +128,7 @@ export default function About() {
             <div className="aspect-[4/5] bg-muted/10 overflow-hidden glass-panel p-4 rounded-[48px] border-white/5 relative z-10 shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200"
-                alt="KOOMPI OS Architecture"
+                alt="Digital Architecture"
                 className="w-full h-full object-cover rounded-[36px] grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-105 group-hover:scale-100"
               />
               {/* Technical Overlay */}
@@ -136,7 +136,7 @@ export default function About() {
                 <div className="flex justify-between items-center">
                   <div className="space-y-1">
                     <p className="font-mono text-[8px] font-bold text-primary uppercase tracking-widest">System Build</p>
-                    <p className="font-mono text-[10px] font-bold text-white/50 tracking-widest">KOOMPI_OS_v2.0</p>
+                    <p className="font-mono text-[10px] font-bold text-white/50 tracking-widest">PERSONAL_PORTFOLIO_v1.0</p>
                   </div>
                   <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
                     <ShieldCheck size={14} className="text-primary" />
@@ -158,13 +158,13 @@ export default function About() {
 
             <div className="space-y-8">
               <h2 className="text-4xl md:text-6xl font-sans font-medium leading-[0.95] md:leading-[0.9] tracking-tighter">
-                Architecting <span className="text-primary italic">Seamless</span> <br /> Digital Systems.
+                Building <span className="text-primary italic">Performant</span> <br /> Web Systems.
               </h2>
               <p className="text-xl text-muted-foreground font-sans leading-relaxed italic border-l-2 border-primary/20 pl-10 opacity-80">
-                KOOMPI is a Cambodian-designed operating system and laptop project. We specialize in creating a high-performance, open-source ecosystem that empowers students and professionals to build their own future.
+                I am a Full-Stack Developer driven by the challenge of building scalable, high-performance web systems that bridge the gap between complex engineering and beautiful design.
               </p>
               <p className="text-muted-foreground leading-relaxed text-sm font-sans max-w-xl opacity-60">
-                Our journey started with a vision to make computing accessible and powerful. Today, KOOMPI OS serves as a core platform for thousands, providing the tools for coding, design, and system administration in a beautiful, optimized environment.
+                My journey into development started with a curiosity about how the digital world is built. Today, I specialize in architecting modern applications using React, Node.js, and Supabase, always focusing on clean code, smooth interactions, and technical excellence.
               </p>
             </div>
 
@@ -172,10 +172,10 @@ export default function About() {
               <div className="h-px flex-1 bg-white/10" />
               <div className="flex flex-col items-end">
                 <h4 className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
-                  Phnom Penh, KH
+                  PHNOM PENH, KH
                 </h4>
                 <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60 mt-2">
-                  Established 2018
+                  Established 2024
                 </p>
               </div>
             </div>
@@ -245,7 +245,7 @@ export default function About() {
             <p className="font-mono text-[10px] font-bold tracking-[0.5em] text-primary uppercase mb-16">
               Module Mission_v2
             </p>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-sans font-medium tracking-tighter mb-20 leading-[0.9] text-gradient">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-medium tracking-tighter mb-20 leading-[0.9] text-gradient">
               We build digital environments that are <span className="italic">clean</span>, <span className="italic">functional</span>, and <span className="italic">high-performance</span>.
             </h2>
 

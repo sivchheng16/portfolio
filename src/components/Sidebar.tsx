@@ -13,6 +13,7 @@ import {
   Terminal,
   Settings,
   ShieldCheck,
+  Command,
   PanelLeftClose,
   PanelRightClose
 } from "lucide-react";
@@ -35,10 +36,10 @@ export default function Sidebar() {
   const navLinks = [
     { name: "Home", path: "/", icon: Home },
     { name: "About This App", path: "/about", icon: Info },
-    { name: "Modules", path: "/services", icon: Layers },
-    { name: "System Features", path: "/portfolio", icon: Cpu },
+    { name: "Portfolio", path: "/portfolio", icon: Cpu },
     { name: "The Vault", path: "/vault", icon: Gamepad2 },
   ];
+  {/* { name: "Service", path: "/services", icon: Layers },*/ }
 
   // Close sidebar on navigation (mobile)
   useEffect(() => {
@@ -79,7 +80,7 @@ export default function Sidebar() {
           {/* Desktop Toggle Button */}
           <div className={cn(
             "hidden lg:flex mb-8",
-            isCollapsed ? "justify-center" : "justify-end"
+            isCollapsed ? "justify-center" : "justify-start"
           )}>
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
@@ -94,15 +95,15 @@ export default function Sidebar() {
           <Link to="/" className={cn("mb-12 group", isCollapsed && "flex justify-center")}>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 flex items-center justify-center p-2 glass-panel rounded-xl group-hover:rotate-12 transition-transform duration-500 shrink-0">
-                <img src={logo} alt="KOOMPI" className="w-full h-full object-contain" />
+                <Command size={24} className="text-primary" />
               </div>
               {!isCollapsed && (
                 <div className="flex flex-col overflow-hidden whitespace-nowrap">
                   <h1 className="font-sans text-xl font-bold tracking-tight group-hover:text-primary transition-colors">
-                    KOOMPI OS
+                    KHEANG
                   </h1>
                   <span className="font-mono text-[9px] font-bold tracking-[0.2em] text-primary/60 uppercase">
-                    System App
+                    Developer
                   </span>
                 </div>
               )}
@@ -208,7 +209,7 @@ export default function Sidebar() {
             {!isCollapsed && (
               <div className="text-center">
                 <p className="font-mono text-[8px] text-muted-foreground/40 uppercase tracking-[0.4em]">
-                  KOOMPI OS // 2026
+                  SIVCHHENG KHEANG // 2026
                 </p>
               </div>
             )}

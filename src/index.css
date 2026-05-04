@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,10 +6,39 @@
 
 @layer base {
   :root {
+    --background: 40 22% 97%;
+    --foreground: 20 25% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 25% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 25% 8%;
+
+    --primary: 18 72% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 38 15% 93%;
+    --secondary-foreground: 20 15% 25%;
+
+    --muted: 38 12% 94%;
+    --muted-foreground: 25 12% 46%;
+
+    --accent: 38 12% 93%;
+    --accent-foreground: 20 25% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 14% 87%;
+    --input: 35 14% 87%;
+    --ring: 18 72% 50%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
     --background: 222 47% 4%;
-    /* Deep Navy */
     --foreground: 210 40% 98%;
-    /* Off-white */
     
     --card: 222 47% 6%;
     --card-foreground: 210 40% 98%;
@@ -18,11 +47,9 @@
     --popover-foreground: 210 40% 98%;
     
     --primary: 180 100% 50%;
-    /* Vibrant Cyan */
     --primary-foreground: 222 47% 4%;
     
     --secondary: 84 100% 50%;
-    /* Lime Green */
     --secondary-foreground: 222 47% 4%;
     
     --muted: 217 33% 17%;
@@ -37,7 +64,6 @@
     --border: 217 33% 17%;
     --input: 217 33% 17%;
     --ring: 180 100% 50%;
-    --radius: 0.5rem;
   }
 }
 
@@ -69,7 +95,11 @@
   }
 
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-2xl border border-white/10;
+    @apply bg-white/50 backdrop-blur-2xl border border-border shadow-sm;
+  }
+
+  .dark .glass-panel {
+    @apply bg-white/5 border-white/10 shadow-none;
   }
 
   .mesh-glow-cyan {
@@ -81,7 +111,7 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-foreground to-primary;
   }
 
   /* Connective Background Utilities */
@@ -94,7 +124,7 @@
   }
 
   .section-connector {
-    @apply relative border-t border-white/5;
+    @apply relative border-t border-border;
   }
 
   .section-connector::before {
@@ -113,7 +143,7 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-white/10 rounded-full hover:bg-primary/40 transition-colors;
+    @apply bg-border rounded-full hover:bg-primary/40 transition-colors;
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -128,6 +158,6 @@
 
 /* Custom selection color */
 ::selection {
-  background-color: hsla(180, 100%, 50%, 0.2);
-  color: #fff;
+  background-color: hsla(18, 72%, 50%, 0.2);
+  color: inherit;
 }

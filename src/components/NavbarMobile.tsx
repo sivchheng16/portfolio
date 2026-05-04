@@ -69,7 +69,7 @@ export default function NavbarMobile() {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
           <Link to="/" className="absolute  left-1/2 -translate-x-1/2 group shrink-0 items-center justify-center">
-            <img src={logo} alt="Logo" className="w-12 h-12" />
+            <Command size={24} className="text-primary" />
           </Link>
         </div>
       </nav>

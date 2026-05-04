@@ -22,52 +22,40 @@ export interface Game {
 
 export const PROJECTS: Project[] = [
   {
-    id: "elysian-residence",
-    title: "Elysian Residence",
+    id: "koompi-academy",
+    title: "KOOMPI Academy",
     description:
-      "A calm city home built around raw concrete walls and large windows that flood every room with natural light.",
+      "A premium, cinematic digital learning ecosystem engineered for the next generation of developers.",
     details:
-      "Located in central Phnom Penh, this three-bedroom residence uses exposed concrete and warm timber accents to create a quiet retreat from the city. The client wanted a home that felt open but private, and every room was planned to balance those two needs.",
-    thumbnail: "/elysian.png",
-    category: "Residential",
-    tags: ["Minimalism", "Concrete", "Urban"],
-    year: "2024",
-  },
-  {
-    id: "obsidian-lounge",
-    title: "Obsidian Lounge",
-    description:
-      "A commercial lounge designed around dark materials and focused lighting to create an intimate, dramatic atmosphere.",
-    details:
-      "The client wanted a space that felt different from typical bars and lounges — quieter, more refined. We used deep charcoal stone, dark velvet seating, and a ceiling of directional pendant lights to create distinct pockets of warmth throughout the room.",
-    thumbnail: "/obsidian.png",
+      "Architected a hybrid SPA with an AI-generated curriculum, automated progress tracking via Supabase, and digital certificate minting through KOOMPI ID. Focused on creating a high-fidelity learning experience with smooth motion and robust backend orchestration.",
+    thumbnail: "/koompi-academy.png",
     category: "Commercial",
-    tags: ["Atmospheric", "Luxury", "Retail"],
-    year: "2023",
+    tags: ["React", "Supabase", "AI", "Node.js"],
+    year: "2026",
   },
   {
-    id: "ivory-atelier",
-    title: "Ivory Atelier",
+    id: "digital-vault",
+    title: "Digital Vault",
     description:
-      "A bright, multi-level studio space designed for a fashion label that needed room to create, meet, and display.",
+      "An interactive archive of browser-based games and creative coding experiments.",
     details:
-      "The brief called for a flexible workspace that could shift between showroom, workshop, and meeting space without feeling cluttered. We used a mezzanine layout, clean white plaster walls, and modular rails to keep the space adaptable and easy to rearrange.",
-    thumbnail: "/ivory.png",
-    category: "Commercial",
-    tags: ["Bright", "Modular", "Studio"],
-    year: "2023",
+      "Developed a centralized vault for experimental web games using TypeScript and Framer Motion. Implemented a flexible component-based architecture to support multiple game engines and input methods while maintaining a consistent cinematic aesthetic.",
+    thumbnail: "/vault.png",
+    category: "Retail",
+    tags: ["TypeScript", "Framer Motion", "Game Dev"],
+    year: "2025",
   },
   {
-    id: "verdant-villa",
-    title: "Verdant Villa",
+    id: "portfolio-v1",
+    title: "Personal Portfolio",
     description:
-      "A tropical villa that opens fully to the surrounding garden, using local stone and bamboo throughout.",
+      "A minimalist, high-performance developer portfolio built with a focus on typography and digital optics.",
     details:
-      "Built on a hillside outside of Siem Reap, this home was designed to stay cool naturally and feel connected to the outdoors. Local volcanic stone forms the base structure, while bamboo screens filter the light and provide privacy without closing the space off.",
-    thumbnail: "/verdant.png",
-    category: "Residential",
-    tags: ["Tropical", "Sustainable", "Architecture"],
-    year: "2024",
+      "Crafted a bespoke portfolio using Vite and Tailwind CSS. Integrated smooth scrolling (Lenis) and staggered animations to create a tactile, immersive user experience that showcases technical work through a cinematic lens.",
+    thumbnail: "/portfolio.png",
+    category: "Bespoke",
+    tags: ["Vite", "Tailwind CSS", "UI/UX"],
+    year: "2026",
   },
 ];
 
@@ -358,10 +346,10 @@ export const categories = [
   {
     name: "Apprentice",
     moments: [
-      { title: "Sivchheng Kheang", role: "Apprentice", description: "Developer & Learning Full Stack Developer", image: "/team/sivchheng.jpg" },
-      { title: "Keochheang THON", role: "Apprentice", description: "Designer", image: "/team/keochheang.jpg" },
-      { title: "Narith CHOM", role: "Apprentice", description: "Developer", image: "/team/narith.jpg" },
-      { title: "Sisuykong Sao ", role: "Apprentice", description: "Developer", image: "/team/sisuykong.jpg" },
+      { title: "Sivchheng Kheang", role: "Developer", description: "Learning and building Full-Stack applications.", image: "/team/sivchheng.jpg" },
+      { title: "Keochheang THON", role: "Designer", description: "Visual and UI/UX Designer.", image: "/team/keochheang.jpg" },
+      { title: "Narith CHOM", role: "Developer", description: "Software Developer.", image: "/team/narith.jpg" },
+      { title: "Sisuykong Sao ", role: "Developer", description: "Software Developer.", image: "/team/sisuykong.jpg" },
     ]
   }
 ];

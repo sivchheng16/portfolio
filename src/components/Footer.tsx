@@ -31,21 +31,20 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-10 flex flex-col items-center md:items-start text-center md:text-left">
             <Link to="/" className="flex items-center gap-4 group">
               <div className="w-12 h-12 flex items-center justify-center text-primary group-hover:rotate-12 transition-transform duration-500">
-                {/* <Command size={24} /> */}
-                <img src={logo} alt="logo" className="w-full h-full object-contain" />
+                <Command size={24} />
               </div>
               <span className="font-sans text-3xl font-medium tracking-[0.2em] text-foreground">
-                KOOMPI OS
+                KHEANG
               </span>
             </Link>
             <p className="text-xl text-muted-foreground font-sans leading-relaxed italic opacity-80 max-w-sm">
-              "Developing high-performance software systems for the future of education and innovation."
+              "Developing high-performance software systems for the future of digital innovation."
             </p>
             <div className="flex justify-center md:justify-start gap-4">
               {[
-                { icon: Github, href: "https://github.com/koompi" },
-                { icon: MessageCircle, href: "https://t.me/koompi" },
-                { icon: Instagram, href: "https://instagram.com/koompi_os" }
+                { icon: Github, href: "https://github.com/sivchheng16" },
+                { icon: MessageCircle, href: "https://t.me/chheng_k" },
+                { icon: Instagram, href: "https://instagram.com/sivchheng" }
               ].map((social, i) => (
                 <a
                   key={i}
@@ -66,9 +65,9 @@ export default function Footer() {
             <div className="space-y-4">
               {[
                 { name: "System Home", path: "/" },
-                { name: "About KOOMPI", path: "/about" },
-                { name: "Modules", path: "/services" },
-                { name: "Features", path: "/portfolio" },
+                { name: "About Me", path: "/about" },
+                { name: "Services", path: "/services" },
+                { name: "Portfolio", path: "/portfolio" },
                 { name: "The Vault", path: "/vault" }
               ].map((link) => (
                 <Link
@@ -85,13 +84,13 @@ export default function Footer() {
 
           {/* Studio Info */}
           <div className="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
-            <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Studio Location</h3>
+            <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Location</h3>
             <div className="space-y-6">
               <div className="glass-panel p-6 rounded-2xl border-white/5">
                 <p className="font-mono text-[10px] uppercase tracking-widest text-foreground font-bold mb-2">Phnom Penh, KH</p>
                 <p className="text-sm text-muted-foreground leading-relaxed italic font-sans">
-                  KOOMPI HQ, No. 34-36<br />
-                  St. 200, Phsar Thmei II
+                  Available for Remote &<br />
+                  On-site Opportunities
                 </p>
               </div>
               <Button
@@ -108,15 +107,15 @@ export default function Footer() {
         <div className="py-5 border-t border-b border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60">
-              © {currentYear} KOOMPI OS
+              © {currentYear} SIVCHHENG KHEANG
             </p>
             <div className="h-4 w-px bg-white/10 hidden md:block" />
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/70">
-              Official Software Department
+              Personal Software Portfolio
             </p>
           </div>
           <p className="font-sans italic text-sm text-muted-foreground/40">
-            Powered by KOOMPI
+            Powered by Modern Tech
           </p>
         </div>
       </motion.div>

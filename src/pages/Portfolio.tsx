@@ -77,12 +77,12 @@ export default function Portfolio({
                   System Features
                 </p>
               </div>
-              <h1 className="text-5xl md:text-8xl font-sans font-medium tracking-tighter uppercase leading-[0.9] md:leading-[0.85] text-gradient mb-8 md:mb-12">
-                Features. <br />
-                <span className="opacity-50 italic font-light lowercase font-sans text-3xl md:text-7xl lg:text-8xl">os & apps.</span>
+              <h1 className="text-5xl md:text-8xl font-display font-medium tracking-tighter uppercase leading-[0.9] md:leading-[0.85] text-gradient mb-8 md:mb-12">
+                Projects. <br />
+                <span className="opacity-50 italic font-light lowercase font-sans text-3xl md:text-7xl lg:text-8xl">code & design.</span>
               </h1>
               <p className="text-xl text-muted-foreground font-sans leading-relaxed max-w-lg italic opacity-80 border-l-2 border-primary/20 pl-8">
-                "A curated archive of KOOMPI OS official applications and core system features developed for our users."
+                "A curated archive of high-performance applications and full-stack systems developed to solve complex digital challenges."
               </p>
             </motion.div>
 

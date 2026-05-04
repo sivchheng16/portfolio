@@ -186,7 +186,7 @@ export default function Services() {
               <div className="w-12 h-px bg-primary/30" />
             </div>
 
-            <h1 className="text-5xl sm:text-7xl md:text-9xl font-sans font-medium tracking-tighter leading-[1.1] md:leading-[0.8] mb-10 md:mb-14 uppercase flex flex-wrap justify-center overflow-hidden">
+            <h1 className="text-5xl sm:text-7xl md:text-9xl font-display font-medium tracking-tighter leading-[1.1] md:leading-[0.8] mb-10 md:mb-14 uppercase flex flex-wrap justify-center overflow-hidden">
               {"Modules".split("").map((char, index) => (
                 <motion.span
                   key={index}
@@ -345,7 +345,7 @@ export default function Services() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-40">
             <p className="font-mono text-[10px] font-bold tracking-[0.5em] text-primary uppercase mb-8">Execution Lifecycle</p>
-            <h2 className="text-4xl md:text-8xl font-sans font-medium tracking-tighter">The <span className="italic font-light opacity-40">Journey.</span></h2>
+            <h2 className="text-4xl md:text-8xl font-display font-medium tracking-tighter">The <span className="italic font-light opacity-40">Journey.</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8 relative">
@@ -386,7 +386,7 @@ export default function Services() {
         <div className="absolute -bottom-48 right-0 w-[50vw] h-[50vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
       </section>
 
-      {/* KOOMPI Partnership */}
+      {/* Tech Stack Partnership */}
       <section className="py-20 md:py-28 px-6 md:px-8 relative bg-white/[0.02] section-connector">
         {/* Top Connective Bloom */}
         <div className="absolute -top-48 right-0 w-[50vw] h-[50vw] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
@@ -399,21 +399,21 @@ export default function Services() {
             <div className="flex items-center gap-4 mb-8">
               <span className="w-8 h-[1px] bg-secondary" />
               <p className="font-mono text-[10px] font-bold tracking-[0.4em] text-secondary uppercase">
-                Corporate Synergy
+                Technical Synergy
               </p>
             </div>
             <h2 className="text-5xl md:text-6xl font-sans font-medium leading-tight mb-8">
-              KOOMPI <span className="text-secondary italic">Ecosystem.</span>
+              Modern <span className="text-secondary italic">Tech Stack.</span>
             </h2>
             <p className="text-xl text-muted-foreground font-sans leading-relaxed mb-12 italic opacity-80">
-              As a core member of the KOOMPI development team, we leverage sovereign technology and modular architectures to build products that redefine regional standards.
+              I specialize in architecting high-performance digital ecosystems using sovereign technology and modular patterns that redefine regional standards for speed and security.
             </p>
 
             <div className="space-y-6">
               {[
-                "Sovereign Tech Integration",
+                "Full-Stack React Integration",
                 "Scalable System Architecture",
-                "Community-Driven Design"
+                "User-Centric Motion Design"
               ].map((item) => (
                 <div key={item} className="flex items-center gap-6 glass-panel py-4 px-8 rounded-2xl max-w-sm">
                   <CheckCircle2 size={18} className="text-secondary" />
@@ -448,8 +448,8 @@ export default function Services() {
         <div className="absolute -top-48 left-[10%] w-[40vw] h-[40vw] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 md:mb-32">
-            <p className="font-mono text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-6">The Collective</p>
-            <h2 className="text-5xl md:text-6xl font-sans font-medium">KOOMPI Team.</h2>
+            <p className="font-mono text-[10px] font-bold tracking-[0.4em] text-primary uppercase mb-6">Expert Network</p>
+            <h2 className="text-5xl md:text-6xl font-sans font-medium">Core Collaborators.</h2>
           </div>
 
           <div className="flex w-full justify-center mb-10 md:mb-20">
@@ -581,14 +581,14 @@ export default function Services() {
                   <div className="hidden  w-full lg:w-1/2 p-8 md:p-16 md:flex flex-col justify-between space-y-12 md:space-y-16 border-b lg:border-b-0 lg:border-r border-white/5">
                     <div className="space-y-12">
                       <p className=" md:text-lg text-muted-foreground leading-relaxed font-sans italic opacity-70">
-                        Collaborate with the KOOMPI technical department to architect exceptional digital experiences. KOOMPI OS continues to evolve for the future of regional development.
+                        Collaborate with me to architect exceptional digital experiences. I focus on building high-performance web systems and intuitive user interfaces.
                       </p>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                         {[
                           { label: "Direct Line", value: "+855 969094960" },
                           { label: "Secure Mail", value: "kheangsivechheng@gmail.com" },
-                          { label: "Studio HQ", value: "KOOMPI Hub, Phnom Penh, KH", full: true },
+                          { label: "Location", value: "Phnom Penh, KH", full: true },
                         ].map((item) => (
                           <div key={item.label} className={`${item.full ? 'sm:col-span-2' : ''} space-y-3`}>
                             <span className="text-[8px] font-mono font-bold uppercase tracking-[0.4em] text-primary/40">

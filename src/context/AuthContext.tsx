@@ -34,6 +34,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const initializeAuth = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tokenFromUrl = urlParams.get('token');
+      const userFromUrl = urlParams.get('user');
+
+      if (tokenFromUrl && userFromUrl) {
+        localStorage.setItem('auth_token', tokenFromUrl);
+        localStorage.setItem('auth_user', userFromUrl);
+        // Clean up URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+
       const savedUser = localStorage.getItem('auth_user');
       const savedToken = localStorage.getItem('auth_token');
 

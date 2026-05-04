@@ -71,10 +71,10 @@ export default function Navbar() {
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 flex items-center justify-center bg-transparent hover:text-primary group-hover:rotate-12 transition-transform duration-500">
-                  <img src={logo} alt="logo" className="w-full h-full object-contain" />
+                  <Command size={24} />
                 </div>
                 <span className="font-sans text-xl md:text-3xl font-medium tracking-[0.2em] group-hover:text-primary transition-colors">
-                  Portfolio
+                  KHEANG
                 </span>
               </div>
             </motion.div>
