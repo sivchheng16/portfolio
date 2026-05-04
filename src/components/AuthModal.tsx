@@ -25,7 +25,7 @@ function TelegramLoginWidget() {
     script.src = 'https://telegram.org/js/telegram-widget.js?22';
     script.setAttribute('data-telegram-login', 'sdfadadfa_bot');
     script.setAttribute('data-size', 'large');
-    script.setAttribute('data-auth-url', 'http://localhost:5000/api/auth/telegram/callback');
+    script.setAttribute('data-auth-url', 'https://server-3gru.onrender.com/api/auth/telegram/callback');
     script.setAttribute('data-request-access', 'write');
     script.async = true;
     containerRef.current.appendChild(script);
